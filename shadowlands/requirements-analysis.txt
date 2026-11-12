@@ -1,2 +1,0 @@
-# Optional offline CPU emulator, separate from runtime and ordinary developer tools.
-unicorn==2.1.4
