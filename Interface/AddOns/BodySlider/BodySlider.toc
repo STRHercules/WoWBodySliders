@@ -1,9 +1,8 @@
-## Interface: 30300
-## Title: Body Slider
-## Notes: In-game body, breast/butt, and facial proportions with a live preview, presets and share codes. Needs BodySlider.dll. /bodyslider
-## Version: 0.3.0
+## Interface: 90207
+## Title: Body Slider - Shadowlands
+## Notes: Local player size prototype with live model preview. Requires BodySliderShadowlandsRuntime.dll. /bodyslider
+## Version: 0.2.4-shadowlands-prototype
 ## SavedVariables: BodySliderDB
-## OptionalDeps: totalRP3, MyRolePlay, XRP
+State.lua
 Style.lua
-Protocol.lua
 BodySlider.lua

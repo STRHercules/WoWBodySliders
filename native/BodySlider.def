@@ -1,3 +1,0 @@
-LIBRARY BodySlider
-EXPORTS
-    BodySlider_Initialize @1

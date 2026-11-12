@@ -1,189 +1,135 @@
-# Body Slider for stock WotLK 3.3.5a
+# Body Slider for Shadowlands - first size-control prototype
 
-The separate [Shadowlands 9.2.7 port](shadowlands/README.md) has an Epsilon-compatible
-attach helper and an initial local-size/preview prototype. Individual proportions
-and Shadowlands visual acceptance remain unfinished.
+**Current build:** [runtime 0.2.4](SOURCE-0.2.4.md) investigates the upstream
+unit source-scale getter. The user confirmed that 0.2.3's matrix writes did not
+visibly change size. No current visual-size success is claimed. It includes the game-thread Lua bridge,
+local-player overall-size control, reset, saved settings and model-preview UI.
+Its build/unit checks pass; in-game slider and visual acceptance are pending.
+Individual body/face proportions and sharing are not implemented yet.
 
-Standalone prototype for the supplied x86 build 12340 executable. It uses a small
-executable loader patch, `BodySlider.dll`, and an in-game-only addon. No Esteria
-client, server changes, custom packets, GlueXML edits, DBC edits, or model-file
-replacement is needed. The original executable selected for patching is never modified.
+**Current Epsilon delivery is an [attach-only helper](EPSILON-ATTACH.md).** Start
+the game through Epsilon, then load the DLL into that process. Epsilon restores
+direct EXE patches; the standalone launcher did not supply Epsilon's required hooks.
 
-This is a standalone repository. It contains the native DLL source, native patcher
-source and embedded patch data, addon, generated model profiles, audit generators,
-tests and packaging tools. No wowdecomp checkout is required. Generated model
-headers are included, so building does not require game data or StormLib.
+Target: the supplied **9.2.7.45745 x64** `Wow-Shadowlands.exe`.
+SHA-256: `c5083750b1892cf0c3a029295f3298599558a9b25c6d988c3f107b47f1aff199`.
 
-The current source includes the 0.3.0 addon preview/preset interface. Historical
-validation records below retain the earlier milestone labels and limitations.
+This folder contains a separate Shadowlands backend, native runtime/attach helper,
+executable audit, bounded offline TLS probe and numerical tests.
+Read [RUNTIME-0.2.md](RUNTIME-0.2.md) and [EPSILON-ATTACH.md](EPSILON-ATTACH.md) for current
+installation and validation limits; [DIRECT-PATCH.md](DIRECT-PATCH.md) and
+[LIVE-STATUS.md](LIVE-STATUS.md) record the earlier experiments.
+The WotLK runtime, patcher, addon and package are unchanged.
 
-## Current scope
+## What is working
 
-Thirty-seven controls: twelve body proportions, breast/butt deformation, and
-twenty-three facial controls for jaw, face, brows, eyes, nose, mouth, chin,
-cheeks and ears. The window (Esteria Incarnations style) has Body, Face and Features
-pages, a live preview of your own model, and a Presets page: share codes (the same
-`BodySlider/2:` string the MSP field carries) and presets saved per race and sex in
-`BodySliderDB.presets`. The preview calls `BodySlider_Set(previewFrame)` each frame; DLL
-0.3.0 shapes that PlayerModel with the local player's values, older DLLs leave it stock. Breast deformation
-is enabled on female profiles; butt and facial controls apply to both sexes.
-There are audited skeletal profiles for the twenty original race/sex models.
-Filename, bone count, key table, every parent and every bind pivot must match;
-unrecognized skeletons, shapeshifts and HD replacements are left alone.
+- `audit_exe.py` accepts only the supplied executable's exact digest, checks its
+  PE64 architecture/version, inventories sections/imports, and searches selected
+  Lua/model API names for aligned name/function pointer pairs.
+- Candidate function pointers must point to executable code with an x64 unwind
+  function entry. The report retains the pair location, function range, and a
+  short disassembly prefix. All addresses except the preferred image base are
+  RVAs: runtime addresses must use the actual module base, not `0x140000000`.
+- `exe-audit.json` records the current scan and adjacent API-table neighborhoods. Names with no candidates are bounded
+  search results, not evidence that an API is absent. Different table layouts,
+  code references, and dynamically initialized entries are not scanned.
+- The code section appears transformed on disk; candidate pointers are **not
+  callable-verified hooks**. The startup probe reproduced callback rewriting and
+  exception-driven control flow in a synthetic environment. Read
+  [EXE-FINDINGS.md](EXE-FINDINGS.md) and `startup-probe.json` for evidence and limits.
+- A later live pass loaded `BodySliderShadowlands.dll` after initialization and
+  captured readable code. `live-code-audit.json` records selected samples and
+  call targets. They remain analysis leads, not verified deformation hooks.
+- The existing shape and deformation numerical tests build and pass as x64
+  programs. They reuse WotLK fixture profiles; they do **not** establish that
+  Shadowlands model layouts or profiles are supported.
 
-Breast/butt and face controls reshape each character's own vertices and normals.
-Their smooth local regions are estimated from the original body mesh and skeleton
-landmarks. They are not copied Retail mesh profiles. Recognized raw meshes and
-software-remapped variants have recorded vertex fingerprints; unknown geometry
-is left unchanged. One malformed Human Female software LOD variant is excluded.
-These geometry checks do not establish visual quality for every animation,
-outfit, mount or race. HD/replacement models require their own calibration.
+The audit reads the input and never executes or patches it. JSON output uses
+exclusive creation and refuses to overwrite any existing file.
 
-## Install the built package
+## Initial executable evidence
 
-1. Close the client. Keep a copy of your original executable.
-2. Run the included `BodySliderPatch.exe` and select your supported original
-   `Wow.exe`. It creates `Wow-BodySlider.exe` beside it and leaves the original
-   unchanged. It refuses unknown executables and existing output files.
-3. Keep the original as a backup, rename the patched copy to `Wow.exe`, and put
-   `BodySlider.dll` beside it. Copy `Interface/AddOns/BodySlider` into the same
-   client folder's `Interface/AddOns`.
-4. Enable Body Slider in the character-selection AddOns list. Log into the world
-   and type `/bodyslider`. There is no slider UI before entering the world.
+The supplied PE32+ image enables ASLR and has 195,915 x64 runtime-function entries.
+Its normal import table contains only `USER32.dll!MessageBoxW`. This does not
+establish how its remaining APIs are resolved, or that it is an unmodified client.
+The WotLK loader's fixed addresses and 32-bit bootstrap cannot be reused.
 
-All viewers need the patch, DLL and addon to see shared shapes. Others see the
-ordinary models. Appearance changes are local visual changes: server reach,
-movement, combat and collision remain server-controlled.
+Selected name/function table candidates:
 
-Settings persist per realm and character in SavedVariables. Sharing defaults to
-the custom `BodySliderMSP` channel. Both users need this addon version and must
-use the same transport:
+| Name | Function RVA | Pair RVA |
+| --- | --- | --- |
+| `UnitGUID` | `0x20C49C0` | `0x2E1D480` |
+| `UnitName` | `0x20C58D0` | `0x2E1D490` |
+| `UnitRace` | `0x20E6C90` | `0x2E1D640` |
+| `CreateFrame` | `0x29E49A0` | `0x33DF6B0` |
+| `SetModel` | `0x29B1B80` | `0x33DE380` |
+| `SetUnit` | `0x1EB24D0`, `0x20247A0` | See JSON |
+| `GetModelFileID` | `0x1F63840`, `0x29B1CA0` | See JSON |
 
-- `/bodyslider channel`: automatically joins `BodySliderMSP` and sends regular
-  channel chat carrying the namespaced MSP `BS` field. The addon filters its own
-  wire messages from the chat window. This channel is not private or encrypted.
-- `/bodyslider group`: sends MSP addon messages over your party or raid instead
-  of whispers. Join the same party/raid before testing this mode.
-- `/bodyslider whisper`: explicitly enables the original MSP whisper transport
-  for compatibility with earlier versions, where the server permits it.
-- `/bodyslider status`: reports the selected transport, readiness or paused state.
+Table ownership, calling contracts and behavior remain unverified. The second
+`SetUnit` candidate is adjacent to tooltip methods; it is not equivalent to the
+first model-related candidate. These are
+entry points for tracing object lookup, model assignment and Lua registration,
+not addresses to install detours at. No skeleton-animation or vertex-buffer hook
+has been established. The available REA native-analysis service is not connected
+in this session; this investigation uses pefile, Capstone and optional Unicorn directly.
 
-Channel/group broadcasts coalesce changes to at most one send per three seconds,
-with a thirty-second heartbeat. Channel joining has three bounded attempts;
-explicit server rejection pauses the transport for the session. Unresolved names
-such as `Unknown` never become whisper recipients. No transport automatically
-falls back to whispers. Use a transport command to retry after resolving a block.
-Servers can restrict channels and group messages independently; joining a channel
-does not remove those restrictions. The original server warning remains visible.
+## Build and verify
 
-The `BS` field and `BodySlider/2:` value schema are unchanged. `BS` remains an
-experimental, unregistered MSP field; normal MSP whisper framing is used in
-whisper mode. Group mode carries the same field over addon messages, and channel
-mode wraps it in a printable Body Slider envelope rather than claiming standard
-MSP whisper interoperability. The decoder still accepts twelve-control
-`BodySlider/1:` values, treating new controls as zero. See
-[MSP.md](Interface/AddOns/BodySlider/MSP.md) for framing and limits. Incoming
-settings are bound to game-observed sender names and GUIDs, never a GUID from
-the network payload.
-
-Missing DLL: stock startup continues. Unknown executable or conflicting hook:
-DLL refuses installation and logs why beside the executable in `BodySlider.log`.
-This does not circumvent a realm's integrity checks or rules on modified clients;
-launcher replacement, anti-cheat acceptance and message delivery depend on the
-realm. There is no universal server compatibility claim.
-
-## Build and patch
-
-Building requires Windows, MSVC C++ with x86 tools/Windows SDK, CMake, and Python 3.
-Users do not need Python or a compiler; the included patcher is a small native EXE.
-The DLL statically links the C++ runtime and imports only Windows system APIs.
+Run from the repository root with Python 3 and MSVC x64/Windows SDK installed.
+The Python dependencies `pefile` and `capstone` are already in the repository's
+`requirements-dev.txt`; no new dependencies are introduced.
 
 ```powershell
-cmake -S . -B build -A Win32
-cmake --build build --config Release
-ctest --test-dir build -C Release --output-on-failure
-build/patcher/Release/BodySliderPatch.exe --patch path/to/original/Wow.exe path/to/new/Wow.exe
-New-Item -ItemType Directory -Force dist
-python package.py dist/BodySlider-0.3.0-prototype.zip
+python -m unittest shadowlands.test_audit_exe -v
+python shadowlands/audit_exe.py Wow-Shadowlands.exe --output build/shadowlands-exe-audit.json
+cmake -S shadowlands -B build/shadowlands -A x64
+cmake --build build/shadowlands --config Release
+ctest --test-dir build/shadowlands -C Release --output-on-failure
 ```
 
-Copy `build/native/Release/BodySlider.dll` beside the generated executable
-and install the addon. The patcher accepts only SHA-256
-`aa63a5750d60ef16746c686b3d5e26876d98953eab08b1c026cd0faf78e88cb8`.
-It refuses to overwrite any existing output. Do not point it at a different
-realm's customized executable.
+Choose a new report filename if it already exists. The Python tests use a synthetic
+PE64 fixture to check candidate discovery and rejection of invalid pointers and
+file overlays. An additional test audits the supplied executable and verifies its
+digest is unchanged; set `BODYSLIDER_SHADOWLANDS_EXE` to use a different location.
+Only that integration test skips when the EXE is unavailable; an existing file
+with the wrong digest fails.
 
-The loader changes 26 original bytes, all PE header fields, and adds a 212-byte
-bootstrap in a new section plus restoration metadata. Original code, resources,
-and imports remain byte-identical. It loads only the `BodySlider.dll` beside the
-executable and invokes initializer export ordinal 1 before stock startup, after
-Windows has completed DLL initialization. The DLL installs eleven in-memory hooks:
-the original four Lua/skeleton/lifecycle hooks plus batch vertex binding, five
-CPU skinning routines and shadow batches. Hardware skinning uses a private vertex
-buffer per shaped character; software skinning reads an immutable private vertex
-snapshot through temporary model-data views. Shadow groups split when different
-instances have different shapes. Engine-owned vertices and class layouts remain
-unchanged. Mesh buffers rebuild after device invalidation and are released on
-reset or model destruction.
-Six Lua entry bridges use verified compiler padding inside the executable's
-original `.text` section. Stock Lua rejects DLL callback addresses directly;
-these bridges preserve its validator and check code unchanged. A harmless startup
-Lua call verifies the callback path before a character login.
-The separate projected-texture rendering helper still uses original geometry;
-decal alignment may differ on reshaped surfaces.
-Patching invalidates the original executable signature; restoration recovers it.
+## Remaining adaptation
 
-To produce a byte-identical original executable at a new path:
+1. Trace the candidate tables to establish Lua registration, player GUID/object
+   lookup, model ownership and the native callback rules. The existing native
+   `uint64_t` GUID parser and addon's `0x`-hex GUID validation are WotLK-specific;
+   Shadowlands needs its own observed identity mapping.
+   Selected post-initialization code has now been captured through the
+   diagnostic DLL. Trace those samples and their callees before installing hooks.
+2. Map skeleton animation, model destruction and render-buffer lifetimes. Build
+   an ASLR-aware x64 loader/hook implementation with original-byte checks,
+   rollback and refusal of unknown builds. The existing x86 inline assembly and
+   five-byte trampoline implementation cannot simply be rebuilt for x64.
+3. Extract matching character skeletons, meshes and skin data. Calibrate one
+   race/sex and prove skeletal sliders first, then vertex deformation. Keep the
+   shared numerical code; do not enable the stock WotLK profiles on HD models.
+4. Adapt the addon for Shadowlands GUID strings, `C_ChatInfo` messaging, group
+   APIs, widget behavior and model previews. Retain the 37-control preset wire
+   format where its semantics still apply. Verify against matching FrameXML.
+5. Verify in-game animations, armor, attachments, mounts, shadows, model reloads,
+   device resets and clean exit, then multi-client sharing and performance.
 
-```powershell
-BodySliderPatch.exe --restore path/to/patched/Wow.exe path/to/restored/Wow.exe
-```
+## Do you need a full installation?
 
-Keep the installed DLL until after closing the client. To uninstall, restore the
-original executable and remove the addon and DLL. The normal WTF SavedVariables
-file can be kept as a preset backup or removed while the client is closed.
+**Not for the current EXE stage.** The executable allows build identification,
+static disassembly, candidate/API-table discovery and design of the x64 native
+backend. It does not include the character meshes or prove runtime behavior.
 
-## Verification and remaining acceptance
+Matching client data is needed for model work: the relevant CASC character M2,
+skin and skeleton resources and their dependencies, plus mapping metadata where
+needed. Selected extracted assets can be enough to start one profile; supplying
+the EXE alone is not enough to calibrate one. Matching FrameXML helps verify addon
+API changes. A complete runnable 9.2.7.45745 client is the practical requirement
+for launch/login/rendering tests. It must include the data used by the test
+character; a partial streaming installation may need to download missing assets.
+A matching realm/login environment is needed for in-world acceptance.
 
-```powershell
-python -m pip install -r requirements-dev.txt
-$env:BODYSLIDER_STOCK_EXE = 'C:/Games/WoW-original/Wow.exe'
-python -m unittest discover -s . -p 'test_*.py' -v
-python patcher-native/test_native_patcher.py
-python Interface/AddOns/BodySlider/test_protocol.py
-```
-
-Patcher optional disassembly checks use `pefile` and `capstone`; Lua tests use
-`lupa.lua51`. Runtime dependencies are not shipped inside the addon. Model-audit
-tests use the recorded JSON; recreating the audit reads local MPQs with StormLib.
-Tests that inspect a real executable use `BODYSLIDER_STOCK_EXE` (or an ignored
-`local/Wow.exe`) and skip with an explicit reason when it is unavailable.
-`BODYSLIDER_PATCH_EXE` can override the built native patcher path.
-
-Audit regeneration is optional and requires your own original client data and
-64-bit StormLib DLL. Neither is distributed in this repository. Pass them
-explicitly; the tools have no paths into another checkout:
-
-```powershell
-python model_audit.py C:/Games/WoW --stormlib C:/Tools/StormLib.dll --output local/stock_profiles.json --header local/StockProfiles.h
-python deform_audit.py C:/Games/WoW --stormlib C:/Tools/StormLib.dll --output local/deform_profiles.json --header local/DeformProfiles.h
-python test_deform_audit.py --mesh-fixtures build/deform-fixtures --client C:/Games/WoW --stormlib C:/Tools/StormLib.dll
-build/native/Release/BodySliderDeformTest.exe build/deform-fixtures
-```
-
-Create the ignored `local` directory before generating audit output there. The
-archived evidence files and audit JSON retain historical source locations as
-provenance; these are not build inputs or required runtime locations.
-See `evidence-native.txt`, `evidence-mesh.txt`, `stock_profiles.json` and
-`deform_profiles.json` for source identities and offline ABI/model evidence.
-
-Live acceptance still requires:
-
-- Slider changes and reset on each supported race/sex; feet, equipment, mounts,
-  movement/combat animations and shapeshift return must remain usable.
-- Two clients seeing each other's settings, later arrival, departure, reset,
-  UI reload and relog on an unchanged server.
-- Actual TRP3/MSP-addon coexistence; protocol simulations alone do not prove it.
-- Clean client exit, crowded-area performance and each target realm's acceptance.
-
-The package is a prototype until those checks are recorded as passed.
+Realm acceptance of a modified client remains untested. Static tests and a
+successful x64 build do not establish that the game will load or accept hooks.

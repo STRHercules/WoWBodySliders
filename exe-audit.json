@@ -1,0 +1,6258 @@
+{
+  "schema": 2,
+  "stage": "static reconnaissance; runtime backend not implemented",
+  "sha256": "c5083750b1892cf0c3a029295f3298599558a9b25c6d988c3f107b47f1aff199",
+  "size": 58053968,
+  "version": [
+    9,
+    2,
+    7,
+    45745
+  ],
+  "machine": "AMD64",
+  "pe_format": "PE32+",
+  "preferred_image_base": 5368709120,
+  "aslr": true,
+  "entry_rva": 719456,
+  "sections": [
+    {
+      "name": ".text",
+      "rva": 4096,
+      "virtual_size": 46170796,
+      "raw_offset": 1024,
+      "raw_size": 46171136,
+      "entropy": 7.9999472620372565,
+      "executable": true
+    },
+    {
+      "name": ".rdata",
+      "rva": 46178304,
+      "virtual_size": 7605672,
+      "raw_offset": 46172160,
+      "raw_size": 7605760,
+      "entropy": 6.25654117058114,
+      "executable": false
+    },
+    {
+      "name": ".data",
+      "rva": 53784576,
+      "virtual_size": 7458144,
+      "raw_offset": 53777920,
+      "raw_size": 1165824,
+      "entropy": 4.183809161850062,
+      "executable": false
+    },
+    {
+      "name": ".pdata",
+      "rva": 61243392,
+      "virtual_size": 2350980,
+      "raw_offset": 54943744,
+      "raw_size": 2351104,
+      "entropy": 7.030855017059022,
+      "executable": false
+    },
+    {
+      "name": "_RDATA",
+      "rva": 63594496,
+      "virtual_size": 139232,
+      "raw_offset": 57294848,
+      "raw_size": 139264,
+      "entropy": 6.0390773486307285,
+      "executable": false
+    },
+    {
+      "name": ".rodata",
+      "rva": 63733760,
+      "virtual_size": 816,
+      "raw_offset": 57434112,
+      "raw_size": 1024,
+      "entropy": 2.972777336429858,
+      "executable": false
+    },
+    {
+      "name": ".rsrc",
+      "rva": 63737856,
+      "virtual_size": 347768,
+      "raw_offset": 57435136,
+      "raw_size": 348160,
+      "entropy": 5.872873798397313,
+      "executable": false
+    },
+    {
+      "name": ".reloc",
+      "rva": 64086016,
+      "virtual_size": 261584,
+      "raw_offset": 57783296,
+      "raw_size": 261632,
+      "entropy": 5.4800526542271575,
+      "executable": false
+    }
+  ],
+  "normal_imports": [
+    {
+      "dll": "USER32.dll",
+      "symbols": [
+        {
+          "name": "MessageBoxW",
+          "ordinal": null,
+          "iat_rva": 50439532
+        }
+      ]
+    }
+  ],
+  "runtime_function_count": 195915,
+  "tls_callback_rvas": [
+    15648,
+    2387632,
+    42549496
+  ],
+  "anchors": {
+    "UnitGUID": {
+      "string_rvas": [
+        48361520
+      ],
+      "candidates": [
+        {
+          "pair_rva": 48354432,
+          "string_rva": 48361520,
+          "function_rva": 34359744,
+          "function_end_rva": 34363599,
+          "prefix_hex": "2167a6f8d8b4a5c158272c7b73c4b89991ba66256a3d8f6f60601e277a3a549f",
+          "prefix_disassembly": [
+            {
+              "rva": 34359744,
+              "mnemonic": "and",
+              "operands": "dword ptr [rdi - 0x5a], esp"
+            },
+            {
+              "rva": 34359747,
+              "mnemonic": "clc",
+              "operands": ""
+            },
+            {
+              "rva": 34359748,
+              "mnemonic": "fdiv",
+              "operands": "dword ptr [rbp + riz*4 + 0x2c2758c1]"
+            },
+            {
+              "rva": 34359755,
+              "mnemonic": "jnp",
+              "operands": "0x20c4a40"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "UnitName": {
+      "string_rvas": [
+        48361536
+      ],
+      "candidates": [
+        {
+          "pair_rva": 48354448,
+          "string_rva": 48361536,
+          "function_rva": 34363600,
+          "function_end_rva": 34366207,
+          "prefix_hex": "f90259ce177ccaa10bb1036ba2bd0c5a718879ac075ea407c3db186d33a6e71b",
+          "prefix_disassembly": [
+            {
+              "rva": 34363600,
+              "mnemonic": "stc",
+              "operands": ""
+            },
+            {
+              "rva": 34363601,
+              "mnemonic": "add",
+              "operands": "bl, byte ptr [rcx - 0x32]"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "UnitRace": {
+      "string_rvas": [
+        48361992
+      ],
+      "candidates": [
+        {
+          "pair_rva": 48354880,
+          "string_rva": 48361992,
+          "function_rva": 34499728,
+          "function_end_rva": 34501087,
+          "prefix_hex": "0bcecb5af1e71069f2e261cbe5a78d260660d9a19c7ccfb928abfcad351bae8f",
+          "prefix_disassembly": [
+            {
+              "rva": 34499728,
+              "mnemonic": "or",
+              "operands": "ecx, esi"
+            },
+            {
+              "rva": 34499730,
+              "mnemonic": "retf",
+              "operands": ""
+            },
+            {
+              "rva": 34499731,
+              "mnemonic": "pop",
+              "operands": "rdx"
+            },
+            {
+              "rva": 34499732,
+              "mnemonic": "int1",
+              "operands": ""
+            },
+            {
+              "rva": 34499733,
+              "mnemonic": "out",
+              "operands": "0x10, eax"
+            },
+            {
+              "rva": 34499735,
+              "mnemonic": "imul",
+              "operands": "esi, edx, 0xe5cb61e2"
+            },
+            {
+              "rva": 34499741,
+              "mnemonic": "cmpsd",
+              "operands": "dword ptr [rsi], dword ptr [rdi]"
+            },
+            {
+              "rva": 34499742,
+              "mnemonic": "lea",
+              "operands": "esp, [rsi]"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "CreateFrame": {
+      "string_rvas": [
+        50222240
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54392496,
+          "string_rva": 50222240,
+          "function_rva": 43927968,
+          "function_end_rva": 43928046,
+          "prefix_hex": "7aaa721cefb6247c23c3f0d5aa6fc294cb42b8b90ef827c3d3b139a5b5c4316e",
+          "prefix_disassembly": [
+            {
+              "rva": 43927968,
+              "mnemonic": "jp",
+              "operands": "0x29e494c"
+            },
+            {
+              "rva": 43927970,
+              "mnemonic": "jb",
+              "operands": "0x29e49c0"
+            },
+            {
+              "rva": 43927972,
+              "mnemonic": "out",
+              "operands": "dx, eax"
+            },
+            {
+              "rva": 43927973,
+              "mnemonic": "mov",
+              "operands": "dh, 0x24"
+            },
+            {
+              "rva": 43927975,
+              "mnemonic": "jl",
+              "operands": "0x29e49cc"
+            },
+            {
+              "rva": 43927977,
+              "mnemonic": "ret",
+              "operands": ""
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetUnit": {
+      "string_rvas": [
+        48217680
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54240864,
+          "string_rva": 48217680,
+          "function_rva": 32187600,
+          "function_end_rva": 32187886,
+          "prefix_hex": "b2c6b6842037913fea7576d606d5d1a8abdcb8f480c0ff23840e4730cffa6cf9",
+          "prefix_disassembly": [
+            {
+              "rva": 32187600,
+              "mnemonic": "mov",
+              "operands": "dl, 0xc6"
+            },
+            {
+              "rva": 32187602,
+              "mnemonic": "mov",
+              "operands": "dh, 0x84"
+            },
+            {
+              "rva": 32187604,
+              "mnemonic": "and",
+              "operands": "byte ptr [rdi], dh"
+            },
+            {
+              "rva": 32187606,
+              "mnemonic": "xchg",
+              "operands": "ecx, eax"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54298960,
+          "string_rva": 48217680,
+          "function_rva": 33703840,
+          "function_end_rva": 33704155,
+          "prefix_hex": "70600cbc1f2e13658b686e9743735c65ce46677b49e0e52e858a4454dee11e37",
+          "prefix_disassembly": [
+            {
+              "rva": 33703840,
+              "mnemonic": "jo",
+              "operands": "0x2024802"
+            },
+            {
+              "rva": 33703842,
+              "mnemonic": "or",
+              "operands": "al, 0xbc"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "GetModelFileID": {
+      "string_rvas": [
+        48290984
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54288800,
+          "string_rva": 48290984,
+          "function_rva": 32913472,
+          "function_end_rva": 32913525,
+          "prefix_hex": "93bfa967c31aaa1ece50989e6ae6e5dd095b80933862c3c67b68c6f7f073407f",
+          "prefix_disassembly": [
+            {
+              "rva": 32913472,
+              "mnemonic": "xchg",
+              "operands": "ebx, eax"
+            },
+            {
+              "rva": 32913473,
+              "mnemonic": "mov",
+              "operands": "edi, 0x1ac367a9"
+            },
+            {
+              "rva": 32913478,
+              "mnemonic": "stosb",
+              "operands": "byte ptr [rdi], al"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54387600,
+          "string_rva": 48290984,
+          "function_rva": 43719840,
+          "function_end_rva": 43719902,
+          "prefix_hex": "bc3576729461e3f4cf6367ade90c2c09bdcacef4dffec53e21a5e1d818aae177",
+          "prefix_disassembly": [
+            {
+              "rva": 43719840,
+              "mnemonic": "mov",
+              "operands": "esp, 0x94727635"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetModel": {
+      "string_rvas": [
+        47971328
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54387584,
+          "string_rva": 47971328,
+          "function_rva": 43719552,
+          "function_end_rva": 43719833,
+          "prefix_hex": "32d59cda8dd2b72b7bb590541a8951afe2b2b26677cc11b88f58a9e1459334d7",
+          "prefix_disassembly": [
+            {
+              "rva": 43719552,
+              "mnemonic": "xor",
+              "operands": "dl, ch"
+            },
+            {
+              "rva": 43719554,
+              "mnemonic": "pushfq",
+              "operands": ""
+            },
+            {
+              "rva": 43719555,
+              "mnemonic": "fimul",
+              "operands": "dword ptr [rbp + 0x7b2bb7d2]"
+            },
+            {
+              "rva": 43719561,
+              "mnemonic": "mov",
+              "operands": "ch, 0x90"
+            },
+            {
+              "rva": 43719563,
+              "mnemonic": "push",
+              "operands": "rsp"
+            },
+            {
+              "rva": 43719564,
+              "mnemonic": "sbb",
+              "operands": "cl, byte ptr [rcx - 0x4d1d50af]"
+            },
+            {
+              "rva": 43719570,
+              "mnemonic": "mov",
+              "operands": "dl, 0x66"
+            },
+            {
+              "rva": 43719572,
+              "mnemonic": "ja",
+              "operands": "0x29b1b62"
+            },
+            {
+              "rva": 43719574,
+              "mnemonic": "adc",
+              "operands": "dword ptr [rax - 0x1e56a771], edi"
+            },
+            {
+              "rva": 43719580,
+              "mnemonic": "xchg",
+              "operands": "r11d, eax"
+            },
+            {
+              "rva": 43719582,
+              "mnemonic": "xor",
+              "operands": "al, 0xd7"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetScale": {
+      "string_rvas": [
+        46977624
+      ],
+      "candidates": [
+        {
+          "pair_rva": 53971136,
+          "string_rva": 46977624,
+          "function_rva": 5902320,
+          "function_end_rva": 5907503,
+          "prefix_hex": "4d2aacfee92bc5b4ae119b63f68cef17031db46cb66b3a8dca8f989fcc2f4e63",
+          "prefix_disassembly": [
+            {
+              "rva": 5902320,
+              "mnemonic": "sub",
+              "operands": "r13b, byte ptr [r14 + rdi*8 - 0x4b3ad417]"
+            },
+            {
+              "rva": 5902328,
+              "mnemonic": "scasb",
+              "operands": "al, byte ptr [rdi]"
+            },
+            {
+              "rva": 5902329,
+              "mnemonic": "adc",
+              "operands": "dword ptr [rbx - 0x1073099d], ebx"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 53973856,
+          "string_rva": 46977624,
+          "function_rva": 6204032,
+          "function_end_rva": 6204243,
+          "prefix_hex": "07515b454cbf518e8a7bf50fae42d1c8737e8cbc8e141fab5932256aa5b9c6af",
+          "prefix_disassembly": [],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 53975888,
+          "string_rva": 46977624,
+          "function_rva": 6242272,
+          "function_end_rva": 6242458,
+          "prefix_hex": "85a86e21b3f9cc99c479bda6fd32d3898d328b95577c428d41e146d600c36bce",
+          "prefix_disassembly": [
+            {
+              "rva": 6242272,
+              "mnemonic": "test",
+              "operands": "dword ptr [rax - 0x64cde92], ebp"
+            },
+            {
+              "rva": 6242278,
+              "mnemonic": "int3",
+              "operands": ""
+            },
+            {
+              "rva": 6242279,
+              "mnemonic": "cdq",
+              "operands": ""
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54288912,
+          "string_rva": 46977624,
+          "function_rva": 32914320,
+          "function_end_rva": 32914495,
+          "prefix_hex": "411a6bfcffae0d18b7aceff9d429a1a8f01620d24f5b9e7fdbd2ded52523f9a3",
+          "prefix_disassembly": [
+            {
+              "rva": 32914320,
+              "mnemonic": "sbb",
+              "operands": "bpl, byte ptr [r11 - 4]"
+            },
+            {
+              "rva": 32914324,
+              "mnemonic": "jmp",
+              "operands": "ptr [rsi - 0x5348e7f3]"
+            },
+            {
+              "rva": 32914330,
+              "mnemonic": "out",
+              "operands": "dx, eax"
+            },
+            {
+              "rva": 32914331,
+              "mnemonic": "stc",
+              "operands": ""
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "PlayerModel": {
+      "string_rvas": [
+        47834808
+      ],
+      "candidates": []
+    },
+    "ModelScene": {
+      "string_rvas": [
+        47834824
+      ],
+      "candidates": []
+    },
+    "RegisterAddonMessagePrefix": {
+      "string_rvas": [
+        47181496
+      ],
+      "candidates": []
+    },
+    "SetCustomRace": {
+      "string_rvas": [
+        48217896
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54241072,
+          "string_rva": 48217896,
+          "function_rva": 32188000,
+          "function_end_rva": 32188091,
+          "prefix_hex": "226e805f1752cbc64c1305099de13085d06b2f5ad1fbe4e3b61cc0ec1362c834",
+          "prefix_disassembly": [
+            {
+              "rva": 32188000,
+              "mnemonic": "and",
+              "operands": "ch, byte ptr [rsi - 0x80]"
+            },
+            {
+              "rva": 32188003,
+              "mnemonic": "pop",
+              "operands": "rdi"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetCreature": {
+      "string_rvas": [
+        48217688
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54240880,
+          "string_rva": 48217688,
+          "function_rva": 32188320,
+          "function_end_rva": 32189018,
+          "prefix_hex": "c327bb0bab6fea6c9f2e6f27ae55aa9d29daaa33d5d2718dc44c468966b90ac8",
+          "prefix_disassembly": [
+            {
+              "rva": 32188320,
+              "mnemonic": "ret",
+              "operands": ""
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetPortraitZoom": {
+      "string_rvas": [
+        48217768
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54240960,
+          "string_rva": 48217768,
+          "function_rva": 32190288,
+          "function_end_rva": 32190474,
+          "prefix_hex": "6d7a8dda8da60a22792888e1c635a2e4381b5080dc50d777360b5e1ff3b78421",
+          "prefix_disassembly": [
+            {
+              "rva": 32190288,
+              "mnemonic": "insd",
+              "operands": "dword ptr [rdi], dx"
+            },
+            {
+              "rva": 32190289,
+              "mnemonic": "jp",
+              "operands": "0x1eb2ee0"
+            },
+            {
+              "rva": 32190291,
+              "mnemonic": "fimul",
+              "operands": "dword ptr [rbp + 0x79220aa6]"
+            },
+            {
+              "rva": 32190297,
+              "mnemonic": "sub",
+              "operands": "byte ptr [rax - 0x5dca391f], cl"
+            },
+            {
+              "rva": 32190303,
+              "mnemonic": "in",
+              "operands": "al, 0x38"
+            },
+            {
+              "rva": 32190305,
+              "mnemonic": "sbb",
+              "operands": "edx, dword ptr [rax - 0x80]"
+            },
+            {
+              "rva": 32190308,
+              "mnemonic": "fcom",
+              "operands": "qword ptr [rax - 0x29]"
+            },
+            {
+              "rva": 32190311,
+              "mnemonic": "ja",
+              "operands": "0x1eb2f9f"
+            },
+            {
+              "rva": 32190313,
+              "mnemonic": "or",
+              "operands": "ebx, dword ptr [rsi + 0x1f]"
+            },
+            {
+              "rva": 32190316,
+              "mnemonic": "mov",
+              "operands": "bh, 0x84"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "RefreshUnit": {
+      "string_rvas": [
+        48217808
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54240992,
+          "string_rva": 48217808,
+          "function_rva": 32190720,
+          "function_end_rva": 32190863,
+          "prefix_hex": "c5c63c483583f8f07f99579577e9ab3dad9bf774eabb14b06626a0b68ccf719f",
+          "prefix_disassembly": [],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetDisplayInfo": {
+      "string_rvas": [
+        48217736
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54240928,
+          "string_rva": 48217736,
+          "function_rva": 32189872,
+          "function_end_rva": 32190011,
+          "prefix_hex": "3cdce269683030f8d6463c691a8b3529226ab57ab99d8571da8bba83058c61b9",
+          "prefix_disassembly": [
+            {
+              "rva": 32189872,
+              "mnemonic": "cmp",
+              "operands": "al, 0xdc"
+            },
+            {
+              "rva": 32189874,
+              "mnemonic": "loop",
+              "operands": "0x1eb2e1d"
+            },
+            {
+              "rva": 32189876,
+              "mnemonic": "push",
+              "operands": "-0x2907cfd0"
+            },
+            {
+              "rva": 32189881,
+              "mnemonic": "cmp",
+              "operands": "al, 0x69"
+            },
+            {
+              "rva": 32189884,
+              "mnemonic": "sbb",
+              "operands": "cl, byte ptr [rbx + 0x6a222935]"
+            },
+            {
+              "rva": 32189890,
+              "mnemonic": "mov",
+              "operands": "ch, 0x7a"
+            },
+            {
+              "rva": 32189892,
+              "mnemonic": "mov",
+              "operands": "ecx, 0xda71859d"
+            },
+            {
+              "rva": 32189897,
+              "mnemonic": "mov",
+              "operands": "edi, dword ptr [rdx + 0x618c0583]"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "Undress": {
+      "string_rvas": [
+        48252976
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54285328,
+          "string_rva": 48252976,
+          "function_rva": 32712400,
+          "function_end_rva": 32712503,
+          "prefix_hex": "3e85ee05b9c83f22044de8e64aade2cd0a26fa3dede76d29770d4b3e5e6f59f0",
+          "prefix_disassembly": [
+            {
+              "rva": 32712400,
+              "mnemonic": "test",
+              "operands": "esi, ebp"
+            },
+            {
+              "rva": 32712403,
+              "mnemonic": "add",
+              "operands": "eax, 0x223fc8b9"
+            },
+            {
+              "rva": 32712408,
+              "mnemonic": "add",
+              "operands": "al, 0x4d"
+            },
+            {
+              "rva": 32712410,
+              "mnemonic": "call",
+              "operands": "0xffffffffe4a071c5"
+            },
+            {
+              "rva": 32712415,
+              "mnemonic": "int",
+              "operands": "0xa"
+            },
+            {
+              "rva": 32712417,
+              "mnemonic": "cli",
+              "operands": ""
+            },
+            {
+              "rva": 32712419,
+              "mnemonic": "cmp",
+              "operands": "eax, 0x296de7ed"
+            },
+            {
+              "rva": 32712424,
+              "mnemonic": "ja",
+              "operands": "0x1f326f7"
+            },
+            {
+              "rva": 32712426,
+              "mnemonic": "pop",
+              "operands": "rsi"
+            },
+            {
+              "rva": 32712429,
+              "mnemonic": "outsd",
+              "operands": "dx, dword ptr [rsi]"
+            },
+            {
+              "rva": 32712430,
+              "mnemonic": "pop",
+              "operands": "rcx"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54289408,
+          "string_rva": 48252976,
+          "function_rva": 32917712,
+          "function_end_rva": 32917821,
+          "prefix_hex": "6f060ddf54a9a2cc036c23fa17e9e1dd7a277f9b8431dbbde1782545f1488556",
+          "prefix_disassembly": [
+            {
+              "rva": 32917712,
+              "mnemonic": "outsd",
+              "operands": "dx, dword ptr [rsi]"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "TryOn": {
+      "string_rvas": [
+        48252992
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54285360,
+          "string_rva": 48252992,
+          "function_rva": 32712624,
+          "function_end_rva": 32714668,
+          "prefix_hex": "31d0f27a8b42c1ee887ef19f92e1bc1645b7bc5f04e156990ba5b11c662ffeee",
+          "prefix_disassembly": [
+            {
+              "rva": 32712624,
+              "mnemonic": "xor",
+              "operands": "eax, edx"
+            },
+            {
+              "rva": 32712626,
+              "mnemonic": "bnd jp",
+              "operands": "0x1f32740"
+            },
+            {
+              "rva": 32712629,
+              "mnemonic": "shr",
+              "operands": "esi, 0x88"
+            },
+            {
+              "rva": 32712633,
+              "mnemonic": "jle",
+              "operands": "0x1f327ac"
+            },
+            {
+              "rva": 32712635,
+              "mnemonic": "lahf",
+              "operands": ""
+            },
+            {
+              "rva": 32712636,
+              "mnemonic": "xchg",
+              "operands": "edx, eax"
+            },
+            {
+              "rva": 32712637,
+              "mnemonic": "loope",
+              "operands": "0x1f3277b"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54289440,
+          "string_rva": 48252992,
+          "function_rva": 32917872,
+          "function_end_rva": 32919939,
+          "prefix_hex": "36b4d61429ac2a4c7811265b0ae0309b606cbf255e53e875c8a8ec6af19b98e9",
+          "prefix_disassembly": [
+            {
+              "rva": 32917872,
+              "mnemonic": "mov",
+              "operands": "ah, 0xd6"
+            },
+            {
+              "rva": 32917875,
+              "mnemonic": "adc",
+              "operands": "al, 0x29"
+            },
+            {
+              "rva": 32917877,
+              "mnemonic": "lodsb",
+              "operands": "al, byte ptr [rsi]"
+            },
+            {
+              "rva": 32917878,
+              "mnemonic": "sub",
+              "operands": "cl, byte ptr [rax + rdi*2 + 0x11]"
+            },
+            {
+              "rva": 32917882,
+              "mnemonic": "pop",
+              "operands": "rbx"
+            },
+            {
+              "rva": 32917884,
+              "mnemonic": "or",
+              "operands": "ah, al"
+            },
+            {
+              "rva": 32917886,
+              "mnemonic": "xor",
+              "operands": "byte ptr [rbx + 0x25bf6c60], bl"
+            },
+            {
+              "rva": 32917892,
+              "mnemonic": "pop",
+              "operands": "rsi"
+            },
+            {
+              "rva": 32917893,
+              "mnemonic": "push",
+              "operands": "rbx"
+            },
+            {
+              "rva": 32917894,
+              "mnemonic": "call",
+              "operands": "0xffffffffee9f1200"
+            },
+            {
+              "rva": 32917899,
+              "mnemonic": "push",
+              "operands": "-0xf"
+            },
+            {
+              "rva": 32917901,
+              "mnemonic": "wait",
+              "operands": ""
+            },
+            {
+              "rva": 32917902,
+              "mnemonic": "cwde",
+              "operands": ""
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "SetAnimation": {
+      "string_rvas": [
+        48217912
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54241088,
+          "string_rva": 48217912,
+          "function_rva": 32191568,
+          "function_end_rva": 32191693,
+          "prefix_hex": "7e877f17418e0aee4e74668a023081d7e0ff432a725a05b3218531836e22fd42",
+          "prefix_disassembly": [
+            {
+              "rva": 32191568,
+              "mnemonic": "jle",
+              "operands": "0x1eb33d9"
+            },
+            {
+              "rva": 32191570,
+              "mnemonic": "jg",
+              "operands": "0x1eb346b"
+            },
+            {
+              "rva": 32191572,
+              "mnemonic": "mov",
+              "operands": "cs, word ptr [r10]"
+            },
+            {
+              "rva": 32191575,
+              "mnemonic": "out",
+              "operands": "dx, al"
+            },
+            {
+              "rva": 32191576,
+              "mnemonic": "je",
+              "operands": "0x1eb34c1"
+            },
+            {
+              "rva": 32191579,
+              "mnemonic": "mov",
+              "operands": "al, byte ptr [rdx]"
+            },
+            {
+              "rva": 32191581,
+              "mnemonic": "xor",
+              "operands": "byte ptr [rcx + 0x43ffe0d7], al"
+            },
+            {
+              "rva": 32191587,
+              "mnemonic": "sub",
+              "operands": "dh, byte ptr [rdx + 0x5a]"
+            },
+            {
+              "rva": 32191590,
+              "mnemonic": "add",
+              "operands": "eax, 0x318521b3"
+            },
+            {
+              "rva": 32191595,
+              "mnemonic": "sub",
+              "operands": "dword ptr [rsi + 0x22], -3"
+            }
+          ],
+          "callable_verified": false
+        },
+        {
+          "pair_rva": 54289040,
+          "string_rva": 48217912,
+          "function_rva": 32915168,
+          "function_end_rva": 32915298,
+          "prefix_hex": "768b8a462ba2a2fd4ac517c6eed635d4a33a23354f9b1fd9478836bfc1a2464d",
+          "prefix_disassembly": [
+            {
+              "rva": 32915168,
+              "mnemonic": "jbe",
+              "operands": "0x1f63e6d"
+            },
+            {
+              "rva": 32915170,
+              "mnemonic": "mov",
+              "operands": "al, byte ptr [rsi + 0x2b]"
+            },
+            {
+              "rva": 32915173,
+              "mnemonic": "movabs",
+              "operands": "byte ptr [0xd6eec617c54afda2], al"
+            },
+            {
+              "rva": 32915182,
+              "mnemonic": "xor",
+              "operands": "eax, 0x233aa3d4"
+            },
+            {
+              "rva": 32915187,
+              "mnemonic": "xor",
+              "operands": "eax, 0xd91f9b4f"
+            },
+            {
+              "rva": 32915192,
+              "mnemonic": "mov",
+              "operands": "byte ptr [r14], r14b"
+            },
+            {
+              "rva": 32915195,
+              "mnemonic": "mov",
+              "operands": "edi, 0x4d46a2c1"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    },
+    "GetModelUnitGUID": {
+      "string_rvas": [
+        48291000
+      ],
+      "candidates": [
+        {
+          "pair_rva": 54288816,
+          "string_rva": 48291000,
+          "function_rva": 32913536,
+          "function_end_rva": 32913632,
+          "prefix_hex": "772339bea555fbafb82c2520ae90b682eadae0a6992581c99cb6a5b287e018e5",
+          "prefix_disassembly": [
+            {
+              "rva": 32913536,
+              "mnemonic": "ja",
+              "operands": "0x1f638a5"
+            },
+            {
+              "rva": 32913538,
+              "mnemonic": "cmp",
+              "operands": "dword ptr [rsi - 0x5004aa5b], edi"
+            },
+            {
+              "rva": 32913544,
+              "mnemonic": "mov",
+              "operands": "eax, 0xae20252c"
+            },
+            {
+              "rva": 32913549,
+              "mnemonic": "nop",
+              "operands": ""
+            },
+            {
+              "rva": 32913550,
+              "mnemonic": "mov",
+              "operands": "dh, 0x82"
+            }
+          ],
+          "callable_verified": false
+        }
+      ]
+    }
+  },
+  "api_tables": [
+    {
+      "start_rva": 48353872,
+      "entries": [
+        {
+          "pair_rva": 48353872,
+          "name": "UnitExists",
+          "function_rva": 34129104
+        },
+        {
+          "pair_rva": 48353888,
+          "name": "UnitIsVisible",
+          "function_rva": 34130592
+        },
+        {
+          "pair_rva": 48353904,
+          "name": "UnitIsUnit",
+          "function_rva": 34131920
+        },
+        {
+          "pair_rva": 48353920,
+          "name": "UnitIsPlayer",
+          "function_rva": 34135856
+        },
+        {
+          "pair_rva": 48353936,
+          "name": "UnitIsInMyGuild",
+          "function_rva": 34140096
+        },
+        {
+          "pair_rva": 48353952,
+          "name": "UnitIsCorpse",
+          "function_rva": 34143344
+        },
+        {
+          "pair_rva": 48353968,
+          "name": "UnitGroupRolesAssigned",
+          "function_rva": 34144704
+        },
+        {
+          "pair_rva": 48353984,
+          "name": "UnitIsRaidOfficer",
+          "function_rva": 34146096
+        },
+        {
+          "pair_rva": 48354000,
+          "name": "UnitInParty",
+          "function_rva": 34148736
+        },
+        {
+          "pair_rva": 48354016,
+          "name": "UnitInSubgroup",
+          "function_rva": 34150144
+        },
+        {
+          "pair_rva": 48354032,
+          "name": "UnitPlayerOrPetInParty",
+          "function_rva": 34151552
+        },
+        {
+          "pair_rva": 48354048,
+          "name": "UnitInRaid",
+          "function_rva": 34152976
+        },
+        {
+          "pair_rva": 48354064,
+          "name": "UnitInAnyGroup",
+          "function_rva": 34156848
+        },
+        {
+          "pair_rva": 48354080,
+          "name": "UnitPlayerOrPetInRaid",
+          "function_rva": 34162240
+        },
+        {
+          "pair_rva": 48354096,
+          "name": "UnitPlayerControlled",
+          "function_rva": 34163680
+        },
+        {
+          "pair_rva": 48354112,
+          "name": "UnitIsAFK",
+          "function_rva": 34165024
+        },
+        {
+          "pair_rva": 48354128,
+          "name": "UnitIsDND",
+          "function_rva": 34167856
+        },
+        {
+          "pair_rva": 48354144,
+          "name": "UnitIsPVP",
+          "function_rva": 34170608
+        },
+        {
+          "pair_rva": 48354160,
+          "name": "UnitIsPVPSanctuary",
+          "function_rva": 34173392
+        },
+        {
+          "pair_rva": 48354176,
+          "name": "UnitIsPVPFreeForAll",
+          "function_rva": 34174736
+        },
+        {
+          "pair_rva": 48354192,
+          "name": "UnitFactionGroup",
+          "function_rva": 34192064
+        },
+        {
+          "pair_rva": 48354208,
+          "name": "UnitReaction",
+          "function_rva": 34226848
+        },
+        {
+          "pair_rva": 48354224,
+          "name": "UnitIsEnemy",
+          "function_rva": 34229760
+        },
+        {
+          "pair_rva": 48354240,
+          "name": "UnitIsFriend",
+          "function_rva": 34232624
+        },
+        {
+          "pair_rva": 48354256,
+          "name": "UnitCanCooperate",
+          "function_rva": 34237968
+        },
+        {
+          "pair_rva": 48354272,
+          "name": "UnitCanAssist",
+          "function_rva": 34243264
+        },
+        {
+          "pair_rva": 48354288,
+          "name": "UnitCanAttack",
+          "function_rva": 34246016
+        },
+        {
+          "pair_rva": 48354304,
+          "name": "UnitCanPetBattle",
+          "function_rva": 34248768
+        },
+        {
+          "pair_rva": 48354320,
+          "name": "UnitIsCharmed",
+          "function_rva": 34251520
+        },
+        {
+          "pair_rva": 48354336,
+          "name": "UnitIsPossessed",
+          "function_rva": 34252864
+        },
+        {
+          "pair_rva": 48354352,
+          "name": "PlayerCanTeleport",
+          "function_rva": 34254208
+        },
+        {
+          "pair_rva": 48354368,
+          "name": "UnitClassification",
+          "function_rva": 34255536
+        },
+        {
+          "pair_rva": 48354384,
+          "name": "UnitIsQuestBoss",
+          "function_rva": 34257040
+        },
+        {
+          "pair_rva": 48354400,
+          "name": "UnitSelectionColor",
+          "function_rva": 34260880
+        },
+        {
+          "pair_rva": 48354416,
+          "name": "UnitSelectionType",
+          "function_rva": 34263712
+        },
+        {
+          "pair_rva": 48354432,
+          "name": "UnitGUID",
+          "function_rva": 34359744
+        },
+        {
+          "pair_rva": 48354448,
+          "name": "UnitName",
+          "function_rva": 34363600
+        },
+        {
+          "pair_rva": 48354464,
+          "name": "UnitNameUnmodified",
+          "function_rva": 34366208
+        },
+        {
+          "pair_rva": 48354480,
+          "name": "UnitFullName",
+          "function_rva": 34368816
+        },
+        {
+          "pair_rva": 48354496,
+          "name": "UnitRealmRelationship",
+          "function_rva": 34372832
+        },
+        {
+          "pair_rva": 48354512,
+          "name": "UnitPVPName",
+          "function_rva": 34375552
+        },
+        {
+          "pair_rva": 48354528,
+          "name": "UnitXP",
+          "function_rva": 34378560
+        },
+        {
+          "pair_rva": 48354544,
+          "name": "UnitXPMax",
+          "function_rva": 34381264
+        },
+        {
+          "pair_rva": 48354560,
+          "name": "UnitTrialXP",
+          "function_rva": 34383968
+        },
+        {
+          "pair_rva": 48354576,
+          "name": "UnitTrialBankedLevels",
+          "function_rva": 34386672
+        },
+        {
+          "pair_rva": 48354592,
+          "name": "UnitHonorLevel",
+          "function_rva": 34392208
+        },
+        {
+          "pair_rva": 48354608,
+          "name": "UnitHonor",
+          "function_rva": 34394896
+        },
+        {
+          "pair_rva": 48354624,
+          "name": "UnitHonorMax",
+          "function_rva": 34400352
+        },
+        {
+          "pair_rva": 48354640,
+          "name": "UnitHealth",
+          "function_rva": 34408160
+        },
+        {
+          "pair_rva": 48354656,
+          "name": "UnitHealthMax",
+          "function_rva": 34410848
+        },
+        {
+          "pair_rva": 48354672,
+          "name": "UnitPowerType",
+          "function_rva": 34430160
+        },
+        {
+          "pair_rva": 48354688,
+          "name": "UnitStagger",
+          "function_rva": 34418656
+        },
+        {
+          "pair_rva": 48354704,
+          "name": "UnitPowerBarTimerInfo",
+          "function_rva": 34454464
+        },
+        {
+          "pair_rva": 48354720,
+          "name": "UnitNumPowerBarTimers",
+          "function_rva": 34478848
+        },
+        {
+          "pair_rva": 48354736,
+          "name": "UnitOnTaxi",
+          "function_rva": 34480592
+        },
+        {
+          "pair_rva": 48354752,
+          "name": "UnitIsFeignDeath",
+          "function_rva": 34483280
+        },
+        {
+          "pair_rva": 48354768,
+          "name": "UnitIsDead",
+          "function_rva": 34485968
+        },
+        {
+          "pair_rva": 48354784,
+          "name": "UnitIsGhost",
+          "function_rva": 34488800
+        },
+        {
+          "pair_rva": 48354800,
+          "name": "UnitIsDeadOrGhost",
+          "function_rva": 34491568
+        },
+        {
+          "pair_rva": 48354816,
+          "name": "UnitAffectingCombat",
+          "function_rva": 34494256
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 48354864,
+      "entries": [
+        {
+          "pair_rva": 48354864,
+          "name": "GetMoney",
+          "function_rva": 34496976
+        },
+        {
+          "pair_rva": 48354880,
+          "name": "UnitRace",
+          "function_rva": 34499728
+        },
+        {
+          "pair_rva": 48354896,
+          "name": "UnitIsMercenary",
+          "function_rva": 34498320
+        },
+        {
+          "pair_rva": 48354912,
+          "name": "ResistancePercent",
+          "function_rva": 34504112
+        },
+        {
+          "pair_rva": 48354928,
+          "name": "UnitStat",
+          "function_rva": 34510944
+        },
+        {
+          "pair_rva": 48354944,
+          "name": "UnitDamage",
+          "function_rva": 34518288
+        },
+        {
+          "pair_rva": 48354960,
+          "name": "UnitRangedDamage",
+          "function_rva": 34514992
+        },
+        {
+          "pair_rva": 48354976,
+          "name": "UnitAttackSpeed",
+          "function_rva": 34521248
+        },
+        {
+          "pair_rva": 48354992,
+          "name": "UnitAttackPower",
+          "function_rva": 34560208
+        },
+        {
+          "pair_rva": 48355008,
+          "name": "UnitRangedAttackPower",
+          "function_rva": 34567024
+        },
+        {
+          "pair_rva": 48355024,
+          "name": "UnitWeaponAttackPower",
+          "function_rva": 34569872
+        },
+        {
+          "pair_rva": 48355040,
+          "name": "PlayerEffectiveAttackPower",
+          "function_rva": 34575248
+        },
+        {
+          "pair_rva": 48355056,
+          "name": "UnitSpellHaste",
+          "function_rva": 34579312
+        },
+        {
+          "pair_rva": 48355072,
+          "name": "UnitArmor",
+          "function_rva": 34584784
+        },
+        {
+          "pair_rva": 48355088,
+          "name": "UnitBuff",
+          "function_rva": 34637504
+        },
+        {
+          "pair_rva": 48355104,
+          "name": "UnitDebuff",
+          "function_rva": 34640176
+        },
+        {
+          "pair_rva": 48355120,
+          "name": "UnitAura",
+          "function_rva": 34642848
+        },
+        {
+          "pair_rva": 48355136,
+          "name": "UnitAuraBySlot",
+          "function_rva": 34654496
+        },
+        {
+          "pair_rva": 48355152,
+          "name": "UnitAuraSlots",
+          "function_rva": 34657216
+        },
+        {
+          "pair_rva": 48355168,
+          "name": "GetPlayerAuraBySpellID",
+          "function_rva": 34645488
+        },
+        {
+          "pair_rva": 48355184,
+          "name": "GetJailersTowerLevel",
+          "function_rva": 34651872
+        },
+        {
+          "pair_rva": 48355200,
+          "name": "UnitIsTapDenied",
+          "function_rva": 34660592
+        },
+        {
+          "pair_rva": 48355216,
+          "name": "UnitIsTrivial",
+          "function_rva": 34663280
+        },
+        {
+          "pair_rva": 48355232,
+          "name": "UnitHasRelicSlot",
+          "function_rva": 34666000
+        },
+        {
+          "pair_rva": 48355248,
+          "name": "HasFullControl",
+          "function_rva": 34667280
+        },
+        {
+          "pair_rva": 48355264,
+          "name": "GetComboPoints",
+          "function_rva": 34668624
+        },
+        {
+          "pair_rva": 48355280,
+          "name": "IsInGuild",
+          "function_rva": 34266416
+        },
+        {
+          "pair_rva": 48355296,
+          "name": "IsGuildLeader",
+          "function_rva": 34267744
+        },
+        {
+          "pair_rva": 48355312,
+          "name": "IsArenaTeamCaptain",
+          "function_rva": 34270368
+        },
+        {
+          "pair_rva": 48355328,
+          "name": "IsInArenaTeam",
+          "function_rva": 34269072
+        },
+        {
+          "pair_rva": 48355344,
+          "name": "IsResting",
+          "function_rva": 34273008
+        },
+        {
+          "pair_rva": 48355360,
+          "name": "GetCombatRating",
+          "function_rva": 34274336
+        },
+        {
+          "pair_rva": 48355376,
+          "name": "GetCombatRatingBonus",
+          "function_rva": 34278192
+        },
+        {
+          "pair_rva": 48355392,
+          "name": "GetCombatRatingBonusForCombatRatingValue",
+          "function_rva": 34283392
+        },
+        {
+          "pair_rva": 48355408,
+          "name": "GetPvpPowerDamage",
+          "function_rva": 34295248
+        },
+        {
+          "pair_rva": 48355424,
+          "name": "GetPvpPowerHealing",
+          "function_rva": 34299216
+        },
+        {
+          "pair_rva": 48355440,
+          "name": "GetMaxCombatRatingBonus",
+          "function_rva": 34303168
+        },
+        {
+          "pair_rva": 48355456,
+          "name": "GetDodgeChance",
+          "function_rva": 34309712
+        },
+        {
+          "pair_rva": 48355472,
+          "name": "GetDodgeChanceFromAttribute",
+          "function_rva": 34311024
+        },
+        {
+          "pair_rva": 48355488,
+          "name": "GetBlockChance",
+          "function_rva": 34312336
+        },
+        {
+          "pair_rva": 48355504,
+          "name": "GetShieldBlock",
+          "function_rva": 34315056
+        },
+        {
+          "pair_rva": 48355520,
+          "name": "GetParryChance",
+          "function_rva": 34316368
+        },
+        {
+          "pair_rva": 48355536,
+          "name": "GetParryChanceFromAttribute",
+          "function_rva": 34321584
+        },
+        {
+          "pair_rva": 48355552,
+          "name": "IsDualWielding",
+          "function_rva": 34322896
+        },
+        {
+          "pair_rva": 48355568,
+          "name": "HasDualWieldPenalty",
+          "function_rva": 34325568
+        },
+        {
+          "pair_rva": 48355584,
+          "name": "IsRangedWeapon",
+          "function_rva": 34326896
+        },
+        {
+          "pair_rva": 48355600,
+          "name": "GetCritChance",
+          "function_rva": 34328224
+        },
+        {
+          "pair_rva": 48355616,
+          "name": "GetRangedCritChance",
+          "function_rva": 34329536
+        },
+        {
+          "pair_rva": 48355632,
+          "name": "GetSpellCritChance",
+          "function_rva": 34330848
+        },
+        {
+          "pair_rva": 48355648,
+          "name": "GetSpellBonusDamage",
+          "function_rva": 34332160
+        },
+        {
+          "pair_rva": 48355664,
+          "name": "GetSpellBonusHealing",
+          "function_rva": 34333616
+        },
+        {
+          "pair_rva": 48355680,
+          "name": "GetPetSpellBonusDamage",
+          "function_rva": 34334944
+        },
+        {
+          "pair_rva": 48355696,
+          "name": "GetSpellPenetration",
+          "function_rva": 34336272
+        },
+        {
+          "pair_rva": 48355712,
+          "name": "GetAttackPowerForStat",
+          "function_rva": 34337600
+        },
+        {
+          "pair_rva": 48355728,
+          "name": "GetMeleeHaste",
+          "function_rva": 34342672
+        },
+        {
+          "pair_rva": 48355744,
+          "name": "GetRangedHaste",
+          "function_rva": 34345280
+        },
+        {
+          "pair_rva": 48355760,
+          "name": "GetPetMeleeHaste",
+          "function_rva": 34347888
+        },
+        {
+          "pair_rva": 48355776,
+          "name": "GetHaste",
+          "function_rva": 34350496
+        },
+        {
+          "pair_rva": 48355792,
+          "name": "GetOverrideSpellPowerByAP",
+          "function_rva": 34353104
+        },
+        {
+          "pair_rva": 48355808,
+          "name": "GetOverrideAPBySpellPower",
+          "function_rva": 34355760
+        },
+        {
+          "pair_rva": 48355824,
+          "name": "GetModResilienceDamageReduction",
+          "function_rva": 34358416
+        },
+        {
+          "pair_rva": 48355840,
+          "name": "UnitCreatureType",
+          "function_rva": 34671424
+        },
+        {
+          "pair_rva": 48355856,
+          "name": "UnitCreatureFamily",
+          "function_rva": 34675280
+        },
+        {
+          "pair_rva": 48355872,
+          "name": "GetResSicknessDuration",
+          "function_rva": 34679136
+        },
+        {
+          "pair_rva": 48355888,
+          "name": "GetPVPSessionStats",
+          "function_rva": 34062544
+        },
+        {
+          "pair_rva": 48355904,
+          "name": "GetPVPYesterdayStats",
+          "function_rva": 34063872
+        },
+        {
+          "pair_rva": 48355920,
+          "name": "GetPVPLifetimeStats",
+          "function_rva": 34065200
+        },
+        {
+          "pair_rva": 48355936,
+          "name": "UnitCastingInfo",
+          "function_rva": 34066592
+        },
+        {
+          "pair_rva": 48355952,
+          "name": "UnitChannelInfo",
+          "function_rva": 34072784
+        },
+        {
+          "pair_rva": 48355968,
+          "name": "IsLoggedIn",
+          "function_rva": 34076960
+        },
+        {
+          "pair_rva": 48355984,
+          "name": "IsFlyableArea",
+          "function_rva": 34078272
+        },
+        {
+          "pair_rva": 48356000,
+          "name": "IsIndoors",
+          "function_rva": 34079600
+        },
+        {
+          "pair_rva": 48356016,
+          "name": "IsOutdoors",
+          "function_rva": 34080928
+        },
+        {
+          "pair_rva": 48356032,
+          "name": "IsOutOfBounds",
+          "function_rva": 34082256
+        },
+        {
+          "pair_rva": 48356048,
+          "name": "IsFalling",
+          "function_rva": 34083584
+        },
+        {
+          "pair_rva": 48356064,
+          "name": "IsSwimming",
+          "function_rva": 34084960
+        },
+        {
+          "pair_rva": 48356080,
+          "name": "IsSubmerged",
+          "function_rva": 34086336
+        },
+        {
+          "pair_rva": 48356096,
+          "name": "IsFlying",
+          "function_rva": 34087728
+        },
+        {
+          "pair_rva": 48356112,
+          "name": "IsMounted",
+          "function_rva": 34089168
+        },
+        {
+          "pair_rva": 48356128,
+          "name": "IsStealthed",
+          "function_rva": 34090496
+        },
+        {
+          "pair_rva": 48356144,
+          "name": "UnitIsSameServer",
+          "function_rva": 34091824
+        },
+        {
+          "pair_rva": 48356160,
+          "name": "GetUnitHealthModifier",
+          "function_rva": 34098896
+        },
+        {
+          "pair_rva": 48356176,
+          "name": "GetUnitMaxHealthModifier",
+          "function_rva": 34101616
+        },
+        {
+          "pair_rva": 48356192,
+          "name": "GetUnitPowerModifier",
+          "function_rva": 34104336
+        },
+        {
+          "pair_rva": 48356208,
+          "name": "GetManaRegen",
+          "function_rva": 34107056
+        },
+        {
+          "pair_rva": 48356224,
+          "name": "GetPowerRegen",
+          "function_rva": 34108480
+        },
+        {
+          "pair_rva": 48356240,
+          "name": "GetPowerRegenForPowerType",
+          "function_rva": 34109888
+        },
+        {
+          "pair_rva": 48356256,
+          "name": "GetRuneCooldown",
+          "function_rva": 34202992
+        },
+        {
+          "pair_rva": 48356272,
+          "name": "GetRuneCount",
+          "function_rva": 34208160
+        },
+        {
+          "pair_rva": 48356288,
+          "name": "ReportPlayerIsPVPAFK",
+          "function_rva": 34185424
+        },
+        {
+          "pair_rva": 48356304,
+          "name": "PlayerIsPVPInactive",
+          "function_rva": 34189264
+        },
+        {
+          "pair_rva": 48356320,
+          "name": "GetExpertise",
+          "function_rva": 34112672
+        },
+        {
+          "pair_rva": 48356336,
+          "name": "GetMastery",
+          "function_rva": 34114096
+        },
+        {
+          "pair_rva": 48356352,
+          "name": "GetMasteryEffect",
+          "function_rva": 34115408
+        },
+        {
+          "pair_rva": 48356368,
+          "name": "GetSpeed",
+          "function_rva": 34177488
+        },
+        {
+          "pair_rva": 48356384,
+          "name": "GetLifesteal",
+          "function_rva": 34178800
+        },
+        {
+          "pair_rva": 48356400,
+          "name": "GetAvoidance",
+          "function_rva": 34180112
+        },
+        {
+          "pair_rva": 48356416,
+          "name": "GetSturdiness",
+          "function_rva": 34181424
+        },
+        {
+          "pair_rva": 48356432,
+          "name": "GetVersatilityBonus",
+          "function_rva": 34182736
+        },
+        {
+          "pair_rva": 48356448,
+          "name": "UnitInBattleground",
+          "function_rva": 34157184
+        },
+        {
+          "pair_rva": 48356464,
+          "name": "UnitInRange",
+          "function_rva": 34196976
+        },
+        {
+          "pair_rva": 48356480,
+          "name": "UnitDistanceSquared",
+          "function_rva": 34200096
+        },
+        {
+          "pair_rva": 48356496,
+          "name": "GetUnitSpeed",
+          "function_rva": 34212000
+        },
+        {
+          "pair_rva": 48356512,
+          "name": "UnitInVehicle",
+          "function_rva": 34214848
+        },
+        {
+          "pair_rva": 48356528,
+          "name": "UnitUsingVehicle",
+          "function_rva": 34217600
+        },
+        {
+          "pair_rva": 48356544,
+          "name": "UnitControllingVehicle",
+          "function_rva": 34220352
+        },
+        {
+          "pair_rva": 48356560,
+          "name": "UnitInVehicleControlSeat",
+          "function_rva": 34282048
+        },
+        {
+          "pair_rva": 48356576,
+          "name": "UnitHasVehicleUI",
+          "function_rva": 34288544
+        },
+        {
+          "pair_rva": 48356592,
+          "name": "UnitHasVehiclePlayerFrameUI",
+          "function_rva": 34289888
+        },
+        {
+          "pair_rva": 48356608,
+          "name": "UnitTargetsVehicleInRaidUI",
+          "function_rva": 34292592
+        },
+        {
+          "pair_rva": 48356624,
+          "name": "UnitVehicleSkin",
+          "function_rva": 34296560
+        },
+        {
+          "pair_rva": 48356640,
+          "name": "UnitVehicleSeatCount",
+          "function_rva": 34300528
+        },
+        {
+          "pair_rva": 48356656,
+          "name": "UnitVehicleSeatInfo",
+          "function_rva": 34307008
+        },
+        {
+          "pair_rva": 48356672,
+          "name": "UnitSwitchToVehicleSeat",
+          "function_rva": 34313648
+        },
+        {
+          "pair_rva": 48356688,
+          "name": "CanSwitchVehicleSeat",
+          "function_rva": 22627920
+        },
+        {
+          "pair_rva": 48356704,
+          "name": "GetVehicleUIIndicator",
+          "function_rva": 34317680
+        },
+        {
+          "pair_rva": 48356720,
+          "name": "GetVehicleUIIndicatorSeat",
+          "function_rva": 34434240
+        },
+        {
+          "pair_rva": 48356736,
+          "name": "UnitThreatSituation",
+          "function_rva": 34438912
+        },
+        {
+          "pair_rva": 48356752,
+          "name": "UnitDetailedThreatSituation",
+          "function_rva": 34445328
+        },
+        {
+          "pair_rva": 48356768,
+          "name": "UnitThreatPercentageOfLead",
+          "function_rva": 34449312
+        },
+        {
+          "pair_rva": 48356784,
+          "name": "UnitIsControlling",
+          "function_rva": 34457760
+        },
+        {
+          "pair_rva": 48356800,
+          "name": "EjectPassengerFromSeat",
+          "function_rva": 34461888
+        },
+        {
+          "pair_rva": 48356816,
+          "name": "CanEjectPassengerFromSeat",
+          "function_rva": 34459136
+        },
+        {
+          "pair_rva": 48356832,
+          "name": "RespondInstanceLock",
+          "function_rva": 34468144
+        },
+        {
+          "pair_rva": 48356848,
+          "name": "GetPlayerFacing",
+          "function_rva": 34469472
+        },
+        {
+          "pair_rva": 48356864,
+          "name": "GetPlayerInfoByGUID",
+          "function_rva": 34472192
+        },
+        {
+          "pair_rva": 48356880,
+          "name": "GetItemStats",
+          "function_rva": 34524352
+        },
+        {
+          "pair_rva": 48356896,
+          "name": "GetItemStatDelta",
+          "function_rva": 34528816
+        },
+        {
+          "pair_rva": 48356912,
+          "name": "GetSetBonusesForSpecializationByItemID",
+          "function_rva": 34533376
+        },
+        {
+          "pair_rva": 48356928,
+          "name": "IsXPUserDisabled",
+          "function_rva": 34540432
+        },
+        {
+          "pair_rva": 48356944,
+          "name": "FillLocalizedClassList",
+          "function_rva": 34538880
+        },
+        {
+          "pair_rva": 48356960,
+          "name": "UnitGetIncomingHeals",
+          "function_rva": 34543056
+        },
+        {
+          "pair_rva": 48356976,
+          "name": "UnitGetTotalAbsorbs",
+          "function_rva": 34546960
+        },
+        {
+          "pair_rva": 48356992,
+          "name": "UnitGetTotalHealAbsorbs",
+          "function_rva": 34549648
+        },
+        {
+          "pair_rva": 48357008,
+          "name": "IsGMClient",
+          "function_rva": 34269072
+        },
+        {
+          "pair_rva": 48357024,
+          "name": "UnitSetRole",
+          "function_rva": 34552336
+        },
+        {
+          "pair_rva": 48357040,
+          "name": "InitiateRolePoll",
+          "function_rva": 34563056
+        },
+        {
+          "pair_rva": 48357056,
+          "name": "GetHitModifier",
+          "function_rva": 34572624
+        },
+        {
+          "pair_rva": 48357072,
+          "name": "GetSpellHitModifier",
+          "function_rva": 34576688
+        },
+        {
+          "pair_rva": 48357088,
+          "name": "UnitHPPerStamina",
+          "function_rva": 34582032
+        },
+        {
+          "pair_rva": 48357104,
+          "name": "GetMaxPlayerLevel",
+          "function_rva": 34587568
+        },
+        {
+          "pair_rva": 48357120,
+          "name": "LoadURLIndex",
+          "function_rva": 34588864
+        },
+        {
+          "pair_rva": 48357136,
+          "name": "UnitIsWildBattlePet",
+          "function_rva": 34397600
+        },
+        {
+          "pair_rva": 48357152,
+          "name": "UnitIsBattlePetCompanion",
+          "function_rva": 34389504
+        },
+        {
+          "pair_rva": 48357168,
+          "name": "UnitBattlePetType",
+          "function_rva": 34425024
+        },
+        {
+          "pair_rva": 48357184,
+          "name": "UnitBattlePetLevel",
+          "function_rva": 34221744
+        },
+        {
+          "pair_rva": 48357200,
+          "name": "UnitInVehicleHidesPetFrame",
+          "function_rva": 34291248
+        },
+        {
+          "pair_rva": 48357216,
+          "name": "UnitIsOtherPlayersPet",
+          "function_rva": 34138704
+        },
+        {
+          "pair_rva": 48357232,
+          "name": "UnitIsOtherPlayersBattlePet",
+          "function_rva": 34137312
+        },
+        {
+          "pair_rva": 48357248,
+          "name": "UnitIsBattlePet",
+          "function_rva": 34403056
+        },
+        {
+          "pair_rva": 48357264,
+          "name": "UnitBattlePetSpeciesID",
+          "function_rva": 34413536
+        },
+        {
+          "pair_rva": 48357280,
+          "name": "UnitIsUnconscious",
+          "function_rva": 34592272
+        },
+        {
+          "pair_rva": 48357296,
+          "name": "SelectedRealmName",
+          "function_rva": 34600272
+        },
+        {
+          "pair_rva": 48357312,
+          "name": "GetCritChanceProvidesParryEffect",
+          "function_rva": 34595024
+        },
+        {
+          "pair_rva": 48357328,
+          "name": "GetPVPGearStatRules",
+          "function_rva": 34597648
+        },
+        {
+          "pair_rva": 48357344,
+          "name": "HasAPEffectsSpellPower",
+          "function_rva": 34506944
+        },
+        {
+          "pair_rva": 48357360,
+          "name": "HasSPEffectsAttackPower",
+          "function_rva": 34508272
+        },
+        {
+          "pair_rva": 48357376,
+          "name": "UnitPosition",
+          "function_rva": 34601632
+        },
+        {
+          "pair_rva": 48357392,
+          "name": "UnitShouldDisplayName",
+          "function_rva": 34604336
+        },
+        {
+          "pair_rva": 48357408,
+          "name": "ClosestUnitPosition",
+          "function_rva": 34607056
+        },
+        {
+          "pair_rva": 48357424,
+          "name": "ClosestGameObjectPosition",
+          "function_rva": 34612192
+        },
+        {
+          "pair_rva": 48357440,
+          "name": "ShowBossFrameWhenUninteractable",
+          "function_rva": 34617328
+        },
+        {
+          "pair_rva": 48357456,
+          "name": "CaseAccentInsensitiveParse",
+          "function_rva": 34618704
+        },
+        {
+          "pair_rva": 48357472,
+          "name": "IsInsane",
+          "function_rva": 34621472
+        },
+        {
+          "pair_rva": 48357488,
+          "name": "GetCorruption",
+          "function_rva": 34622832
+        },
+        {
+          "pair_rva": 48357504,
+          "name": "GetCorruptionResistance",
+          "function_rva": 34624272
+        },
+        {
+          "pair_rva": 48357520,
+          "name": "IsInJailersTower",
+          "function_rva": 34625648
+        },
+        {
+          "pair_rva": 48357536,
+          "name": "IsOnGroundFloorInJailersTower",
+          "function_rva": 34628272
+        },
+        {
+          "pair_rva": 48357552,
+          "name": "IsJailersTowerLayerTimeLocked",
+          "function_rva": 34630928
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54390448,
+      "entries": [
+        {
+          "pair_rva": 54390448,
+          "name": "SetHistoryLines",
+          "function_rva": 43856064
+        },
+        {
+          "pair_rva": 54390464,
+          "name": "GetInputLanguage",
+          "function_rva": 43858720
+        },
+        {
+          "pair_rva": 54390480,
+          "name": "ToggleInputLanguage",
+          "function_rva": 43860032
+        },
+        {
+          "pair_rva": 54390496,
+          "name": "SetAltArrowKeyMode",
+          "function_rva": 43861328
+        },
+        {
+          "pair_rva": 54390512,
+          "name": "GetAltArrowKeyMode",
+          "function_rva": 43862656
+        },
+        {
+          "pair_rva": 54390528,
+          "name": "IsInIMECompositionMode",
+          "function_rva": 43863968
+        },
+        {
+          "pair_rva": 54390544,
+          "name": "SetCursorPosition",
+          "function_rva": 43865280
+        },
+        {
+          "pair_rva": 54390560,
+          "name": "GetCursorPosition",
+          "function_rva": 43867936
+        },
+        {
+          "pair_rva": 54390576,
+          "name": "GetUTF8CursorPosition",
+          "function_rva": 43869248
+        },
+        {
+          "pair_rva": 54390592,
+          "name": "Enable",
+          "function_rva": 43870576
+        },
+        {
+          "pair_rva": 54390608,
+          "name": "Disable",
+          "function_rva": 43871888
+        },
+        {
+          "pair_rva": 54390624,
+          "name": "SetEnabled",
+          "function_rva": 43873184
+        },
+        {
+          "pair_rva": 54390640,
+          "name": "IsEnabled",
+          "function_rva": 43874528
+        },
+        {
+          "pair_rva": 54390656,
+          "name": "SetSecurityDisableSetText",
+          "function_rva": 43875840
+        },
+        {
+          "pair_rva": 54390672,
+          "name": "SetSecurityDisablePaste",
+          "function_rva": 43877136
+        },
+        {
+          "pair_rva": 54390688,
+          "name": "SetFontObject",
+          "function_rva": 43878672
+        },
+        {
+          "pair_rva": 54390704,
+          "name": "GetFontObject",
+          "function_rva": 43878784
+        },
+        {
+          "pair_rva": 54390720,
+          "name": "SetFont",
+          "function_rva": 43878896
+        },
+        {
+          "pair_rva": 54390736,
+          "name": "GetFont",
+          "function_rva": 43879008
+        },
+        {
+          "pair_rva": 54390752,
+          "name": "SetTextColor",
+          "function_rva": 43879120
+        },
+        {
+          "pair_rva": 54390768,
+          "name": "GetTextColor",
+          "function_rva": 43879232
+        },
+        {
+          "pair_rva": 54390784,
+          "name": "SetShadowColor",
+          "function_rva": 43879344
+        },
+        {
+          "pair_rva": 54390800,
+          "name": "GetShadowColor",
+          "function_rva": 43879456
+        },
+        {
+          "pair_rva": 54390816,
+          "name": "SetShadowOffset",
+          "function_rva": 43879568
+        },
+        {
+          "pair_rva": 54390832,
+          "name": "GetShadowOffset",
+          "function_rva": 43879680
+        },
+        {
+          "pair_rva": 54390848,
+          "name": "SetSpacing",
+          "function_rva": 43879792
+        },
+        {
+          "pair_rva": 54390864,
+          "name": "GetSpacing",
+          "function_rva": 43879904
+        },
+        {
+          "pair_rva": 54390880,
+          "name": "SetJustifyH",
+          "function_rva": 43880016
+        },
+        {
+          "pair_rva": 54390896,
+          "name": "GetJustifyH",
+          "function_rva": 43880128
+        },
+        {
+          "pair_rva": 54390912,
+          "name": "SetJustifyV",
+          "function_rva": 43880240
+        },
+        {
+          "pair_rva": 54390928,
+          "name": "GetJustifyV",
+          "function_rva": 43880352
+        },
+        {
+          "pair_rva": 54390944,
+          "name": "SetIndentedWordWrap",
+          "function_rva": 43880464
+        },
+        {
+          "pair_rva": 54390960,
+          "name": "GetIndentedWordWrap",
+          "function_rva": 43880576
+        },
+        {
+          "pair_rva": 54390976,
+          "name": "SetText",
+          "function_rva": 43880688
+        },
+        {
+          "pair_rva": 54390992,
+          "name": "SetHyperlinkFormat",
+          "function_rva": 43880880
+        },
+        {
+          "pair_rva": 54391008,
+          "name": "GetHyperlinkFormat",
+          "function_rva": 43881024
+        },
+        {
+          "pair_rva": 54391024,
+          "name": "GetContentHeight",
+          "function_rva": 43881072
+        },
+        {
+          "pair_rva": 54391040,
+          "name": "GetTextData",
+          "function_rva": 43881152
+        },
+        {
+          "pair_rva": 54391056,
+          "name": "SetFontObject",
+          "function_rva": 43882208
+        },
+        {
+          "pair_rva": 54391072,
+          "name": "GetFontObject",
+          "function_rva": 43882288
+        },
+        {
+          "pair_rva": 54391088,
+          "name": "SetFont",
+          "function_rva": 43882368
+        },
+        {
+          "pair_rva": 54391104,
+          "name": "GetFont",
+          "function_rva": 43882464
+        },
+        {
+          "pair_rva": 54391120,
+          "name": "SetTextColor",
+          "function_rva": 43882544
+        },
+        {
+          "pair_rva": 54391136,
+          "name": "GetTextColor",
+          "function_rva": 43882624
+        },
+        {
+          "pair_rva": 54391152,
+          "name": "SetShadowColor",
+          "function_rva": 43882704
+        },
+        {
+          "pair_rva": 54391168,
+          "name": "GetShadowColor",
+          "function_rva": 43882784
+        },
+        {
+          "pair_rva": 54391184,
+          "name": "SetShadowOffset",
+          "function_rva": 43882864
+        },
+        {
+          "pair_rva": 54391200,
+          "name": "GetShadowOffset",
+          "function_rva": 43882944
+        },
+        {
+          "pair_rva": 54391216,
+          "name": "SetSpacing",
+          "function_rva": 43883024
+        },
+        {
+          "pair_rva": 54391232,
+          "name": "GetSpacing",
+          "function_rva": 43883104
+        },
+        {
+          "pair_rva": 54391248,
+          "name": "SetJustifyH",
+          "function_rva": 43883184
+        },
+        {
+          "pair_rva": 54391264,
+          "name": "GetJustifyH",
+          "function_rva": 43883264
+        },
+        {
+          "pair_rva": 54391280,
+          "name": "SetJustifyV",
+          "function_rva": 43883344
+        },
+        {
+          "pair_rva": 54391296,
+          "name": "GetJustifyV",
+          "function_rva": 43883424
+        },
+        {
+          "pair_rva": 54391312,
+          "name": "SetInsertMode",
+          "function_rva": 43883504
+        },
+        {
+          "pair_rva": 54391328,
+          "name": "GetInsertMode",
+          "function_rva": 43883728
+        },
+        {
+          "pair_rva": 54391344,
+          "name": "SetIndentedWordWrap",
+          "function_rva": 43883808
+        },
+        {
+          "pair_rva": 54391360,
+          "name": "GetIndentedWordWrap",
+          "function_rva": 43883888
+        },
+        {
+          "pair_rva": 54391376,
+          "name": "SetFading",
+          "function_rva": 43883968
+        },
+        {
+          "pair_rva": 54391392,
+          "name": "GetFading",
+          "function_rva": 43884032
+        },
+        {
+          "pair_rva": 54391408,
+          "name": "SetTimeVisible",
+          "function_rva": 43884080
+        },
+        {
+          "pair_rva": 54391424,
+          "name": "GetTimeVisible",
+          "function_rva": 43884224
+        },
+        {
+          "pair_rva": 54391440,
+          "name": "SetFadeDuration",
+          "function_rva": 43884272
+        },
+        {
+          "pair_rva": 54391456,
+          "name": "GetFadeDuration",
+          "function_rva": 43884416
+        },
+        {
+          "pair_rva": 54391472,
+          "name": "SetFadePower",
+          "function_rva": 43884464
+        },
+        {
+          "pair_rva": 54391488,
+          "name": "GetFadePower",
+          "function_rva": 43884608
+        },
+        {
+          "pair_rva": 54391504,
+          "name": "AddMessage",
+          "function_rva": 43884656
+        },
+        {
+          "pair_rva": 54391520,
+          "name": "HasMessageByID",
+          "function_rva": 43884896
+        },
+        {
+          "pair_rva": 54391536,
+          "name": "ResetMessageFadeByID",
+          "function_rva": 43885008
+        },
+        {
+          "pair_rva": 54391552,
+          "name": "GetFontStringByID",
+          "function_rva": 43885136
+        },
+        {
+          "pair_rva": 54391568,
+          "name": "Clear",
+          "function_rva": 43885280
+        },
+        {
+          "pair_rva": 54391584,
+          "name": "TakeSnapshot",
+          "function_rva": 43885552
+        },
+        {
+          "pair_rva": 54391600,
+          "name": "ApplySnapshot",
+          "function_rva": 43888192
+        },
+        {
+          "pair_rva": 54391616,
+          "name": "Flush",
+          "function_rva": 43892240
+        },
+        {
+          "pair_rva": 54391632,
+          "name": "SetMaxSnapshots",
+          "function_rva": 43894816
+        },
+        {
+          "pair_rva": 54391648,
+          "name": "GetMaxSnapshots",
+          "function_rva": 43898608
+        },
+        {
+          "pair_rva": 54391664,
+          "name": "IsSnapshotValid",
+          "function_rva": 43901232
+        },
+        {
+          "pair_rva": 54391680,
+          "name": "UsesNPOT",
+          "function_rva": 43905104
+        },
+        {
+          "pair_rva": 54391696,
+          "name": "SetScrollChild",
+          "function_rva": 43907952
+        },
+        {
+          "pair_rva": 54391712,
+          "name": "GetScrollChild",
+          "function_rva": 43908480
+        },
+        {
+          "pair_rva": 54391728,
+          "name": "SetHorizontalScroll",
+          "function_rva": 43908528
+        },
+        {
+          "pair_rva": 54391744,
+          "name": "SetVerticalScroll",
+          "function_rva": 43908768
+        },
+        {
+          "pair_rva": 54391760,
+          "name": "GetHorizontalScroll",
+          "function_rva": 43909008
+        },
+        {
+          "pair_rva": 54391776,
+          "name": "GetVerticalScroll",
+          "function_rva": 43909088
+        },
+        {
+          "pair_rva": 54391792,
+          "name": "GetHorizontalScrollRange",
+          "function_rva": 43909168
+        },
+        {
+          "pair_rva": 54391808,
+          "name": "GetVerticalScrollRange",
+          "function_rva": 43909248
+        },
+        {
+          "pair_rva": 54391824,
+          "name": "UpdateScrollChildRect",
+          "function_rva": 43909328
+        },
+        {
+          "pair_rva": 54391840,
+          "name": "GetThumbTexture",
+          "function_rva": 43909600
+        },
+        {
+          "pair_rva": 54391856,
+          "name": "SetThumbTexture",
+          "function_rva": 43909648
+        },
+        {
+          "pair_rva": 54391872,
+          "name": "GetOrientation",
+          "function_rva": 43910096
+        },
+        {
+          "pair_rva": 54391888,
+          "name": "SetOrientation",
+          "function_rva": 43910160
+        },
+        {
+          "pair_rva": 54391904,
+          "name": "GetMinMaxValues",
+          "function_rva": 43910400
+        },
+        {
+          "pair_rva": 54391920,
+          "name": "SetMinMaxValues",
+          "function_rva": 43910496
+        },
+        {
+          "pair_rva": 54391936,
+          "name": "GetValue",
+          "function_rva": 43910800
+        },
+        {
+          "pair_rva": 54391952,
+          "name": "SetValue",
+          "function_rva": 43910848
+        },
+        {
+          "pair_rva": 54391968,
+          "name": "GetValueStep",
+          "function_rva": 43911024
+        },
+        {
+          "pair_rva": 54391984,
+          "name": "SetValueStep",
+          "function_rva": 43911072
+        },
+        {
+          "pair_rva": 54392000,
+          "name": "GetStepsPerPage",
+          "function_rva": 43911216
+        },
+        {
+          "pair_rva": 54392016,
+          "name": "SetStepsPerPage",
+          "function_rva": 43911280
+        },
+        {
+          "pair_rva": 54392032,
+          "name": "GetObeyStepOnDrag",
+          "function_rva": 43911408
+        },
+        {
+          "pair_rva": 54392048,
+          "name": "SetObeyStepOnDrag",
+          "function_rva": 43911456
+        },
+        {
+          "pair_rva": 54392064,
+          "name": "Enable",
+          "function_rva": 43911536
+        },
+        {
+          "pair_rva": 54392080,
+          "name": "Disable",
+          "function_rva": 43911600
+        },
+        {
+          "pair_rva": 54392096,
+          "name": "SetEnabled",
+          "function_rva": 43911664
+        },
+        {
+          "pair_rva": 54392112,
+          "name": "IsEnabled",
+          "function_rva": 43911776
+        },
+        {
+          "pair_rva": 54392128,
+          "name": "IsDraggingThumb",
+          "function_rva": 43911840
+        },
+        {
+          "pair_rva": 54392144,
+          "name": "GetOrientation",
+          "function_rva": 43912128
+        },
+        {
+          "pair_rva": 54392160,
+          "name": "SetOrientation",
+          "function_rva": 43912192
+        },
+        {
+          "pair_rva": 54392176,
+          "name": "GetMinMaxValues",
+          "function_rva": 43912432
+        },
+        {
+          "pair_rva": 54392192,
+          "name": "SetMinMaxValues",
+          "function_rva": 43912512
+        },
+        {
+          "pair_rva": 54392208,
+          "name": "GetValue",
+          "function_rva": 43912832
+        },
+        {
+          "pair_rva": 54392224,
+          "name": "SetValue",
+          "function_rva": 43912880
+        },
+        {
+          "pair_rva": 54392240,
+          "name": "GetStatusBarTexture",
+          "function_rva": 43913024
+        },
+        {
+          "pair_rva": 54392256,
+          "name": "SetStatusBarTexture",
+          "function_rva": 43913072
+        },
+        {
+          "pair_rva": 54392272,
+          "name": "GetStatusBarAtlas",
+          "function_rva": 43914048
+        },
+        {
+          "pair_rva": 54392288,
+          "name": "SetStatusBarAtlas",
+          "function_rva": 43913776
+        },
+        {
+          "pair_rva": 54392304,
+          "name": "GetStatusBarColor",
+          "function_rva": 43914160
+        },
+        {
+          "pair_rva": 54392320,
+          "name": "SetStatusBarColor",
+          "function_rva": 43914384
+        },
+        {
+          "pair_rva": 54392336,
+          "name": "GetRotatesTexture",
+          "function_rva": 43914464
+        },
+        {
+          "pair_rva": 54392352,
+          "name": "SetRotatesTexture",
+          "function_rva": 43914512
+        },
+        {
+          "pair_rva": 54392368,
+          "name": "GetReverseFill",
+          "function_rva": 43914576
+        },
+        {
+          "pair_rva": 54392384,
+          "name": "SetReverseFill",
+          "function_rva": 43914640
+        },
+        {
+          "pair_rva": 54392400,
+          "name": "GetFillStyle",
+          "function_rva": 43914704
+        },
+        {
+          "pair_rva": 54392416,
+          "name": "SetFillStyle",
+          "function_rva": 43914768
+        },
+        {
+          "pair_rva": 54392432,
+          "name": "GetText",
+          "function_rva": 43917104
+        },
+        {
+          "pair_rva": 54392448,
+          "name": "GetNumFrames",
+          "function_rva": 43919904
+        },
+        {
+          "pair_rva": 54392464,
+          "name": "EnumerateFrames",
+          "function_rva": 43921280
+        },
+        {
+          "pair_rva": 54392480,
+          "name": "CreateFont",
+          "function_rva": 43925280
+        },
+        {
+          "pair_rva": 54392496,
+          "name": "CreateFrame",
+          "function_rva": 43927968
+        },
+        {
+          "pair_rva": 54392512,
+          "name": "CreateForbiddenFrame",
+          "function_rva": 43928048
+        },
+        {
+          "pair_rva": 54392528,
+          "name": "DoesTemplateExist",
+          "function_rva": 43928160
+        },
+        {
+          "pair_rva": 54392544,
+          "name": "GetFramesRegisteredForEvent",
+          "function_rva": 43930832
+        },
+        {
+          "pair_rva": 54392560,
+          "name": "GetCurrentKeyBoardFocus",
+          "function_rva": 43933840
+        },
+        {
+          "pair_rva": 54392576,
+          "name": "StoreSecureReference",
+          "function_rva": 43936432
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54240864,
+      "entries": [
+        {
+          "pair_rva": 54240864,
+          "name": "SetUnit",
+          "function_rva": 32187600
+        },
+        {
+          "pair_rva": 54240880,
+          "name": "SetCreature",
+          "function_rva": 32188320
+        },
+        {
+          "pair_rva": 54240896,
+          "name": "SetItem",
+          "function_rva": 32189024
+        },
+        {
+          "pair_rva": 54240912,
+          "name": "SetItemAppearance",
+          "function_rva": 32189440
+        },
+        {
+          "pair_rva": 54240928,
+          "name": "SetDisplayInfo",
+          "function_rva": 32189872
+        },
+        {
+          "pair_rva": 54240944,
+          "name": "GetDisplayInfo",
+          "function_rva": 32194432
+        },
+        {
+          "pair_rva": 54240960,
+          "name": "SetPortraitZoom",
+          "function_rva": 32190288
+        },
+        {
+          "pair_rva": 54240976,
+          "name": "SetCamDistanceScale",
+          "function_rva": 32190480
+        },
+        {
+          "pair_rva": 54240992,
+          "name": "RefreshUnit",
+          "function_rva": 32190720
+        },
+        {
+          "pair_rva": 54241008,
+          "name": "RefreshCamera",
+          "function_rva": 32190864
+        },
+        {
+          "pair_rva": 54241024,
+          "name": "SetRotation",
+          "function_rva": 32190976
+        },
+        {
+          "pair_rva": 54241040,
+          "name": "ZeroCachedCenterXY",
+          "function_rva": 32191456
+        },
+        {
+          "pair_rva": 54241056,
+          "name": "SetBarberShopAlternateForm",
+          "function_rva": 32187888
+        },
+        {
+          "pair_rva": 54241072,
+          "name": "SetCustomRace",
+          "function_rva": 32188000
+        },
+        {
+          "pair_rva": 54241088,
+          "name": "SetAnimation",
+          "function_rva": 32191568
+        },
+        {
+          "pair_rva": 54241104,
+          "name": "FreezeAnimation",
+          "function_rva": 32192000
+        },
+        {
+          "pair_rva": 54241120,
+          "name": "HasAnimation",
+          "function_rva": 32192480
+        },
+        {
+          "pair_rva": 54241136,
+          "name": "SetDoBlend",
+          "function_rva": 32192784
+        },
+        {
+          "pair_rva": 54241152,
+          "name": "GetDoBlend",
+          "function_rva": 32192912
+        },
+        {
+          "pair_rva": 54241168,
+          "name": "PlayAnimKit",
+          "function_rva": 32193024
+        },
+        {
+          "pair_rva": 54241184,
+          "name": "StopAnimKit",
+          "function_rva": 32193392
+        },
+        {
+          "pair_rva": 54241200,
+          "name": "ApplySpellVisualKit",
+          "function_rva": 32193504
+        },
+        {
+          "pair_rva": 54241216,
+          "name": "CanSetUnit",
+          "function_rva": 32193776
+        },
+        {
+          "pair_rva": 54241232,
+          "name": "SetKeepModelOnHide",
+          "function_rva": 32194096
+        },
+        {
+          "pair_rva": 54241248,
+          "name": "GetKeepModelOnHide",
+          "function_rva": 32194320
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54298048,
+      "entries": [
+        {
+          "pair_rva": 54298048,
+          "name": "AddFontStrings",
+          "function_rva": 33671904
+        },
+        {
+          "pair_rva": 54298064,
+          "name": "SetMinimumWidth",
+          "function_rva": 33672320
+        },
+        {
+          "pair_rva": 54298080,
+          "name": "GetMinimumWidth",
+          "function_rva": 33672560
+        },
+        {
+          "pair_rva": 54298096,
+          "name": "SetCustomLineSpacing",
+          "function_rva": 33672704
+        },
+        {
+          "pair_rva": 54298112,
+          "name": "GetCustomLineSpacing",
+          "function_rva": 33672896
+        },
+        {
+          "pair_rva": 54298128,
+          "name": "SetShrinkToFitWrapped",
+          "function_rva": 33673024
+        },
+        {
+          "pair_rva": 54298144,
+          "name": "SetAllowShowWithNoLines",
+          "function_rva": 33673152
+        },
+        {
+          "pair_rva": 54298160,
+          "name": "SetPadding",
+          "function_rva": 33673280
+        },
+        {
+          "pair_rva": 54298176,
+          "name": "GetPadding",
+          "function_rva": 33673664
+        },
+        {
+          "pair_rva": 54298192,
+          "name": "IsOwned",
+          "function_rva": 33673840
+        },
+        {
+          "pair_rva": 54298208,
+          "name": "GetOwner",
+          "function_rva": 33674112
+        },
+        {
+          "pair_rva": 54298224,
+          "name": "SetOwner",
+          "function_rva": 33674224
+        },
+        {
+          "pair_rva": 54298240,
+          "name": "GetAnchorType",
+          "function_rva": 33675408
+        },
+        {
+          "pair_rva": 54298256,
+          "name": "SetAnchorType",
+          "function_rva": 33674944
+        },
+        {
+          "pair_rva": 54298272,
+          "name": "ClearLines",
+          "function_rva": 33675712
+        },
+        {
+          "pair_rva": 54298288,
+          "name": "AddLine",
+          "function_rva": 33675824
+        },
+        {
+          "pair_rva": 54298304,
+          "name": "AddDoubleLine",
+          "function_rva": 33676128
+        },
+        {
+          "pair_rva": 54298320,
+          "name": "AddTexture",
+          "function_rva": 33676448
+        },
+        {
+          "pair_rva": 54298336,
+          "name": "AddAtlas",
+          "function_rva": 33676816
+        },
+        {
+          "pair_rva": 54298352,
+          "name": "SetText",
+          "function_rva": 33677168
+        },
+        {
+          "pair_rva": 54298368,
+          "name": "AppendText",
+          "function_rva": 33677488
+        },
+        {
+          "pair_rva": 54298384,
+          "name": "FadeOut",
+          "function_rva": 33677920
+        },
+        {
+          "pair_rva": 54298400,
+          "name": "SetHyperlink",
+          "function_rva": 33678144
+        },
+        {
+          "pair_rva": 54298416,
+          "name": "SetItemKey",
+          "function_rva": 33683088
+        },
+        {
+          "pair_rva": 54298432,
+          "name": "SetAction",
+          "function_rva": 33683552
+        },
+        {
+          "pair_rva": 54298448,
+          "name": "SetPetAction",
+          "function_rva": 33684560
+        },
+        {
+          "pair_rva": 54298464,
+          "name": "SetShapeshift",
+          "function_rva": 33684832
+        },
+        {
+          "pair_rva": 54298480,
+          "name": "SetPossession",
+          "function_rva": 33685440
+        },
+        {
+          "pair_rva": 54298496,
+          "name": "SetSpellBookItem",
+          "function_rva": 33686000
+        },
+        {
+          "pair_rva": 54298512,
+          "name": "SetSpellByID",
+          "function_rva": 33687152
+        },
+        {
+          "pair_rva": 54298528,
+          "name": "AddSpellByID",
+          "function_rva": 33687904
+        },
+        {
+          "pair_rva": 54298544,
+          "name": "SetAzeriteEssence",
+          "function_rva": 33688528
+        },
+        {
+          "pair_rva": 54298560,
+          "name": "SetAzeriteEssenceSlot",
+          "function_rva": 33688800
+        },
+        {
+          "pair_rva": 54298576,
+          "name": "SetConduit",
+          "function_rva": 33689008
+        },
+        {
+          "pair_rva": 54298592,
+          "name": "SetEnhancedConduit",
+          "function_rva": 33689248
+        },
+        {
+          "pair_rva": 54298608,
+          "name": "SetMountBySpellID",
+          "function_rva": 33689488
+        },
+        {
+          "pair_rva": 54298624,
+          "name": "SetCompanionPet",
+          "function_rva": 33689664
+        },
+        {
+          "pair_rva": 54298640,
+          "name": "SetInventoryItem",
+          "function_rva": 33689824
+        },
+        {
+          "pair_rva": 54298656,
+          "name": "SetLootItem",
+          "function_rva": 33691344
+        },
+        {
+          "pair_rva": 54298672,
+          "name": "SetLootCurrency",
+          "function_rva": 33691808
+        },
+        {
+          "pair_rva": 54298688,
+          "name": "SetQuestItem",
+          "function_rva": 33692096
+        },
+        {
+          "pair_rva": 54298704,
+          "name": "SetQuestLogItem",
+          "function_rva": 33692864
+        },
+        {
+          "pair_rva": 54298720,
+          "name": "SetQuestCurrency",
+          "function_rva": 33693680
+        },
+        {
+          "pair_rva": 54298736,
+          "name": "SetQuestLogCurrency",
+          "function_rva": 33694096
+        },
+        {
+          "pair_rva": 54298752,
+          "name": "SetQuestPartyProgress",
+          "function_rva": 33694480
+        },
+        {
+          "pair_rva": 54298768,
+          "name": "SetTrainerService",
+          "function_rva": 33694736
+        },
+        {
+          "pair_rva": 54298784,
+          "name": "SetRecipeRankInfo",
+          "function_rva": 33696000
+        },
+        {
+          "pair_rva": 54298800,
+          "name": "SetRecipeResultItem",
+          "function_rva": 33696208
+        },
+        {
+          "pair_rva": 54298816,
+          "name": "SetRecipeReagentItem",
+          "function_rva": 33697296
+        },
+        {
+          "pair_rva": 54298832,
+          "name": "SetRuneforgeResultItem",
+          "function_rva": 33697856
+        },
+        {
+          "pair_rva": 54298848,
+          "name": "SetMerchantItem",
+          "function_rva": 33698672
+        },
+        {
+          "pair_rva": 54298864,
+          "name": "SetMerchantCostItem",
+          "function_rva": 33699440
+        },
+        {
+          "pair_rva": 54298880,
+          "name": "SetTradePlayerItem",
+          "function_rva": 33700512
+        },
+        {
+          "pair_rva": 54298896,
+          "name": "SetTradeTargetItem",
+          "function_rva": 33701264
+        },
+        {
+          "pair_rva": 54298912,
+          "name": "SetBagItem",
+          "function_rva": 33702096
+        },
+        {
+          "pair_rva": 54298928,
+          "name": "SetBagItemChild",
+          "function_rva": 33702848
+        },
+        {
+          "pair_rva": 54298944,
+          "name": "SetInventoryItemByID",
+          "function_rva": 33703504
+        },
+        {
+          "pair_rva": 54298960,
+          "name": "SetUnit",
+          "function_rva": 33703840
+        },
+        {
+          "pair_rva": 54298976,
+          "name": "SetUnitBuff",
+          "function_rva": 33651424
+        },
+        {
+          "pair_rva": 54298992,
+          "name": "SetUnitDebuff",
+          "function_rva": 33651632
+        },
+        {
+          "pair_rva": 54299008,
+          "name": "SetUnitAura",
+          "function_rva": 33651248
+        },
+        {
+          "pair_rva": 54299024,
+          "name": "SetTalent",
+          "function_rva": 33651840
+        },
+        {
+          "pair_rva": 54299040,
+          "name": "SetPvpTalent",
+          "function_rva": 33652144
+        },
+        {
+          "pair_rva": 54299056,
+          "name": "SetPvpBrawl",
+          "function_rva": 33652512
+        },
+        {
+          "pair_rva": 54299072,
+          "name": "SetSpecialPvpBrawl",
+          "function_rva": 33652624
+        },
+        {
+          "pair_rva": 54299088,
+          "name": "SetSendMailItem",
+          "function_rva": 33652736
+        },
+        {
+          "pair_rva": 54299104,
+          "name": "SetInboxItem",
+          "function_rva": 33653408
+        },
+        {
+          "pair_rva": 54299120,
+          "name": "NumLines",
+          "function_rva": 33654656
+        },
+        {
+          "pair_rva": 54299136,
+          "name": "SetQuestRewardSpell",
+          "function_rva": 33654784
+        },
+        {
+          "pair_rva": 54299152,
+          "name": "SetQuestLogRewardSpell",
+          "function_rva": 33655200
+        },
+        {
+          "pair_rva": 54299168,
+          "name": "AdvanceSecondaryCompareItem",
+          "function_rva": 33656112
+        },
+        {
+          "pair_rva": 54299184,
+          "name": "SetCompareItem",
+          "function_rva": 33657088
+        },
+        {
+          "pair_rva": 54299200,
+          "name": "ResetSecondaryCompareItem",
+          "function_rva": 33655984
+        },
+        {
+          "pair_rva": 54299216,
+          "name": "SetBuybackItem",
+          "function_rva": 33657376
+        },
+        {
+          "pair_rva": 54299232,
+          "name": "SetLootRollItem",
+          "function_rva": 33657792
+        },
+        {
+          "pair_rva": 54299248,
+          "name": "SetSocketedItem",
+          "function_rva": 33658192
+        },
+        {
+          "pair_rva": 54299264,
+          "name": "SetArtifactItem",
+          "function_rva": 33658304
+        },
+        {
+          "pair_rva": 54299280,
+          "name": "SetSocketGem",
+          "function_rva": 33659008
+        },
+        {
+          "pair_rva": 54299296,
+          "name": "SetExistingSocketGem",
+          "function_rva": 33659360
+        },
+        {
+          "pair_rva": 54299312,
+          "name": "SetGuildBankItem",
+          "function_rva": 33659952
+        },
+        {
+          "pair_rva": 54299328,
+          "name": "IsUnit",
+          "function_rva": 33660736
+        },
+        {
+          "pair_rva": 54299344,
+          "name": "GetUnit",
+          "function_rva": 33661008
+        },
+        {
+          "pair_rva": 54299360,
+          "name": "GetItem",
+          "function_rva": 33661328
+        },
+        {
+          "pair_rva": 54299376,
+          "name": "GetSpell",
+          "function_rva": 33662048
+        },
+        {
+          "pair_rva": 54299392,
+          "name": "GetAzeritePowerID",
+          "function_rva": 33662224
+        },
+        {
+          "pair_rva": 54299408,
+          "name": "SetTotem",
+          "function_rva": 33662656
+        },
+        {
+          "pair_rva": 54299424,
+          "name": "SetCurrencyToken",
+          "function_rva": 33663344
+        },
+        {
+          "pair_rva": 54299440,
+          "name": "SetCurrencyTokenByID",
+          "function_rva": 33663648
+        },
+        {
+          "pair_rva": 54299456,
+          "name": "SetBackpackToken",
+          "function_rva": 33663968
+        },
+        {
+          "pair_rva": 54299472,
+          "name": "IsEquippedItem",
+          "function_rva": 33664240
+        },
+        {
+          "pair_rva": 54299488,
+          "name": "SetQuestLogSpecialItem",
+          "function_rva": 33664432
+        },
+        {
+          "pair_rva": 54299504,
+          "name": "SetEquipmentSet",
+          "function_rva": 33664752
+        },
+        {
+          "pair_rva": 54299520,
+          "name": "SetFrameStack",
+          "function_rva": 33665008
+        },
+        {
+          "pair_rva": 54299536,
+          "name": "SetLFGDungeonReward",
+          "function_rva": 33665312
+        },
+        {
+          "pair_rva": 54299552,
+          "name": "SetLFGDungeonShortageReward",
+          "function_rva": 33665952
+        },
+        {
+          "pair_rva": 54299568,
+          "name": "SetUpgradeItem",
+          "function_rva": 33666304
+        },
+        {
+          "pair_rva": 54299584,
+          "name": "SetInstanceLockEncountersComplete",
+          "function_rva": 33666560
+        },
+        {
+          "pair_rva": 54299600,
+          "name": "SetCurrencyByID",
+          "function_rva": 33666784
+        },
+        {
+          "pair_rva": 54299616,
+          "name": "SetItemByID",
+          "function_rva": 33667104
+        },
+        {
+          "pair_rva": 54299632,
+          "name": "SetOwnedItemByID",
+          "function_rva": 33667424
+        },
+        {
+          "pair_rva": 54299648,
+          "name": "SetToyByItemID",
+          "function_rva": 33667648
+        },
+        {
+          "pair_rva": 54299664,
+          "name": "SetHeirloomByItemID",
+          "function_rva": 33667856
+        },
+        {
+          "pair_rva": 54299680,
+          "name": "SetTransmogrifyItem",
+          "function_rva": 33658608
+        },
+        {
+          "pair_rva": 54299696,
+          "name": "SetVoidItem",
+          "function_rva": 33668624
+        },
+        {
+          "pair_rva": 54299712,
+          "name": "SetVoidDepositItem",
+          "function_rva": 33669088
+        },
+        {
+          "pair_rva": 54299728,
+          "name": "SetVoidWithdrawalItem",
+          "function_rva": 33669568
+        },
+        {
+          "pair_rva": 54299744,
+          "name": "SetAchievementByID",
+          "function_rva": 33670032
+        },
+        {
+          "pair_rva": 54299760,
+          "name": "SetArtifactPowerByID",
+          "function_rva": 33670432
+        },
+        {
+          "pair_rva": 54299776,
+          "name": "SetSocketedRelic",
+          "function_rva": 33670576
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54287952,
+      "entries": [
+        {
+          "pair_rva": 54287952,
+          "name": "SetLightVisible",
+          "function_rva": 32905248
+        },
+        {
+          "pair_rva": 54287968,
+          "name": "IsLightVisible",
+          "function_rva": 32905328
+        },
+        {
+          "pair_rva": 54287984,
+          "name": "SetLightType",
+          "function_rva": 32905376
+        },
+        {
+          "pair_rva": 54288000,
+          "name": "GetLightType",
+          "function_rva": 32905552
+        },
+        {
+          "pair_rva": 54288016,
+          "name": "SetLightPosition",
+          "function_rva": 32905648
+        },
+        {
+          "pair_rva": 54288032,
+          "name": "GetLightPosition",
+          "function_rva": 32905840
+        },
+        {
+          "pair_rva": 54288048,
+          "name": "SetLightDirection",
+          "function_rva": 32905936
+        },
+        {
+          "pair_rva": 54288064,
+          "name": "GetLightDirection",
+          "function_rva": 32906128
+        },
+        {
+          "pair_rva": 54288080,
+          "name": "SetLightAmbientColor",
+          "function_rva": 32906240
+        },
+        {
+          "pair_rva": 54288096,
+          "name": "GetLightAmbientColor",
+          "function_rva": 32906448
+        },
+        {
+          "pair_rva": 54288112,
+          "name": "SetLightDiffuseColor",
+          "function_rva": 32906560
+        },
+        {
+          "pair_rva": 54288128,
+          "name": "GetLightDiffuseColor",
+          "function_rva": 32906768
+        },
+        {
+          "pair_rva": 54288144,
+          "name": "SetFogColor",
+          "function_rva": 32906864
+        },
+        {
+          "pair_rva": 54288160,
+          "name": "GetFogColor",
+          "function_rva": 32907072
+        },
+        {
+          "pair_rva": 54288176,
+          "name": "SetFogNear",
+          "function_rva": 32907248
+        },
+        {
+          "pair_rva": 54288192,
+          "name": "GetFogNear",
+          "function_rva": 32907392
+        },
+        {
+          "pair_rva": 54288208,
+          "name": "SetFogFar",
+          "function_rva": 32907440
+        },
+        {
+          "pair_rva": 54288224,
+          "name": "GetFogFar",
+          "function_rva": 32907568
+        },
+        {
+          "pair_rva": 54288240,
+          "name": "ClearFog",
+          "function_rva": 32907616
+        },
+        {
+          "pair_rva": 54288256,
+          "name": "GetCameraFieldOfView",
+          "function_rva": 32907664
+        },
+        {
+          "pair_rva": 54288272,
+          "name": "SetCameraFieldOfView",
+          "function_rva": 32907712
+        },
+        {
+          "pair_rva": 54288288,
+          "name": "GetCameraNearClip",
+          "function_rva": 32907904
+        },
+        {
+          "pair_rva": 54288304,
+          "name": "SetCameraNearClip",
+          "function_rva": 32907952
+        },
+        {
+          "pair_rva": 54288320,
+          "name": "GetCameraFarClip",
+          "function_rva": 32908128
+        },
+        {
+          "pair_rva": 54288336,
+          "name": "SetCameraFarClip",
+          "function_rva": 32908176
+        },
+        {
+          "pair_rva": 54288352,
+          "name": "GetCameraPosition",
+          "function_rva": 32908352
+        },
+        {
+          "pair_rva": 54288368,
+          "name": "SetCameraPosition",
+          "function_rva": 32908448
+        },
+        {
+          "pair_rva": 54288384,
+          "name": "SetCameraOrientationByYawPitchRoll",
+          "function_rva": 32908656
+        },
+        {
+          "pair_rva": 54288400,
+          "name": "SetCameraOrientationByAxisVectors",
+          "function_rva": 32909024
+        },
+        {
+          "pair_rva": 54288416,
+          "name": "GetCameraForward",
+          "function_rva": 32910080
+        },
+        {
+          "pair_rva": 54288432,
+          "name": "GetCameraUp",
+          "function_rva": 32910176
+        },
+        {
+          "pair_rva": 54288448,
+          "name": "GetCameraRight",
+          "function_rva": 32910272
+        },
+        {
+          "pair_rva": 54288464,
+          "name": "GetDrawLayer",
+          "function_rva": 32910368
+        },
+        {
+          "pair_rva": 54288480,
+          "name": "SetDrawLayer",
+          "function_rva": 32910432
+        },
+        {
+          "pair_rva": 54288496,
+          "name": "CreateActor",
+          "function_rva": 32910624
+        },
+        {
+          "pair_rva": 54288512,
+          "name": "GetNumActors",
+          "function_rva": 32911072
+        },
+        {
+          "pair_rva": 54288528,
+          "name": "GetActorAtIndex",
+          "function_rva": 32911120
+        },
+        {
+          "pair_rva": 54288544,
+          "name": "TakeActor",
+          "function_rva": 32911296
+        },
+        {
+          "pair_rva": 54288560,
+          "name": "GetViewTranslation",
+          "function_rva": 32911520
+        },
+        {
+          "pair_rva": 54288576,
+          "name": "SetViewTranslation",
+          "function_rva": 32911648
+        },
+        {
+          "pair_rva": 54288592,
+          "name": "GetViewInsets",
+          "function_rva": 32911936
+        },
+        {
+          "pair_rva": 54288608,
+          "name": "SetViewInsets",
+          "function_rva": 32911984
+        },
+        {
+          "pair_rva": 54288624,
+          "name": "Project3DPointTo2D",
+          "function_rva": 32912112
+        },
+        {
+          "pair_rva": 54288640,
+          "name": "SetDesaturation",
+          "function_rva": 32912528
+        },
+        {
+          "pair_rva": 54288656,
+          "name": "SetPaused",
+          "function_rva": 32912720
+        },
+        {
+          "pair_rva": 54288672,
+          "name": "SetModelByPath",
+          "function_rva": 32922832
+        },
+        {
+          "pair_rva": 54288688,
+          "name": "GetModelPath",
+          "function_rva": 32923024
+        },
+        {
+          "pair_rva": 54288704,
+          "name": "SetModelByFileID",
+          "function_rva": 32923104
+        },
+        {
+          "pair_rva": 54288720,
+          "name": "SetModelByUnit",
+          "function_rva": 32923296
+        },
+        {
+          "pair_rva": 54288736,
+          "name": "SetPlayerModelFromGlues",
+          "function_rva": 32923616
+        },
+        {
+          "pair_rva": 54288752,
+          "name": "AttachToMount",
+          "function_rva": 32923792
+        },
+        {
+          "pair_rva": 54288768,
+          "name": "CalculateMountScale",
+          "function_rva": 32913184
+        },
+        {
+          "pair_rva": 54288784,
+          "name": "SetModelByCreatureDisplayID",
+          "function_rva": 32913296
+        },
+        {
+          "pair_rva": 54288800,
+          "name": "GetModelFileID",
+          "function_rva": 32913472
+        },
+        {
+          "pair_rva": 54288816,
+          "name": "GetModelUnitGUID",
+          "function_rva": 32913536
+        },
+        {
+          "pair_rva": 54288832,
+          "name": "ClearModel",
+          "function_rva": 32913632
+        },
+        {
+          "pair_rva": 54288848,
+          "name": "SetPosition",
+          "function_rva": 32913680
+        },
+        {
+          "pair_rva": 54288864,
+          "name": "SetYaw",
+          "function_rva": 32913888
+        },
+        {
+          "pair_rva": 54288880,
+          "name": "SetPitch",
+          "function_rva": 32914032
+        },
+        {
+          "pair_rva": 54288896,
+          "name": "SetRoll",
+          "function_rva": 32914176
+        },
+        {
+          "pair_rva": 54288912,
+          "name": "SetScale",
+          "function_rva": 32914320
+        },
+        {
+          "pair_rva": 54288928,
+          "name": "SetParticleOverrideScale",
+          "function_rva": 32914496
+        },
+        {
+          "pair_rva": 54288944,
+          "name": "GetPosition",
+          "function_rva": 32914720
+        },
+        {
+          "pair_rva": 54288960,
+          "name": "GetYaw",
+          "function_rva": 32914832
+        },
+        {
+          "pair_rva": 54288976,
+          "name": "GetPitch",
+          "function_rva": 32914896
+        },
+        {
+          "pair_rva": 54288992,
+          "name": "GetRoll",
+          "function_rva": 32914960
+        },
+        {
+          "pair_rva": 54289008,
+          "name": "GetScale",
+          "function_rva": 32915024
+        },
+        {
+          "pair_rva": 54289024,
+          "name": "GetParticleOverrideScale",
+          "function_rva": 32915088
+        },
+        {
+          "pair_rva": 54289040,
+          "name": "SetAnimation",
+          "function_rva": 32915168
+        },
+        {
+          "pair_rva": 54289056,
+          "name": "GetAnimation",
+          "function_rva": 32915456
+        },
+        {
+          "pair_rva": 54289072,
+          "name": "GetAnimationVariation",
+          "function_rva": 32915504
+        },
+        {
+          "pair_rva": 54289088,
+          "name": "SetAnimationBlendOperation",
+          "function_rva": 32915552
+        },
+        {
+          "pair_rva": 54289104,
+          "name": "GetAnimationBlendOperation",
+          "function_rva": 32915728
+        },
+        {
+          "pair_rva": 54289120,
+          "name": "SetAlpha",
+          "function_rva": 32915792
+        },
+        {
+          "pair_rva": 54289136,
+          "name": "GetAlpha",
+          "function_rva": 32915920
+        },
+        {
+          "pair_rva": 54289152,
+          "name": "SetDesaturation",
+          "function_rva": 32915984
+        },
+        {
+          "pair_rva": 54289168,
+          "name": "GetDesaturation",
+          "function_rva": 32916112
+        },
+        {
+          "pair_rva": 54289184,
+          "name": "GetActiveBoundingBox",
+          "function_rva": 32916176
+        },
+        {
+          "pair_rva": 54289200,
+          "name": "GetMaxBoundingBox",
+          "function_rva": 32916352
+        },
+        {
+          "pair_rva": 54289216,
+          "name": "SetSpellVisualKit",
+          "function_rva": 32916528
+        },
+        {
+          "pair_rva": 54289232,
+          "name": "GetSpellVisualKit",
+          "function_rva": 32916752
+        },
+        {
+          "pair_rva": 54289248,
+          "name": "Show",
+          "function_rva": 32916816
+        },
+        {
+          "pair_rva": 54289264,
+          "name": "Hide",
+          "function_rva": 32916864
+        },
+        {
+          "pair_rva": 54289280,
+          "name": "SetShown",
+          "function_rva": 32916912
+        },
+        {
+          "pair_rva": 54289296,
+          "name": "IsVisible",
+          "function_rva": 32916992
+        },
+        {
+          "pair_rva": 54289312,
+          "name": "IsShown",
+          "function_rva": 32917088
+        },
+        {
+          "pair_rva": 54289328,
+          "name": "IsUsingCenterForOrigin",
+          "function_rva": 32917312
+        },
+        {
+          "pair_rva": 54289344,
+          "name": "SetUseCenterForOrigin",
+          "function_rva": 32917152
+        },
+        {
+          "pair_rva": 54289360,
+          "name": "IsLoaded",
+          "function_rva": 32917424
+        },
+        {
+          "pair_rva": 54289376,
+          "name": "PlayAnimationKit",
+          "function_rva": 32917488
+        },
+        {
+          "pair_rva": 54289392,
+          "name": "StopAnimationKit",
+          "function_rva": 32917664
+        },
+        {
+          "pair_rva": 54289408,
+          "name": "Undress",
+          "function_rva": 32917712
+        },
+        {
+          "pair_rva": 54289424,
+          "name": "Dress",
+          "function_rva": 32917824
+        },
+        {
+          "pair_rva": 54289440,
+          "name": "TryOn",
+          "function_rva": 32917872
+        },
+        {
+          "pair_rva": 54289456,
+          "name": "UndressSlot",
+          "function_rva": 32919952
+        },
+        {
+          "pair_rva": 54289472,
+          "name": "SetUseTransmogSkin",
+          "function_rva": 32920096
+        },
+        {
+          "pair_rva": 54289488,
+          "name": "GetUseTransmogSkin",
+          "function_rva": 32920240
+        },
+        {
+          "pair_rva": 54289504,
+          "name": "SetUseTransmogChoices",
+          "function_rva": 32920320
+        },
+        {
+          "pair_rva": 54289520,
+          "name": "GetUseTransmogChoices",
+          "function_rva": 32920464
+        },
+        {
+          "pair_rva": 54289536,
+          "name": "SetObeyHideInTransmogFlag",
+          "function_rva": 32920544
+        },
+        {
+          "pair_rva": 54289552,
+          "name": "GetObeyHideInTransmogFlag",
+          "function_rva": 32920688
+        },
+        {
+          "pair_rva": 54289568,
+          "name": "SetAutoDress",
+          "function_rva": 32920768
+        },
+        {
+          "pair_rva": 54289584,
+          "name": "GetAutoDress",
+          "function_rva": 32920912
+        },
+        {
+          "pair_rva": 54289600,
+          "name": "SetSheathed",
+          "function_rva": 32920992
+        },
+        {
+          "pair_rva": 54289616,
+          "name": "GetSheathed",
+          "function_rva": 32921136
+        },
+        {
+          "pair_rva": 54289632,
+          "name": "SetPaused",
+          "function_rva": 32921216
+        },
+        {
+          "pair_rva": 54289648,
+          "name": "GetPaused",
+          "function_rva": 32921456
+        },
+        {
+          "pair_rva": 54289664,
+          "name": "SetItemTransmogInfo",
+          "function_rva": 32921552
+        },
+        {
+          "pair_rva": 54289680,
+          "name": "GetItemTransmogInfo",
+          "function_rva": 32921984
+        },
+        {
+          "pair_rva": 54289696,
+          "name": "GetItemTransmogInfoList",
+          "function_rva": 32922160
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54387584,
+      "entries": [
+        {
+          "pair_rva": 54387584,
+          "name": "SetModel",
+          "function_rva": 43719552
+        },
+        {
+          "pair_rva": 54387600,
+          "name": "GetModelFileID",
+          "function_rva": 43719840
+        },
+        {
+          "pair_rva": 54387616,
+          "name": "ClearModel",
+          "function_rva": 43719904
+        },
+        {
+          "pair_rva": 54387632,
+          "name": "SetPosition",
+          "function_rva": 43719952
+        },
+        {
+          "pair_rva": 54387648,
+          "name": "SetFacing",
+          "function_rva": 43720048
+        },
+        {
+          "pair_rva": 54387664,
+          "name": "SetPitch",
+          "function_rva": 43720192
+        },
+        {
+          "pair_rva": 54387680,
+          "name": "SetRoll",
+          "function_rva": 43720336
+        },
+        {
+          "pair_rva": 54387696,
+          "name": "SetModelScale",
+          "function_rva": 43720480
+        },
+        {
+          "pair_rva": 54387712,
+          "name": "UseModelCenterToTransform",
+          "function_rva": 43720624
+        },
+        {
+          "pair_rva": 54387728,
+          "name": "IsUsingModelCenterToTransform",
+          "function_rva": 43720720
+        },
+        {
+          "pair_rva": 54387744,
+          "name": "SetSequence",
+          "function_rva": 43720768
+        },
+        {
+          "pair_rva": 54387760,
+          "name": "SetSequenceTime",
+          "function_rva": 43720976
+        },
+        {
+          "pair_rva": 54387776,
+          "name": "SetCamera",
+          "function_rva": 43721168
+        },
+        {
+          "pair_rva": 54387792,
+          "name": "SetLight",
+          "function_rva": 43721312
+        },
+        {
+          "pair_rva": 54387808,
+          "name": "GetLight",
+          "function_rva": 43721488
+        },
+        {
+          "pair_rva": 54387824,
+          "name": "GetPosition",
+          "function_rva": 43722016
+        },
+        {
+          "pair_rva": 54387840,
+          "name": "GetFacing",
+          "function_rva": 43722128
+        },
+        {
+          "pair_rva": 54387856,
+          "name": "GetPitch",
+          "function_rva": 43722176
+        },
+        {
+          "pair_rva": 54387872,
+          "name": "GetRoll",
+          "function_rva": 43722224
+        },
+        {
+          "pair_rva": 54387888,
+          "name": "GetModelScale",
+          "function_rva": 43722272
+        },
+        {
+          "pair_rva": 54387904,
+          "name": "AdvanceTime",
+          "function_rva": 43722320
+        },
+        {
+          "pair_rva": 54387920,
+          "name": "ReplaceIconTexture",
+          "function_rva": 43722352
+        },
+        {
+          "pair_rva": 54387936,
+          "name": "SetFogColor",
+          "function_rva": 43722544
+        },
+        {
+          "pair_rva": 54387952,
+          "name": "GetFogColor",
+          "function_rva": 43722656
+        },
+        {
+          "pair_rva": 54387968,
+          "name": "SetFogNear",
+          "function_rva": 43722832
+        },
+        {
+          "pair_rva": 54387984,
+          "name": "GetFogNear",
+          "function_rva": 43722976
+        },
+        {
+          "pair_rva": 54388000,
+          "name": "SetFogFar",
+          "function_rva": 43723024
+        },
+        {
+          "pair_rva": 54388016,
+          "name": "GetFogFar",
+          "function_rva": 43723168
+        },
+        {
+          "pair_rva": 54388032,
+          "name": "ClearFog",
+          "function_rva": 43723216
+        },
+        {
+          "pair_rva": 54388048,
+          "name": "SetGlow",
+          "function_rva": 43723248
+        },
+        {
+          "pair_rva": 54388064,
+          "name": "SetTransform",
+          "function_rva": 43725232
+        },
+        {
+          "pair_rva": 54388080,
+          "name": "ClearTransform",
+          "function_rva": 43725696
+        },
+        {
+          "pair_rva": 54388096,
+          "name": "SetModelAlpha",
+          "function_rva": 43725728
+        },
+        {
+          "pair_rva": 54388112,
+          "name": "GetModelAlpha",
+          "function_rva": 43725872
+        },
+        {
+          "pair_rva": 54388128,
+          "name": "SetDesaturation",
+          "function_rva": 43725952
+        },
+        {
+          "pair_rva": 54388144,
+          "name": "GetDesaturation",
+          "function_rva": 43726160
+        },
+        {
+          "pair_rva": 54388160,
+          "name": "SetShadowEffect",
+          "function_rva": 43726256
+        },
+        {
+          "pair_rva": 54388176,
+          "name": "GetShadowEffect",
+          "function_rva": 43726464
+        },
+        {
+          "pair_rva": 54388192,
+          "name": "SetModelDrawLayer",
+          "function_rva": 43726944
+        },
+        {
+          "pair_rva": 54388208,
+          "name": "GetModelDrawLayer",
+          "function_rva": 43726880
+        },
+        {
+          "pair_rva": 54388224,
+          "name": "GetViewTranslation",
+          "function_rva": 43727120
+        },
+        {
+          "pair_rva": 54388240,
+          "name": "SetViewTranslation",
+          "function_rva": 43727248
+        },
+        {
+          "pair_rva": 54388256,
+          "name": "GetViewInsets",
+          "function_rva": 43727536
+        },
+        {
+          "pair_rva": 54388272,
+          "name": "SetViewInsets",
+          "function_rva": 43727584
+        },
+        {
+          "pair_rva": 54388288,
+          "name": "HasAttachmentPoints",
+          "function_rva": 43727712
+        },
+        {
+          "pair_rva": 54388304,
+          "name": "SetPaused",
+          "function_rva": 43727760
+        },
+        {
+          "pair_rva": 54388320,
+          "name": "GetPaused",
+          "function_rva": 43727920
+        },
+        {
+          "pair_rva": 54388336,
+          "name": "SetParticlesEnabled",
+          "function_rva": 43728016
+        },
+        {
+          "pair_rva": 54388352,
+          "name": "SetCustomCamera",
+          "function_rva": 43723408
+        },
+        {
+          "pair_rva": 54388368,
+          "name": "MakeCurrentCameraCustom",
+          "function_rva": 43723552
+        },
+        {
+          "pair_rva": 54388384,
+          "name": "HasCustomCamera",
+          "function_rva": 43724032
+        },
+        {
+          "pair_rva": 54388400,
+          "name": "SetCameraFacing",
+          "function_rva": 43723584
+        },
+        {
+          "pair_rva": 54388416,
+          "name": "GetCameraFacing",
+          "function_rva": 43723968
+        },
+        {
+          "pair_rva": 54388432,
+          "name": "SetCameraRoll",
+          "function_rva": 43723808
+        },
+        {
+          "pair_rva": 54388448,
+          "name": "GetCameraRoll",
+          "function_rva": 43723744
+        },
+        {
+          "pair_rva": 54388464,
+          "name": "SetCameraTarget",
+          "function_rva": 43724656
+        },
+        {
+          "pair_rva": 54388480,
+          "name": "GetCameraTarget",
+          "function_rva": 43724512
+        },
+        {
+          "pair_rva": 54388496,
+          "name": "SetCameraPosition",
+          "function_rva": 43724224
+        },
+        {
+          "pair_rva": 54388512,
+          "name": "GetCameraPosition",
+          "function_rva": 43724080
+        },
+        {
+          "pair_rva": 54388528,
+          "name": "SetCameraDistance",
+          "function_rva": 43724944
+        },
+        {
+          "pair_rva": 54388544,
+          "name": "GetCameraDistance",
+          "function_rva": 43725104
+        },
+        {
+          "pair_rva": 54388560,
+          "name": "GetWorldScale",
+          "function_rva": 43725152
+        },
+        {
+          "pair_rva": 54388576,
+          "name": "TransformCameraSpaceToModelSpace",
+          "function_rva": 43726560
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 53971056,
+      "entries": [
+        {
+          "pair_rva": 53971056,
+          "name": "SetIgnoreParentAlpha",
+          "function_rva": 5895408
+        },
+        {
+          "pair_rva": 53971072,
+          "name": "IsIgnoringParentAlpha",
+          "function_rva": 5896816
+        },
+        {
+          "pair_rva": 53971088,
+          "name": "SetIgnoreParentScale",
+          "function_rva": 5898192
+        },
+        {
+          "pair_rva": 53971104,
+          "name": "IsIgnoringParentScale",
+          "function_rva": 5899568
+        },
+        {
+          "pair_rva": 53971120,
+          "name": "IsObjectLoaded",
+          "function_rva": 5900944
+        },
+        {
+          "pair_rva": 53971136,
+          "name": "SetScale",
+          "function_rva": 5902320
+        },
+        {
+          "pair_rva": 53971152,
+          "name": "GetScale",
+          "function_rva": 5907504
+        },
+        {
+          "pair_rva": 53971168,
+          "name": "GetEffectiveScale",
+          "function_rva": 5908880
+        },
+        {
+          "pair_rva": 53971184,
+          "name": "IsObjectType",
+          "function_rva": 5911632
+        },
+        {
+          "pair_rva": 53971200,
+          "name": "GetObjectType",
+          "function_rva": 5910256
+        },
+        {
+          "pair_rva": 53971216,
+          "name": "GetDrawLayer",
+          "function_rva": 5914384
+        },
+        {
+          "pair_rva": 53971232,
+          "name": "SetDrawLayer",
+          "function_rva": 5915776
+        },
+        {
+          "pair_rva": 53971248,
+          "name": "GetBlendMode",
+          "function_rva": 5919776
+        },
+        {
+          "pair_rva": 53971264,
+          "name": "SetBlendMode",
+          "function_rva": 5921152
+        },
+        {
+          "pair_rva": 53971280,
+          "name": "GetVertexColor",
+          "function_rva": 5923808
+        },
+        {
+          "pair_rva": 53971296,
+          "name": "SetVertexColor",
+          "function_rva": 5925440
+        },
+        {
+          "pair_rva": 53971312,
+          "name": "SetGradient",
+          "function_rva": 5926960
+        },
+        {
+          "pair_rva": 53971328,
+          "name": "SetGradientAlpha",
+          "function_rva": 5929648
+        },
+        {
+          "pair_rva": 53971344,
+          "name": "SetAlpha",
+          "function_rva": 5932336
+        },
+        {
+          "pair_rva": 53971360,
+          "name": "GetAlpha",
+          "function_rva": 5935040
+        },
+        {
+          "pair_rva": 53971376,
+          "name": "Show",
+          "function_rva": 5936432
+        },
+        {
+          "pair_rva": 53971392,
+          "name": "Hide",
+          "function_rva": 5937808
+        },
+        {
+          "pair_rva": 53971408,
+          "name": "SetShown",
+          "function_rva": 5939184
+        },
+        {
+          "pair_rva": 53971424,
+          "name": "IsVisible",
+          "function_rva": 5940592
+        },
+        {
+          "pair_rva": 53971440,
+          "name": "IsShown",
+          "function_rva": 5941968
+        },
+        {
+          "pair_rva": 53971456,
+          "name": "GetTexture",
+          "function_rva": 5943328
+        },
+        {
+          "pair_rva": 53971472,
+          "name": "SetTexture",
+          "function_rva": 5947792
+        },
+        {
+          "pair_rva": 53971488,
+          "name": "SetColorTexture",
+          "function_rva": 5949520
+        },
+        {
+          "pair_rva": 53971504,
+          "name": "GetTexCoord",
+          "function_rva": 5952240
+        },
+        {
+          "pair_rva": 53971520,
+          "name": "SetTexCoord",
+          "function_rva": 5953792
+        },
+        {
+          "pair_rva": 53971536,
+          "name": "SetRotation",
+          "function_rva": 5961760
+        },
+        {
+          "pair_rva": 53971552,
+          "name": "GetRotation",
+          "function_rva": 5964832
+        },
+        {
+          "pair_rva": 53971568,
+          "name": "SetTexelSnappingBias",
+          "function_rva": 5966288
+        },
+        {
+          "pair_rva": 53971584,
+          "name": "GetTexelSnappingBias",
+          "function_rva": 5969024
+        },
+        {
+          "pair_rva": 53971600,
+          "name": "SetSnapToPixelGrid",
+          "function_rva": 5970400
+        },
+        {
+          "pair_rva": 53971616,
+          "name": "IsSnappingToPixelGrid",
+          "function_rva": 5971792
+        },
+        {
+          "pair_rva": 53971632,
+          "name": "SetDesaturation",
+          "function_rva": 5973168
+        },
+        {
+          "pair_rva": 53971648,
+          "name": "GetDesaturation",
+          "function_rva": 5974544
+        },
+        {
+          "pair_rva": 53971664,
+          "name": "SetDesaturated",
+          "function_rva": 5975920
+        },
+        {
+          "pair_rva": 53971680,
+          "name": "IsDesaturated",
+          "function_rva": 5977328
+        },
+        {
+          "pair_rva": 53971696,
+          "name": "SetNonBlocking",
+          "function_rva": 5978704
+        },
+        {
+          "pair_rva": 53971712,
+          "name": "GetNonBlocking",
+          "function_rva": 5980096
+        },
+        {
+          "pair_rva": 53971728,
+          "name": "SetHorizTile",
+          "function_rva": 5981472
+        },
+        {
+          "pair_rva": 53971744,
+          "name": "GetHorizTile",
+          "function_rva": 5982864
+        },
+        {
+          "pair_rva": 53971760,
+          "name": "SetVertTile",
+          "function_rva": 5984240
+        },
+        {
+          "pair_rva": 53971776,
+          "name": "GetVertTile",
+          "function_rva": 5985632
+        },
+        {
+          "pair_rva": 53971792,
+          "name": "SetAtlas",
+          "function_rva": 5987008
+        },
+        {
+          "pair_rva": 53971808,
+          "name": "GetAtlas",
+          "function_rva": 5993664
+        },
+        {
+          "pair_rva": 53971824,
+          "name": "SetMask",
+          "function_rva": 5995056
+        },
+        {
+          "pair_rva": 53971840,
+          "name": "GetVertexOffset",
+          "function_rva": 6006000
+        },
+        {
+          "pair_rva": 53971856,
+          "name": "SetVertexOffset",
+          "function_rva": 6010000
+        },
+        {
+          "pair_rva": 53971872,
+          "name": "GetTextureFileID",
+          "function_rva": 5944880
+        },
+        {
+          "pair_rva": 53971888,
+          "name": "GetTextureFilePath",
+          "function_rva": 5946256
+        },
+        {
+          "pair_rva": 53971904,
+          "name": "AddMaskTexture",
+          "function_rva": 5997776
+        },
+        {
+          "pair_rva": 53971920,
+          "name": "RemoveMaskTexture",
+          "function_rva": 5999232
+        },
+        {
+          "pair_rva": 53971936,
+          "name": "GetNumMaskTextures",
+          "function_rva": 6000688
+        },
+        {
+          "pair_rva": 53971952,
+          "name": "GetMaskTexture",
+          "function_rva": 6002080
+        },
+        {
+          "pair_rva": 53971968,
+          "name": "IsObjectType",
+          "function_rva": 6014240
+        },
+        {
+          "pair_rva": 53971984,
+          "name": "GetObjectType",
+          "function_rva": 6012928
+        },
+        {
+          "pair_rva": 53972000,
+          "name": "GetDrawLayer",
+          "function_rva": 6016928
+        },
+        {
+          "pair_rva": 53972016,
+          "name": "SetDrawLayer",
+          "function_rva": 6018240
+        },
+        {
+          "pair_rva": 53972032,
+          "name": "SetVertexColor",
+          "function_rva": 6020960
+        },
+        {
+          "pair_rva": 53972048,
+          "name": "GetAlpha",
+          "function_rva": 6022352
+        },
+        {
+          "pair_rva": 53972064,
+          "name": "SetAlpha",
+          "function_rva": 6023696
+        },
+        {
+          "pair_rva": 53972080,
+          "name": "SetAlphaGradient",
+          "function_rva": 6026400
+        },
+        {
+          "pair_rva": 53972096,
+          "name": "Show",
+          "function_rva": 6030320
+        },
+        {
+          "pair_rva": 53972112,
+          "name": "Hide",
+          "function_rva": 6031632
+        },
+        {
+          "pair_rva": 53972128,
+          "name": "SetShown",
+          "function_rva": 6032944
+        },
+        {
+          "pair_rva": 53972144,
+          "name": "IsVisible",
+          "function_rva": 6034304
+        },
+        {
+          "pair_rva": 53972160,
+          "name": "IsShown",
+          "function_rva": 6035616
+        },
+        {
+          "pair_rva": 53972176,
+          "name": "GetFontObject",
+          "function_rva": 6036928
+        },
+        {
+          "pair_rva": 53972192,
+          "name": "SetFontObject",
+          "function_rva": 6038256
+        },
+        {
+          "pair_rva": 53972208,
+          "name": "GetFont",
+          "function_rva": 6042336
+        },
+        {
+          "pair_rva": 53972224,
+          "name": "SetFont",
+          "function_rva": 6043808
+        },
+        {
+          "pair_rva": 53972240,
+          "name": "GetText",
+          "function_rva": 6050848
+        },
+        {
+          "pair_rva": 53972256,
+          "name": "GetFieldSize",
+          "function_rva": 6052176
+        },
+        {
+          "pair_rva": 53972272,
+          "name": "SetText",
+          "function_rva": 6053472
+        },
+        {
+          "pair_rva": 53972288,
+          "name": "SetFormattedText",
+          "function_rva": 6056160
+        },
+        {
+          "pair_rva": 53972304,
+          "name": "GetTextColor",
+          "function_rva": 6059136
+        },
+        {
+          "pair_rva": 53972320,
+          "name": "SetTextColor",
+          "function_rva": 6060576
+        },
+        {
+          "pair_rva": 53972336,
+          "name": "GetShadowColor",
+          "function_rva": 6061920
+        },
+        {
+          "pair_rva": 53972352,
+          "name": "SetShadowColor",
+          "function_rva": 6063376
+        },
+        {
+          "pair_rva": 53972368,
+          "name": "GetShadowOffset",
+          "function_rva": 6064720
+        },
+        {
+          "pair_rva": 53972384,
+          "name": "SetShadowOffset",
+          "function_rva": 6066048
+        },
+        {
+          "pair_rva": 53972400,
+          "name": "GetSpacing",
+          "function_rva": 6068768
+        },
+        {
+          "pair_rva": 53972416,
+          "name": "SetSpacing",
+          "function_rva": 6070096
+        },
+        {
+          "pair_rva": 53972432,
+          "name": "SetTextHeight",
+          "function_rva": 6072800
+        },
+        {
+          "pair_rva": 53972448,
+          "name": "GetStringWidth",
+          "function_rva": 6076720
+        },
+        {
+          "pair_rva": 53972464,
+          "name": "GetUnboundedStringWidth",
+          "function_rva": 6078064
+        },
+        {
+          "pair_rva": 53972480,
+          "name": "SetFixedColor",
+          "function_rva": 6079456
+        },
+        {
+          "pair_rva": 53972496,
+          "name": "GetWrappedWidth",
+          "function_rva": 6080848
+        },
+        {
+          "pair_rva": 53972512,
+          "name": "GetNumLines",
+          "function_rva": 6082192
+        },
+        {
+          "pair_rva": 53972528,
+          "name": "IsTruncated",
+          "function_rva": 6083504
+        },
+        {
+          "pair_rva": 53972544,
+          "name": "GetStringHeight",
+          "function_rva": 6084848
+        },
+        {
+          "pair_rva": 53972560,
+          "name": "GetJustifyH",
+          "function_rva": 6086192
+        },
+        {
+          "pair_rva": 53972576,
+          "name": "SetJustifyH",
+          "function_rva": 6087504
+        },
+        {
+          "pair_rva": 53972592,
+          "name": "GetJustifyV",
+          "function_rva": 6090256
+        },
+        {
+          "pair_rva": 53972608,
+          "name": "SetJustifyV",
+          "function_rva": 6091568
+        },
+        {
+          "pair_rva": 53972624,
+          "name": "CanNonSpaceWrap",
+          "function_rva": 6095696
+        },
+        {
+          "pair_rva": 53972640,
+          "name": "SetNonSpaceWrap",
+          "function_rva": 6094320
+        },
+        {
+          "pair_rva": 53972656,
+          "name": "CanWordWrap",
+          "function_rva": 6098368
+        },
+        {
+          "pair_rva": 53972672,
+          "name": "SetWordWrap",
+          "function_rva": 6097008
+        },
+        {
+          "pair_rva": 53972688,
+          "name": "GetIndentedWordWrap",
+          "function_rva": 6101056
+        },
+        {
+          "pair_rva": 53972704,
+          "name": "SetIndentedWordWrap",
+          "function_rva": 6099680
+        },
+        {
+          "pair_rva": 53972720,
+          "name": "GetMaxLines",
+          "function_rva": 6103728
+        },
+        {
+          "pair_rva": 53972736,
+          "name": "SetMaxLines",
+          "function_rva": 6102368
+        },
+        {
+          "pair_rva": 53972752,
+          "name": "GetLineHeight",
+          "function_rva": 6105040
+        },
+        {
+          "pair_rva": 53972768,
+          "name": "FindCharacterIndexAtCoordinate",
+          "function_rva": 6106384
+        },
+        {
+          "pair_rva": 53972784,
+          "name": "CalculateScreenAreaFromCharacterSpan",
+          "function_rva": 6110304
+        },
+        {
+          "pair_rva": 53972800,
+          "name": "GetTextScale",
+          "function_rva": 6119072
+        },
+        {
+          "pair_rva": 53972816,
+          "name": "SetTextScale",
+          "function_rva": 6115168
+        },
+        {
+          "pair_rva": 53972832,
+          "name": "SetStartPoint",
+          "function_rva": 6121680
+        },
+        {
+          "pair_rva": 53972848,
+          "name": "GetStartPoint",
+          "function_rva": 6123024
+        },
+        {
+          "pair_rva": 53972864,
+          "name": "SetEndPoint",
+          "function_rva": 6124336
+        },
+        {
+          "pair_rva": 53972880,
+          "name": "GetEndPoint",
+          "function_rva": 6125680
+        },
+        {
+          "pair_rva": 53972896,
+          "name": "SetThickness",
+          "function_rva": 6126992
+        },
+        {
+          "pair_rva": 53972912,
+          "name": "GetThickness",
+          "function_rva": 6128400
+        },
+        {
+          "pair_rva": 53972928,
+          "name": "ClearAllPoints",
+          "function_rva": 6120384
+        },
+        {
+          "pair_rva": 53972944,
+          "name": "GetObjectType",
+          "function_rva": 6139312
+        },
+        {
+          "pair_rva": 53972960,
+          "name": "IsObjectType",
+          "function_rva": 6139376
+        },
+        {
+          "pair_rva": 53972976,
+          "name": "GetName",
+          "function_rva": 6139552
+        },
+        {
+          "pair_rva": 53972992,
+          "name": "SetFontObject",
+          "function_rva": 6139648
+        },
+        {
+          "pair_rva": 53973008,
+          "name": "GetFontObject",
+          "function_rva": 6139968
+        },
+        {
+          "pair_rva": 53973024,
+          "name": "CopyFontObject",
+          "function_rva": 6140032
+        },
+        {
+          "pair_rva": 53973040,
+          "name": "SetFont",
+          "function_rva": 6140320
+        },
+        {
+          "pair_rva": 53973056,
+          "name": "GetFont",
+          "function_rva": 6140704
+        },
+        {
+          "pair_rva": 53973072,
+          "name": "SetAlpha",
+          "function_rva": 6140832
+        },
+        {
+          "pair_rva": 53973088,
+          "name": "GetAlpha",
+          "function_rva": 6141040
+        },
+        {
+          "pair_rva": 53973104,
+          "name": "SetTextColor",
+          "function_rva": 6141136
+        },
+        {
+          "pair_rva": 53973120,
+          "name": "GetTextColor",
+          "function_rva": 6141280
+        },
+        {
+          "pair_rva": 53973136,
+          "name": "SetShadowColor",
+          "function_rva": 6141488
+        },
+        {
+          "pair_rva": 53973152,
+          "name": "GetShadowColor",
+          "function_rva": 6141648
+        },
+        {
+          "pair_rva": 53973168,
+          "name": "SetShadowOffset",
+          "function_rva": 6141856
+        },
+        {
+          "pair_rva": 53973184,
+          "name": "GetShadowOffset",
+          "function_rva": 6142144
+        },
+        {
+          "pair_rva": 53973200,
+          "name": "SetSpacing",
+          "function_rva": 6142256
+        },
+        {
+          "pair_rva": 53973216,
+          "name": "GetSpacing",
+          "function_rva": 6142512
+        },
+        {
+          "pair_rva": 53973232,
+          "name": "SetJustifyH",
+          "function_rva": 6142608
+        },
+        {
+          "pair_rva": 53973248,
+          "name": "GetJustifyH",
+          "function_rva": 6142832
+        },
+        {
+          "pair_rva": 53973264,
+          "name": "SetJustifyV",
+          "function_rva": 6142912
+        },
+        {
+          "pair_rva": 53973280,
+          "name": "GetJustifyV",
+          "function_rva": 6143136
+        },
+        {
+          "pair_rva": 53973296,
+          "name": "SetIndentedWordWrap",
+          "function_rva": 6143216
+        },
+        {
+          "pair_rva": 53973312,
+          "name": "GetIndentedWordWrap",
+          "function_rva": 6143344
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 53973808,
+      "entries": [
+        {
+          "pair_rva": 53973808,
+          "name": "ExecuteAttribute",
+          "function_rva": 6202592
+        },
+        {
+          "pair_rva": 53973824,
+          "name": "GetEffectiveScale",
+          "function_rva": 6203936
+        },
+        {
+          "pair_rva": 53973840,
+          "name": "GetScale",
+          "function_rva": 6203984
+        },
+        {
+          "pair_rva": 53973856,
+          "name": "SetScale",
+          "function_rva": 6204032
+        },
+        {
+          "pair_rva": 53973872,
+          "name": "GetEffectiveAlpha",
+          "function_rva": 6204256
+        },
+        {
+          "pair_rva": 53973888,
+          "name": "GetAlpha",
+          "function_rva": 6204352
+        },
+        {
+          "pair_rva": 53973904,
+          "name": "SetAlpha",
+          "function_rva": 6204416
+        },
+        {
+          "pair_rva": 53973920,
+          "name": "SetFrameBuffer",
+          "function_rva": 6204592
+        },
+        {
+          "pair_rva": 53973936,
+          "name": "GetID",
+          "function_rva": 6204656
+        },
+        {
+          "pair_rva": 53973952,
+          "name": "SetID",
+          "function_rva": 6204704
+        },
+        {
+          "pair_rva": 53973968,
+          "name": "SetToplevel",
+          "function_rva": 6204880
+        },
+        {
+          "pair_rva": 53973984,
+          "name": "IsToplevel",
+          "function_rva": 6205024
+        },
+        {
+          "pair_rva": 53974000,
+          "name": "EnableDrawLayer",
+          "function_rva": 6205072
+        },
+        {
+          "pair_rva": 53974016,
+          "name": "DisableDrawLayer",
+          "function_rva": 6205184
+        },
+        {
+          "pair_rva": 53974032,
+          "name": "SetDrawLayerEnabled",
+          "function_rva": 6205296
+        },
+        {
+          "pair_rva": 53974048,
+          "name": "Show",
+          "function_rva": 6205424
+        },
+        {
+          "pair_rva": 53974064,
+          "name": "Hide",
+          "function_rva": 6205536
+        },
+        {
+          "pair_rva": 53974080,
+          "name": "SetShown",
+          "function_rva": 6205616
+        },
+        {
+          "pair_rva": 53974096,
+          "name": "IsVisible",
+          "function_rva": 6205744
+        },
+        {
+          "pair_rva": 53974112,
+          "name": "IsShown",
+          "function_rva": 6205792
+        },
+        {
+          "pair_rva": 53974128,
+          "name": "Raise",
+          "function_rva": 6205840
+        },
+        {
+          "pair_rva": 53974144,
+          "name": "Lower",
+          "function_rva": 6205920
+        },
+        {
+          "pair_rva": 53974160,
+          "name": "GetHitRectInsets",
+          "function_rva": 6206000
+        },
+        {
+          "pair_rva": 53974176,
+          "name": "SetHitRectInsets",
+          "function_rva": 6206096
+        },
+        {
+          "pair_rva": 53974192,
+          "name": "GetClampRectInsets",
+          "function_rva": 6206320
+        },
+        {
+          "pair_rva": 53974208,
+          "name": "SetClampRectInsets",
+          "function_rva": 6206416
+        },
+        {
+          "pair_rva": 53974224,
+          "name": "GetMinResize",
+          "function_rva": 6206592
+        },
+        {
+          "pair_rva": 53974240,
+          "name": "SetMinResize",
+          "function_rva": 6206736
+        },
+        {
+          "pair_rva": 53974256,
+          "name": "GetMaxResize",
+          "function_rva": 6207056
+        },
+        {
+          "pair_rva": 53974272,
+          "name": "SetMaxResize",
+          "function_rva": 6207200
+        },
+        {
+          "pair_rva": 53974288,
+          "name": "SetMovable",
+          "function_rva": 6207520
+        },
+        {
+          "pair_rva": 53974304,
+          "name": "IsMovable",
+          "function_rva": 6207632
+        },
+        {
+          "pair_rva": 53974320,
+          "name": "SetDontSavePosition",
+          "function_rva": 6207680
+        },
+        {
+          "pair_rva": 53974336,
+          "name": "GetDontSavePosition",
+          "function_rva": 6207760
+        },
+        {
+          "pair_rva": 53974352,
+          "name": "SetResizable",
+          "function_rva": 6207808
+        },
+        {
+          "pair_rva": 53974368,
+          "name": "IsResizable",
+          "function_rva": 6207920
+        },
+        {
+          "pair_rva": 53974384,
+          "name": "StartMoving",
+          "function_rva": 6207968
+        },
+        {
+          "pair_rva": 53974400,
+          "name": "StartSizing",
+          "function_rva": 6209440
+        },
+        {
+          "pair_rva": 53974416,
+          "name": "StopMovingOrSizing",
+          "function_rva": 6210960
+        },
+        {
+          "pair_rva": 53974432,
+          "name": "SetUserPlaced",
+          "function_rva": 6211008
+        },
+        {
+          "pair_rva": 53974448,
+          "name": "IsUserPlaced",
+          "function_rva": 6212432
+        },
+        {
+          "pair_rva": 53974464,
+          "name": "SetClampedToScreen",
+          "function_rva": 6212480
+        },
+        {
+          "pair_rva": 53974480,
+          "name": "IsClampedToScreen",
+          "function_rva": 6212592
+        },
+        {
+          "pair_rva": 53974496,
+          "name": "RegisterForDrag",
+          "function_rva": 6212640
+        },
+        {
+          "pair_rva": 53974512,
+          "name": "EnableKeyboard",
+          "function_rva": 6212784
+        },
+        {
+          "pair_rva": 53974528,
+          "name": "IsKeyboardEnabled",
+          "function_rva": 6212944
+        },
+        {
+          "pair_rva": 53974544,
+          "name": "EnableMouse",
+          "function_rva": 6213008
+        },
+        {
+          "pair_rva": 53974560,
+          "name": "IsMouseEnabled",
+          "function_rva": 6213200
+        },
+        {
+          "pair_rva": 53974576,
+          "name": "SetMouseClickEnabled",
+          "function_rva": 6213280
+        },
+        {
+          "pair_rva": 53974592,
+          "name": "IsMouseClickEnabled",
+          "function_rva": 6213424
+        },
+        {
+          "pair_rva": 53974608,
+          "name": "SetMouseMotionEnabled",
+          "function_rva": 6213472
+        },
+        {
+          "pair_rva": 53974624,
+          "name": "IsMouseMotionEnabled",
+          "function_rva": 6213616
+        },
+        {
+          "pair_rva": 53974640,
+          "name": "EnableMouseWheel",
+          "function_rva": 6213664
+        },
+        {
+          "pair_rva": 53974656,
+          "name": "IsMouseWheelEnabled",
+          "function_rva": 6213808
+        },
+        {
+          "pair_rva": 53974672,
+          "name": "EnableGamePadButton",
+          "function_rva": 6213856
+        },
+        {
+          "pair_rva": 53974688,
+          "name": "IsGamePadButtonEnabled",
+          "function_rva": 6214000
+        },
+        {
+          "pair_rva": 53974704,
+          "name": "EnableGamePadStick",
+          "function_rva": 6214048
+        },
+        {
+          "pair_rva": 53974720,
+          "name": "IsGamePadStickEnabled",
+          "function_rva": 6214192
+        },
+        {
+          "pair_rva": 53974736,
+          "name": "SetDepth",
+          "function_rva": 6214240
+        },
+        {
+          "pair_rva": 53974752,
+          "name": "GetDepth",
+          "function_rva": 6214384
+        },
+        {
+          "pair_rva": 53974768,
+          "name": "GetEffectiveDepth",
+          "function_rva": 6214464
+        },
+        {
+          "pair_rva": 53974784,
+          "name": "IgnoreDepth",
+          "function_rva": 6214544
+        },
+        {
+          "pair_rva": 53974800,
+          "name": "IsIgnoringDepth",
+          "function_rva": 6214624
+        },
+        {
+          "pair_rva": 53974816,
+          "name": "SetPropagateKeyboardInput",
+          "function_rva": 6214672
+        },
+        {
+          "pair_rva": 53974832,
+          "name": "GetPropagateKeyboardInput",
+          "function_rva": 6214752
+        },
+        {
+          "pair_rva": 53974848,
+          "name": "SetFlattensRenderLayers",
+          "function_rva": 6214848
+        },
+        {
+          "pair_rva": 53974864,
+          "name": "GetFlattensRenderLayers",
+          "function_rva": 6214912
+        },
+        {
+          "pair_rva": 53974880,
+          "name": "GetEffectivelyFlattensRenderLayers",
+          "function_rva": 6214960
+        },
+        {
+          "pair_rva": 53974896,
+          "name": "SetHyperlinksEnabled",
+          "function_rva": 6215056
+        },
+        {
+          "pair_rva": 53974912,
+          "name": "GetHyperlinksEnabled",
+          "function_rva": 6215120
+        },
+        {
+          "pair_rva": 53974928,
+          "name": "SetClipsChildren",
+          "function_rva": 6215168
+        },
+        {
+          "pair_rva": 53974944,
+          "name": "DoesClipChildren",
+          "function_rva": 6215264
+        },
+        {
+          "pair_rva": 53974960,
+          "name": "SetIgnoreParentAlpha",
+          "function_rva": 6215312
+        },
+        {
+          "pair_rva": 53974976,
+          "name": "IsIgnoringParentAlpha",
+          "function_rva": 6215376
+        },
+        {
+          "pair_rva": 53974992,
+          "name": "SetIgnoreParentScale",
+          "function_rva": 6215424
+        },
+        {
+          "pair_rva": 53975008,
+          "name": "IsIgnoringParentScale",
+          "function_rva": 6215488
+        },
+        {
+          "pair_rva": 53975024,
+          "name": "DesaturateHierarchy",
+          "function_rva": 6215536
+        },
+        {
+          "pair_rva": 53975040,
+          "name": "RotateTextures",
+          "function_rva": 6215648
+        },
+        {
+          "pair_rva": 53975056,
+          "name": "IsObjectLoaded",
+          "function_rva": 6215872
+        },
+        {
+          "pair_rva": 53975072,
+          "name": "SetFixedFrameStrata",
+          "function_rva": 6215936
+        },
+        {
+          "pair_rva": 53975088,
+          "name": "HasFixedFrameStrata",
+          "function_rva": 6216016
+        },
+        {
+          "pair_rva": 53975104,
+          "name": "SetFixedFrameLevel",
+          "function_rva": 6216064
+        },
+        {
+          "pair_rva": 53975120,
+          "name": "HasFixedFrameLevel",
+          "function_rva": 6216144
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 53975152,
+      "entries": [
+        {
+          "pair_rva": 53975152,
+          "name": "Play",
+          "function_rva": 6236656
+        },
+        {
+          "pair_rva": 53975168,
+          "name": "Pause",
+          "function_rva": 6236688
+        },
+        {
+          "pair_rva": 53975184,
+          "name": "Stop",
+          "function_rva": 6236720
+        },
+        {
+          "pair_rva": 53975200,
+          "name": "Restart",
+          "function_rva": 6236752
+        },
+        {
+          "pair_rva": 53975216,
+          "name": "IsDone",
+          "function_rva": 6236800
+        },
+        {
+          "pair_rva": 53975232,
+          "name": "SetPlaying",
+          "function_rva": 6236848
+        },
+        {
+          "pair_rva": 53975248,
+          "name": "IsPlaying",
+          "function_rva": 6237008
+        },
+        {
+          "pair_rva": 53975264,
+          "name": "IsPaused",
+          "function_rva": 6237056
+        },
+        {
+          "pair_rva": 53975280,
+          "name": "IsStopped",
+          "function_rva": 6237104
+        },
+        {
+          "pair_rva": 53975296,
+          "name": "IsDelaying",
+          "function_rva": 6237152
+        },
+        {
+          "pair_rva": 53975312,
+          "name": "GetElapsed",
+          "function_rva": 6238016
+        },
+        {
+          "pair_rva": 53975328,
+          "name": "SetStartDelay",
+          "function_rva": 6237200
+        },
+        {
+          "pair_rva": 53975344,
+          "name": "GetStartDelay",
+          "function_rva": 6237344
+        },
+        {
+          "pair_rva": 53975360,
+          "name": "SetEndDelay",
+          "function_rva": 6237392
+        },
+        {
+          "pair_rva": 53975376,
+          "name": "GetEndDelay",
+          "function_rva": 6237536
+        },
+        {
+          "pair_rva": 53975392,
+          "name": "SetDuration",
+          "function_rva": 6237584
+        },
+        {
+          "pair_rva": 53975408,
+          "name": "GetDuration",
+          "function_rva": 6237728
+        },
+        {
+          "pair_rva": 53975424,
+          "name": "GetSmoothProgress",
+          "function_rva": 6237776
+        },
+        {
+          "pair_rva": 53975440,
+          "name": "SetSmoothProgress",
+          "function_rva": 6237824
+        },
+        {
+          "pair_rva": 53975456,
+          "name": "GetProgress",
+          "function_rva": 6237968
+        },
+        {
+          "pair_rva": 53975472,
+          "name": "SetOrder",
+          "function_rva": 6238064
+        },
+        {
+          "pair_rva": 53975488,
+          "name": "GetOrder",
+          "function_rva": 6238224
+        },
+        {
+          "pair_rva": 53975504,
+          "name": "SetSmoothing",
+          "function_rva": 6238272
+        },
+        {
+          "pair_rva": 53975520,
+          "name": "GetSmoothing",
+          "function_rva": 6238448
+        },
+        {
+          "pair_rva": 53975536,
+          "name": "SetParent",
+          "function_rva": 6238528
+        },
+        {
+          "pair_rva": 53975552,
+          "name": "GetRegionParent",
+          "function_rva": 6239760
+        },
+        {
+          "pair_rva": 53975568,
+          "name": "SetTarget",
+          "function_rva": 6239104
+        },
+        {
+          "pair_rva": 53975584,
+          "name": "SetTargetKey",
+          "function_rva": 6239456
+        },
+        {
+          "pair_rva": 53975600,
+          "name": "SetChildKey",
+          "function_rva": 6239568
+        },
+        {
+          "pair_rva": 53975616,
+          "name": "GetTarget",
+          "function_rva": 6239680
+        },
+        {
+          "pair_rva": 53975632,
+          "name": "HasScript",
+          "function_rva": 6239856
+        },
+        {
+          "pair_rva": 53975648,
+          "name": "GetScript",
+          "function_rva": 6240032
+        },
+        {
+          "pair_rva": 53975664,
+          "name": "SetScript",
+          "function_rva": 6240080
+        },
+        {
+          "pair_rva": 53975680,
+          "name": "HookScript",
+          "function_rva": 6240128
+        },
+        {
+          "pair_rva": 53975696,
+          "name": "SetOffset",
+          "function_rva": 6240176
+        },
+        {
+          "pair_rva": 53975712,
+          "name": "GetOffset",
+          "function_rva": 6240464
+        },
+        {
+          "pair_rva": 53975728,
+          "name": "SetOffset",
+          "function_rva": 6240624
+        },
+        {
+          "pair_rva": 53975744,
+          "name": "GetOffset",
+          "function_rva": 6240832
+        },
+        {
+          "pair_rva": 53975760,
+          "name": "SetOrigin",
+          "function_rva": 6240912
+        },
+        {
+          "pair_rva": 53975776,
+          "name": "GetOrigin",
+          "function_rva": 6241280
+        },
+        {
+          "pair_rva": 53975792,
+          "name": "SetDegrees",
+          "function_rva": 6241392
+        },
+        {
+          "pair_rva": 53975808,
+          "name": "GetDegrees",
+          "function_rva": 6241536
+        },
+        {
+          "pair_rva": 53975824,
+          "name": "SetRadians",
+          "function_rva": 6241600
+        },
+        {
+          "pair_rva": 53975840,
+          "name": "GetRadians",
+          "function_rva": 6241744
+        },
+        {
+          "pair_rva": 53975856,
+          "name": "SetOrigin",
+          "function_rva": 6241792
+        },
+        {
+          "pair_rva": 53975872,
+          "name": "GetOrigin",
+          "function_rva": 6242160
+        },
+        {
+          "pair_rva": 53975888,
+          "name": "SetScale",
+          "function_rva": 6242272
+        },
+        {
+          "pair_rva": 53975904,
+          "name": "GetScale",
+          "function_rva": 6242464
+        },
+        {
+          "pair_rva": 53975920,
+          "name": "SetFromScale",
+          "function_rva": 6242544
+        },
+        {
+          "pair_rva": 53975936,
+          "name": "GetFromScale",
+          "function_rva": 6242736
+        },
+        {
+          "pair_rva": 53975952,
+          "name": "SetToScale",
+          "function_rva": 6242816
+        },
+        {
+          "pair_rva": 53975968,
+          "name": "GetToScale",
+          "function_rva": 6243008
+        },
+        {
+          "pair_rva": 53975984,
+          "name": "SetParent",
+          "function_rva": 6243088
+        },
+        {
+          "pair_rva": 53976000,
+          "name": "SetOffset",
+          "function_rva": 6243712
+        },
+        {
+          "pair_rva": 53976016,
+          "name": "GetOffset",
+          "function_rva": 6244000
+        },
+        {
+          "pair_rva": 53976032,
+          "name": "SetOrder",
+          "function_rva": 6244144
+        },
+        {
+          "pair_rva": 53976048,
+          "name": "GetOrder",
+          "function_rva": 6244288
+        },
+        {
+          "pair_rva": 53976064,
+          "name": "SetCurve",
+          "function_rva": 6244336
+        },
+        {
+          "pair_rva": 53976080,
+          "name": "GetCurve",
+          "function_rva": 6244512
+        },
+        {
+          "pair_rva": 53976096,
+          "name": "GetControlPoints",
+          "function_rva": 6244576
+        },
+        {
+          "pair_rva": 53976112,
+          "name": "CreateControlPoint",
+          "function_rva": 6244832
+        },
+        {
+          "pair_rva": 53976128,
+          "name": "GetMaxOrder",
+          "function_rva": 6245584
+        },
+        {
+          "pair_rva": 53976144,
+          "name": "SetFromAlpha",
+          "function_rva": 6245648
+        },
+        {
+          "pair_rva": 53976160,
+          "name": "GetFromAlpha",
+          "function_rva": 6245792
+        },
+        {
+          "pair_rva": 53976176,
+          "name": "SetToAlpha",
+          "function_rva": 6245856
+        },
+        {
+          "pair_rva": 53976192,
+          "name": "GetToAlpha",
+          "function_rva": 6246000
+        },
+        {
+          "pair_rva": 53976208,
+          "name": "Play",
+          "function_rva": 6246224
+        },
+        {
+          "pair_rva": 53976224,
+          "name": "Pause",
+          "function_rva": 6246336
+        },
+        {
+          "pair_rva": 53976240,
+          "name": "Stop",
+          "function_rva": 6246368
+        },
+        {
+          "pair_rva": 53976256,
+          "name": "Restart",
+          "function_rva": 6246400
+        },
+        {
+          "pair_rva": 53976272,
+          "name": "Finish",
+          "function_rva": 6246512
+        },
+        {
+          "pair_rva": 53976288,
+          "name": "GetProgress",
+          "function_rva": 6246544
+        },
+        {
+          "pair_rva": 53976304,
+          "name": "IsDone",
+          "function_rva": 6246592
+        },
+        {
+          "pair_rva": 53976320,
+          "name": "SetPlaying",
+          "function_rva": 6246064
+        },
+        {
+          "pair_rva": 53976336,
+          "name": "IsPlaying",
+          "function_rva": 6246640
+        },
+        {
+          "pair_rva": 53976352,
+          "name": "IsPaused",
+          "function_rva": 6246720
+        },
+        {
+          "pair_rva": 53976368,
+          "name": "IsPendingFinish",
+          "function_rva": 6246768
+        },
+        {
+          "pair_rva": 53976384,
+          "name": "SetToFinalAlpha",
+          "function_rva": 6246816
+        },
+        {
+          "pair_rva": 53976400,
+          "name": "IsSetToFinalAlpha",
+          "function_rva": 6246912
+        },
+        {
+          "pair_rva": 53976416,
+          "name": "GetDuration",
+          "function_rva": 6246960
+        },
+        {
+          "pair_rva": 53976432,
+          "name": "SetLooping",
+          "function_rva": 6247008
+        },
+        {
+          "pair_rva": 53976448,
+          "name": "GetLooping",
+          "function_rva": 6247184
+        },
+        {
+          "pair_rva": 53976464,
+          "name": "GetLoopState",
+          "function_rva": 6247232
+        },
+        {
+          "pair_rva": 53976480,
+          "name": "GetAnimations",
+          "function_rva": 6247280
+        },
+        {
+          "pair_rva": 53976496,
+          "name": "CreateAnimation",
+          "function_rva": 6247568
+        },
+        {
+          "pair_rva": 53976512,
+          "name": "RemoveAnimations",
+          "function_rva": 6249328
+        },
+        {
+          "pair_rva": 53976528,
+          "name": "HasScript",
+          "function_rva": 6249472
+        },
+        {
+          "pair_rva": 53976544,
+          "name": "GetScript",
+          "function_rva": 6249648
+        },
+        {
+          "pair_rva": 53976560,
+          "name": "SetScript",
+          "function_rva": 6249696
+        },
+        {
+          "pair_rva": 53976576,
+          "name": "HookScript",
+          "function_rva": 6249744
+        },
+        {
+          "pair_rva": 53976592,
+          "name": "GetObjectType",
+          "function_rva": 6252432
+        },
+        {
+          "pair_rva": 53976608,
+          "name": "IsObjectType",
+          "function_rva": 6253760
+        },
+        {
+          "pair_rva": 53976624,
+          "name": "GetName",
+          "function_rva": 6256464
+        },
+        {
+          "pair_rva": 53976640,
+          "name": "GetParent",
+          "function_rva": 6257808
+        },
+        {
+          "pair_rva": 53976656,
+          "name": "IsForbidden",
+          "function_rva": 6259152
+        },
+        {
+          "pair_rva": 53976672,
+          "name": "SetForbidden",
+          "function_rva": 6260496
+        },
+        {
+          "pair_rva": 53976688,
+          "name": "GetDebugName",
+          "function_rva": 6263120
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    },
+    {
+      "start_rva": 54285328,
+      "entries": [
+        {
+          "pair_rva": 54285328,
+          "name": "Undress",
+          "function_rva": 32712400
+        },
+        {
+          "pair_rva": 54285344,
+          "name": "Dress",
+          "function_rva": 32712512
+        },
+        {
+          "pair_rva": 54285360,
+          "name": "TryOn",
+          "function_rva": 32712624
+        },
+        {
+          "pair_rva": 54285376,
+          "name": "UndressSlot",
+          "function_rva": 32714672
+        },
+        {
+          "pair_rva": 54285392,
+          "name": "SetUseTransmogSkin",
+          "function_rva": 32714864
+        },
+        {
+          "pair_rva": 54285408,
+          "name": "GetUseTransmogSkin",
+          "function_rva": 32715056
+        },
+        {
+          "pair_rva": 54285424,
+          "name": "SetUseTransmogChoices",
+          "function_rva": 32715184
+        },
+        {
+          "pair_rva": 54285440,
+          "name": "GetUseTransmogChoices",
+          "function_rva": 32715376
+        },
+        {
+          "pair_rva": 54285456,
+          "name": "SetObeyHideInTransmogFlag",
+          "function_rva": 32715504
+        },
+        {
+          "pair_rva": 54285472,
+          "name": "GetObeyHideInTransmogFlag",
+          "function_rva": 32715696
+        },
+        {
+          "pair_rva": 54285488,
+          "name": "SetAutoDress",
+          "function_rva": 32715824
+        },
+        {
+          "pair_rva": 54285504,
+          "name": "GetAutoDress",
+          "function_rva": 32716016
+        },
+        {
+          "pair_rva": 54285520,
+          "name": "SetSheathed",
+          "function_rva": 32716144
+        },
+        {
+          "pair_rva": 54285536,
+          "name": "GetSheathed",
+          "function_rva": 32716368
+        },
+        {
+          "pair_rva": 54285552,
+          "name": "SetItemTransmogInfo",
+          "function_rva": 32716496
+        },
+        {
+          "pair_rva": 54285568,
+          "name": "GetItemTransmogInfo",
+          "function_rva": 32716976
+        },
+        {
+          "pair_rva": 54285584,
+          "name": "GetItemTransmogInfoList",
+          "function_rva": 32717328
+        }
+      ],
+      "callable_verified": false,
+      "bounded_scan": true
+    }
+  ],
+  "limitations": [
+    "Name/function pairs are candidates; table owner and ABI are unverified.",
+    "The target code section appears transformed on disk; disassembly prefixes are raw bytes, not validated instructions.",
+    "All reported code addresses are RVAs; add the actual module base at runtime.",
+    "Normal imports do not describe dynamic API resolution or the full loader lifecycle.",
+    "No skeleton, vertex layout, rendering hook or Lua callback path is validated.",
+    "No target execution, injection, executable patching or game-data inspection occurred."
+  ]
+}

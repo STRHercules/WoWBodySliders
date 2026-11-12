@@ -1,4 +1,0 @@
-# Optional Python verification tools; the native build and user package do not need them.
-pefile>=2023.2.7
-capstone>=5.0
-lupa>=2.0
