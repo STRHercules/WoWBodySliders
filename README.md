@@ -8,6 +8,7 @@
 [![Version](https://img.shields.io/badge/version-0.3.0-f8b700?style=for-the-badge)](Interface/AddOns/BodySlider/BodySlider.toc)
 [![Status](https://img.shields.io/badge/status-prototype-orange?style=for-the-badge)](#-verification--remaining-acceptance)
 [![Controls](https://img.shields.io/badge/controls-37-8a2be2?style=for-the-badge)](#-what-you-can-shape)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 
 [![Platform](https://img.shields.io/badge/platform-Windows%20x86-0078d6?style=flat-square&logo=windows&logoColor=white)](#-build-from-source)
 [![C++](https://img.shields.io/badge/C%2B%2B-MSVC-00599c?style=flat-square&logo=cplusplus&logoColor=white)](native)
@@ -252,3 +253,7 @@ Historical validation records in [VALIDATION.md](VALIDATION.md) retain earlier m
 **The package is a prototype until those checks are recorded as passed.**
 
 </div>
+
+## 📄 License
+
+Released under the [MIT License](LICENSE). World of Warcraft is a trademark of Blizzard Entertainment; this project is not affiliated with or endorsed by Blizzard.
