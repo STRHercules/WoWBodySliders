@@ -1,0 +1,8 @@
+## Interface: 90207
+## Title: Body Slider - Shadowlands
+## Notes: Local player size prototype with live model preview. Requires BodySliderShadowlandsRuntime.dll. /bodyslider
+## Version: 0.2.4-shadowlands-prototype
+## SavedVariables: BodySliderDB
+State.lua
+Style.lua
+BodySlider.lua

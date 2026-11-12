@@ -1,5 +1,9 @@
 # Body Slider for stock WotLK 3.3.5a
 
+The separate [Shadowlands 9.2.7 port](shadowlands/README.md) has an Epsilon-compatible
+attach helper and an initial local-size/preview prototype. Individual proportions
+and Shadowlands visual acceptance remain unfinished.
+
 Standalone prototype for the supplied x86 build 12340 executable. It uses a small
 executable loader patch, `BodySlider.dll`, and an in-game-only addon. No Esteria
 client, server changes, custom packets, GlueXML edits, DBC edits, or model-file
