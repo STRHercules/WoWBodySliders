@@ -1,0 +1,11 @@
+/build/
+/dist/
+/local/
+__pycache__/
+*.pyc
+*.pdb
+*.obj
+*.exe
+*.dll
+*.vertices
+.vs/
