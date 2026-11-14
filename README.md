@@ -5,7 +5,7 @@
 **Shape your body and face in stock World of Warcraft 3.3.5a — and let other players see it.**
 
 [![WoW](https://img.shields.io/badge/WoW-3.3.5a%20(12340)-0070dd?style=for-the-badge&logo=battledotnet&logoColor=white)](#-install)
-[![Version](https://img.shields.io/badge/version-0.3.0-f8b700?style=for-the-badge)](Interface/AddOns/BodySlider/BodySlider.toc)
+[![Version](https://img.shields.io/badge/version-v1.0-f8b700?style=for-the-badge)](Interface/AddOns/BodySlider/BodySlider.toc)
 [![Status](https://img.shields.io/badge/status-prototype-orange?style=for-the-badge)](#-verification--remaining-acceptance)
 [![Controls](https://img.shields.io/badge/controls-37-8a2be2?style=for-the-badge)](#-what-you-can-shape)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
