@@ -1,5 +1,7 @@
 #pragma once
 #include "DeformProfiles.h"
+#include "ClientDeforms.h"
+#include <iterator>
 #include <cmath>
 #include <cstddef>
 #include <cstring>
@@ -27,15 +29,19 @@ inline const Profile* Find(const char* path, const Vertex* vertices, uint32_t co
     }
     if (path[length]) return nullptr;
     if (length >= 4 && std::strcmp(normalized+length-4, ".mdx") == 0) std::memcpy(normalized+length-4, ".m2", 4);
-    for (const auto& profile : kProfiles) {
+    struct Registry { const Profile* profiles; size_t count; };
+    bool hashed = false;
+    uint64_t hash = 0;
+    for (const auto& registry : {Registry{kProfiles, std::size(kProfiles)}, Registry{ClientDeforms::kProfiles, std::size(ClientDeforms::kProfiles)}})
+    for (size_t variant = 0; variant < registry.count; ++variant) {
+        const auto& profile = registry.profiles[variant];
         if (std::strcmp(normalized, profile.path) != 0) continue;
         bool plausible = false;
         for (uint32_t i = 0; i < profile.variantCount; ++i) plausible |= profile.variants[i].count == count;
-        if (!plausible) return nullptr;
-        uint64_t hash = Fingerprint(vertices, count);
+        if (!plausible) continue;
+        if (!hashed) { hash = Fingerprint(vertices, count); hashed = true; }
         for (uint32_t i = 0; i < profile.variantCount; ++i)
             if (profile.variants[i].count == count && profile.variants[i].hash == hash) return &profile;
-        return nullptr;
     }
     return nullptr;
 }

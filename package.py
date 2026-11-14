@@ -12,7 +12,11 @@ def package(build, patcher_build, output):
     dll = build / "Release" / "BodySlider.dll"
     patcher = patcher_build / "Release" / "BodySliderPatch.exe"
     files = {"BodySlider.dll": dll, "BodySliderPatch.exe": patcher,
-             "README.md": source / "README.md", "VALIDATION.md": source / "VALIDATION.md"}
+             "BodySliderCheck.exe": build / "Release" / "BodySliderCheck.exe",
+             "README.md": source / "README.md", "VALIDATION.md": source / "VALIDATION.md",
+             "LOGGING.md": source / "LOGGING.md"}
+    files["COMPATIBILITY.md"] = source / "COMPATIBILITY.md"
+    files["client_profile_report.json"] = source / "client_profile_report.json"
     addon = source / "Interface" / "AddOns" / "BodySlider"
     for item in addon.iterdir():
         if item.suffix in (".lua", ".toc", ".md"):

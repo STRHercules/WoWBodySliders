@@ -93,7 +93,7 @@ def region(center, radius):
     return dict(center=[round(v, 7) for v in center], radius=[round(v, 7) for v in radius])
 
 
-def profile(data, skin, path):
+def profile(data, skin, path, all_geosets=False):
     raw = read_vertices(data)
     model = dict(path=path, **parse_model(data))
     rig = select_rig(model)
@@ -121,7 +121,7 @@ def profile(data, skin, path):
         offset = index*48
         return sum(raw[offset+12+k] for k in range(4) if raw[offset+12+k] and flags[raw[offset+16+k]] & bit)/255
 
-    main = sorted({skin["indices"][j] for section in skin["sections"] if section["id"] == 0
+    main = sorted({skin["indices"][j] for section in skin["sections"] if all_geosets or section["id"] == 0
                    for j in range(section["start"], section["start"]+section["count"])})
     heads = [vertices[i] for i in main if influence(i, 1) >= .5]
     torso = [vertices[i] for i in main if influence(i, 2) >= .5]

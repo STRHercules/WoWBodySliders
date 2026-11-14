@@ -1,0 +1,1726 @@
+{
+  "models": {
+    "grimfall:character\\bloodelf\\female\\bloodelffemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 295,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\bloodelf\\male\\bloodelfmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 293,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\draenei\\female\\draeneifemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 268,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\draenei\\male\\draeneimale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\dwarf\\female\\dwarffemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 267,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\dwarf\\male\\dwarfmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 264,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\gnome\\female\\gnomefemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 244,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\gnome\\male\\gnomemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 231,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\human\\female\\humanfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 252,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\human\\male\\humanmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 261,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\nightelf\\female\\nightelffemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 281,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\nightelf\\male\\nightelfmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 268,
+      "keys": 46,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\orc\\female\\orcfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 267,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\orc\\male\\orcmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 271,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\scourge\\female\\scourgefemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 249,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\scourge\\male\\scourgemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 288,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\tauren\\female\\taurenfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 270,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\tauren\\male\\taurenmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 269,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\troll\\female\\trollfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 261,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\troll\\male\\trollmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 278,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\voidelf\\female\\voidelffemale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 281,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\voidelf\\male\\voidelfmale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 288,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\worgen\\female\\worgenfemale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 269,
+      "keys": 287,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\worgen\\male\\worgenmale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 251,
+      "keys": 287,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\pandaren\\female\\pandafemale.m2": {
+      "source": {
+        "archive": "patch-e.mpq",
+        "skin_archive": "patch-e.mpq"
+      },
+      "bones": 241,
+      "keys": 287,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\pandaren\\male\\pandamale.m2": {
+      "source": {
+        "archive": "patch-e.mpq",
+        "skin_archive": "patch-e.mpq"
+      },
+      "bones": 243,
+      "keys": 289,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\nightborne\\female\\nightbornefemale.m2": {
+      "source": {
+        "archive": "patch-d.mpq",
+        "skin_archive": "patch-d.mpq"
+      },
+      "bones": 266,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\nightborne\\male\\nightbornemale.m2": {
+      "source": {
+        "archive": "patch-d.mpq",
+        "skin_archive": "patch-d.mpq"
+      },
+      "bones": 253,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\vulpera\\female\\vulperafemale.m2": {
+      "source": {
+        "archive": "patch-b.mpq",
+        "skin_archive": "patch-b.mpq"
+      },
+      "bones": 262,
+      "keys": 287,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\vulpera\\male\\vulperamale.m2": {
+      "source": {
+        "archive": "patch-b.mpq",
+        "skin_archive": "patch-b.mpq"
+      },
+      "bones": 256,
+      "keys": 287,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\felorc\\male\\felorcmale.m2": {
+      "source": {
+        "archive": "patch-3.MPQ",
+        "skin_archive": "patch-3.MPQ"
+      },
+      "bones": 119,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmale02.skin",
+        "3": "character\\felorc\\male\\felorcmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\taunka\\male\\taunkamale.m2": {
+      "source": {
+        "archive": "patch-2.MPQ",
+        "skin_archive": "patch-2.MPQ"
+      },
+      "bones": 137,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\taunka\\male\\taunkamale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\vrykul\\male\\vrykulmale.m2": {
+      "source": {
+        "archive": "patch-2.MPQ",
+        "skin_archive": "patch-2.MPQ"
+      },
+      "bones": 134,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\vrykul\\male\\vrykulmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\broken\\male\\brokenmale.m2": {
+      "source": {
+        "archive": "patch.MPQ",
+        "skin_archive": "patch.MPQ"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\broken\\male\\brokenmale02.skin",
+        "3": "character\\broken\\male\\brokenmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\icetroll\\male\\icetrollmale.m2": {
+      "source": {
+        "archive": "patch.MPQ",
+        "skin_archive": "patch.MPQ"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\icetroll\\male\\icetrollmale02.skin",
+        "3": "character\\icetroll\\male\\icetrollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\northrendskeleton\\male\\northrendskeletonmale.m2": {
+      "source": {
+        "archive": "patch.MPQ",
+        "skin_archive": "patch.MPQ"
+      },
+      "bones": 133,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\northrendskeleton\\male\\northrendskeletonmale02.skin",
+        "3": "character\\northrendskeleton\\male\\northrendskeletonmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\tuskarr\\male\\tuskarrmale.m2": {
+      "source": {
+        "archive": "patch.MPQ",
+        "skin_archive": "patch.MPQ"
+      },
+      "error": "Unsupported stock central skeleton"
+    },
+    "grimfall:character\\felorc\\male\\felorcmaleaxe.m2": {
+      "source": {
+        "archive": "expansion.MPQ",
+        "skin_archive": "expansion.MPQ"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmaleaxe02.skin",
+        "3": "character\\felorc\\male\\felorcmaleaxe03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\felorc\\male\\felorcmalesword.m2": {
+      "source": {
+        "archive": "expansion.MPQ",
+        "skin_archive": "expansion.MPQ"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmalesword02.skin",
+        "3": "character\\felorc\\male\\felorcmalesword03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\broken\\female\\brokenfemale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "error": "Invalid bone/key table bounds"
+    },
+    "grimfall:character\\felorc\\female\\felorcfemale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "bones": 129,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\female\\felorcfemale02.skin",
+        "3": "character\\felorc\\female\\felorcfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\foresttroll\\male\\foresttrollmale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "bones": 118,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\foresttroll\\male\\foresttrollmale02.skin",
+        "3": "character\\foresttroll\\male\\foresttrollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\goblin\\female\\goblinfemale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "bones": 115,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\goblin\\female\\goblinfemale02.skin",
+        "3": "character\\goblin\\female\\goblinfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\goblin\\male\\goblinmale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "bones": 119,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\goblin\\male\\goblinmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\naga_\\female\\naga_female.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "error": "Expected one bone with CRC 294203841, got []"
+    },
+    "grimfall:character\\naga_\\male\\naga_male.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "error": "Expected one bone with CRC 294203841, got []"
+    },
+    "grimfall:character\\skeleton\\female\\skeletonfemale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "error": "Invalid bone/key table bounds"
+    },
+    "grimfall:character\\skeleton\\male\\skeletonmale.m2": {
+      "source": {
+        "archive": "common-2.MPQ",
+        "skin_archive": "common-2.MPQ"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\skeleton\\male\\skeletonmale02.skin",
+        "3": "character\\skeleton\\male\\skeletonmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "grimfall:character\\zandalaritroll\\male\\zandalaritrollmale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 248,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\zandalaritroll\\female\\zandalaritrollfemale.m2": {
+      "source": {
+        "archive": "patch-g.mpq",
+        "skin_archive": "patch-g.mpq"
+      },
+      "bones": 240,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\darkirondwarf\\male\\darkirondwarfmale.m2": {
+      "source": {
+        "archive": "patch-f.mpq",
+        "skin_archive": "patch-f.mpq"
+      },
+      "bones": 257,
+      "keys": 289,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\darkirondwarf\\female\\darkirondwarffemale.m2": {
+      "source": {
+        "archive": "patch-f.mpq",
+        "skin_archive": "patch-f.mpq"
+      },
+      "bones": 261,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\lightforgeddraenei\\male\\lightforgeddraeneimale.m2": {
+      "source": {
+        "archive": "patch-c.mpq",
+        "skin_archive": "patch-c.mpq"
+      },
+      "bones": 266,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\lightforgeddraenei\\female\\lightforgeddraeneifemale.m2": {
+      "source": {
+        "archive": "patch-c.mpq",
+        "skin_archive": "patch-c.mpq"
+      },
+      "bones": 260,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\dracthyr\\male\\dracthyrmale.m2": {
+      "source": {
+        "archive": "patch-a.mpq",
+        "skin_archive": "patch-a.mpq"
+      },
+      "bones": 290,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "grimfall:character\\dracthyr\\female\\dracthyrfemale.m2": {
+      "source": {
+        "archive": "patch-a.mpq",
+        "skin_archive": "patch-a.mpq"
+      },
+      "bones": 240,
+      "keys": 291,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\bloodelf\\female\\bloodelffemale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 287,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\bloodelf\\female\\bloodelffemale_hd01.skin",
+        "2": "character\\bloodelf\\female\\bloodelffemale_hd02.skin",
+        "3": "character\\bloodelf\\female\\bloodelffemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\bloodelf\\male\\bloodelfmale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 294,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\bloodelf\\male\\bloodelfmale_hd01.skin",
+        "2": "character\\bloodelf\\male\\bloodelfmale_hd02.skin",
+        "3": "character\\bloodelf\\male\\bloodelfmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\gnome\\female\\gnomefemale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 259,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\gnome\\female\\gnomefemale_hd01.skin",
+        "2": "character\\gnome\\female\\gnomefemale_hd02.skin",
+        "3": "character\\gnome\\female\\gnomefemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\gnome\\male\\gnomemale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 247,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\gnome\\male\\gnomemale_hd01.skin",
+        "2": "character\\gnome\\male\\gnomemale_hd02.skin",
+        "3": "character\\gnome\\male\\gnomemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nightborne\\female\\nightbornefemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nightborne\\female\\nightbornefemale01.skin",
+        "2": "character\\nightborne\\female\\nightbornefemale02.skin",
+        "3": "character\\nightborne\\female\\nightbornefemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nightborne\\male\\nightbornemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 259,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nightborne\\male\\nightbornemale01.skin",
+        "2": "character\\nightborne\\male\\nightbornemale02.skin",
+        "3": "character\\nightborne\\male\\nightbornemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nightelf\\female\\nightelffemale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nightelf\\female\\nightelffemale_hd01.skin",
+        "2": "character\\nightelf\\female\\nightelffemale_hd02.skin",
+        "3": "character\\nightelf\\female\\nightelffemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nightelf\\male\\nightelfmale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 259,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nightelf\\male\\nightelfmale_hd01.skin",
+        "2": "character\\nightelf\\male\\nightelfmale_hd02.skin",
+        "3": "character\\nightelf\\male\\nightelfmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\tauren\\male\\taurenmale_hd.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 263,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\tauren\\male\\taurenmale_hd01.skin",
+        "2": "character\\tauren\\male\\taurenmale_hd02.skin",
+        "3": "character\\tauren\\male\\taurenmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\voidelf\\female\\voidelffemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 287,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\voidelf\\female\\voidelffemale01.skin",
+        "2": "character\\voidelf\\female\\voidelffemale02.skin",
+        "3": "character\\voidelf\\female\\voidelffemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\voidelf\\male\\voidelfmale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 294,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\voidelf\\male\\voidelfmale01.skin",
+        "2": "character\\voidelf\\male\\voidelfmale02.skin",
+        "3": "character\\voidelf\\male\\voidelfmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\vulpera\\female\\vulperafemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 268,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\vulpera\\female\\vulperafemale01.skin",
+        "2": "character\\vulpera\\female\\vulperafemale02.skin",
+        "3": "character\\vulpera\\female\\vulperafemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\vulpera\\male\\vulperamale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 262,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\vulpera\\male\\vulperamale01.skin",
+        "2": "character\\vulpera\\male\\vulperamale02.skin",
+        "3": "character\\vulpera\\male\\vulperamale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\worgen\\female\\worgenfemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 275,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\worgen\\female\\worgenfemale01.skin",
+        "2": "character\\worgen\\female\\worgenfemale02.skin",
+        "3": "character\\worgen\\female\\worgenfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\worgen\\male\\worgenmale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 257,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\worgen\\male\\worgenmale01.skin",
+        "2": "character\\worgen\\male\\worgenmale02.skin",
+        "3": "character\\worgen\\male\\worgenmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\draenei\\female\\draeneifemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 266,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\draenei\\female\\draeneifemale_hd01.skin",
+        "2": "character\\draenei\\female\\draeneifemale_hd02.skin",
+        "3": "character\\draenei\\female\\draeneifemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\draenei\\male\\draeneimale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\draenei\\male\\draeneimale_hd01.skin",
+        "2": "character\\draenei\\male\\draeneimale_hd02.skin",
+        "3": "character\\draenei\\male\\draeneimale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\dwarf\\female\\dwarffemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 267,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\dwarf\\female\\dwarffemale_hd01.skin",
+        "2": "character\\dwarf\\female\\dwarffemale_hd02.skin",
+        "3": "character\\dwarf\\female\\dwarffemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\dwarf\\male\\dwarfmale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 263,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\dwarf\\male\\dwarfmale_hd01.skin",
+        "2": "character\\dwarf\\male\\dwarfmale_hd02.skin",
+        "3": "character\\dwarf\\male\\dwarfmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\human\\female\\humanfemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 245,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\human\\female\\humanfemale_hd01.skin",
+        "2": "character\\human\\female\\humanfemale_hd02.skin",
+        "3": "character\\human\\female\\humanfemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\human\\male\\humanmale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 258,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\human\\male\\humanmale_hd01.skin",
+        "2": "character\\human\\male\\humanmale_hd02.skin",
+        "3": "character\\human\\male\\humanmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\orc\\female\\orcfemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 269,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\orc\\female\\orcfemale_hd01.skin",
+        "2": "character\\orc\\female\\orcfemale_hd02.skin",
+        "3": "character\\orc\\female\\orcfemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\orc\\male\\orcmale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 259,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\orc\\male\\orcmale_hd01.skin",
+        "2": "character\\orc\\male\\orcmale_hd02.skin",
+        "3": "character\\orc\\male\\orcmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\pandaren\\female\\pandafemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 247,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\pandaren\\female\\pandafemale01.skin",
+        "2": "character\\pandaren\\female\\pandafemale02.skin",
+        "3": "character\\pandaren\\female\\pandafemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\pandaren\\male\\pandamale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 249,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\pandaren\\male\\pandamale01.skin",
+        "2": "character\\pandaren\\male\\pandamale02.skin",
+        "3": "character\\pandaren\\male\\pandamale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\scourge\\female\\scourgefemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 234,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\scourge\\female\\scourgefemale_hd01.skin",
+        "2": "character\\scourge\\female\\scourgefemale_hd02.skin",
+        "3": "character\\scourge\\female\\scourgefemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\scourge\\male\\scourgemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 276,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\scourge\\male\\scourgemale_hd01.skin",
+        "2": "character\\scourge\\male\\scourgemale_hd02.skin",
+        "3": "character\\scourge\\male\\scourgemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\tauren\\female\\taurenfemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 270,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\tauren\\female\\taurenfemale_hd01.skin",
+        "2": "character\\tauren\\female\\taurenfemale_hd02.skin",
+        "3": "character\\tauren\\female\\taurenfemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\troll\\female\\trollfemale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 246,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\troll\\female\\trollfemale_hd01.skin",
+        "2": "character\\troll\\female\\trollfemale_hd02.skin",
+        "3": "character\\troll\\female\\trollfemale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\troll\\male\\trollmale_hd.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 278,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\troll\\male\\trollmale_hd01.skin",
+        "2": "character\\troll\\male\\trollmale_hd02.skin",
+        "3": "character\\troll\\male\\trollmale_hd03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\bloodelf\\female\\bloodelffemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 162,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\bloodelf\\male\\bloodelfmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 151,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\broken\\female\\brokenfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "error": "Invalid bone/key table bounds"
+    },
+    "sirus:character\\broken\\male\\brokenmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\broken\\male\\brokenmale02.skin",
+        "3": "character\\broken\\male\\brokenmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\draenei\\female\\draeneifemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 149,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\draenei\\male\\draeneimale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 154,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\dwarf\\female\\dwarffemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 143,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\dwarf\\male\\dwarfmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 148,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\felorc\\female\\felorcfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 129,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\female\\felorcfemale02.skin",
+        "3": "character\\felorc\\female\\felorcfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\felorc\\male\\felorcmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 119,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmale02.skin",
+        "3": "character\\felorc\\male\\felorcmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\felorc\\male\\felorcmaleaxe.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmaleaxe02.skin",
+        "3": "character\\felorc\\male\\felorcmaleaxe03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\felorc\\male\\felorcmalesword.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\felorc\\male\\felorcmalesword02.skin",
+        "3": "character\\felorc\\male\\felorcmalesword03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\foresttroll\\male\\foresttrollmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 118,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\foresttroll\\male\\foresttrollmale02.skin",
+        "3": "character\\foresttroll\\male\\foresttrollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\gnome\\female\\gnomefemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\gnome\\female\\gnomefemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\gnome\\male\\gnomemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 127,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\gnome\\male\\gnomemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\goblin\\female\\goblinfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 115,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\goblin\\female\\goblinfemale02.skin",
+        "3": "character\\goblin\\female\\goblinfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\goblin\\male\\goblinmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 119,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\goblin\\male\\goblinmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\human\\female\\humanfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 122,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "Invalid bone combo 224/224 value None",
+        "3": "character\\human\\female\\humanfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\human\\male\\humanmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 138,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\human\\male\\humanmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\icetroll\\male\\icetrollmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 116,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\icetroll\\male\\icetrollmale02.skin",
+        "3": "character\\icetroll\\male\\icetrollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\naga_\\female\\naga_female.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "error": "Expected one bone with CRC 294203841, got []"
+    },
+    "sirus:character\\naga_\\male\\naga_male.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "error": "Expected one bone with CRC 294203841, got []"
+    },
+    "sirus:character\\nightelf\\female\\nightelffemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 147,
+      "keys": 27,
+      "rig": "generated",
+      "deform": "generated"
+    },
+    "sirus:character\\nightelf\\male\\nightelfmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 134,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\nightelf\\male\\nightelfmale02.skin",
+        "3": "character\\nightelf\\male\\nightelfmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\northrendskeleton\\male\\northrendskeletonmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 133,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\northrendskeleton\\male\\northrendskeletonmale02.skin",
+        "3": "character\\northrendskeleton\\male\\northrendskeletonmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\orc\\female\\orcfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 135,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\orc\\female\\orcfemale02.skin",
+        "3": "character\\orc\\female\\orcfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\orc\\male\\orcmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 137,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\orc\\male\\orcmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\scourge\\female\\scourgefemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 140,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\scourge\\female\\scourgefemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\scourge\\male\\scourgemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 143,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\scourge\\male\\scourgemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\skeleton\\female\\skeletonfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "error": "Invalid bone/key table bounds"
+    },
+    "sirus:character\\skeleton\\male\\skeletonmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "error": "SKIN index outside vertex table"
+    },
+    "sirus:character\\taunka\\male\\taunkamale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 137,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\taunka\\male\\taunkamale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\tauren\\female\\taurenfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 148,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\tauren\\female\\taurenfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\tauren\\male\\taurenmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 145,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\tauren\\male\\taurenmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\troll\\female\\trollfemale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 128,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\troll\\female\\trollfemale02.skin",
+        "3": "character\\troll\\female\\trollfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\troll\\male\\trollmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "bones": 130,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\troll\\male\\trollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\tuskarr\\male\\tuskarrmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "common.mpq"
+      },
+      "error": "Unsupported stock central skeleton"
+    },
+    "sirus:character\\vrykul\\male\\vrykulmale.m2": {
+      "source": {
+        "archive": "common.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 134,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "3": "character\\vrykul\\male\\vrykulmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nagasirushd\\female\\snaga_female.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 207,
+      "keys": 100,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nagasirushd\\female\\snaga_female01.skin",
+        "2": "character\\nagasirushd\\female\\snaga_female02.skin",
+        "3": "character\\nagasirushd\\female\\snaga_female03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\dracthyr\\male\\dracthyrmale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 296,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\dracthyr\\male\\dracthyrmale01.skin",
+        "2": "character\\dracthyr\\male\\dracthyrmale02.skin",
+        "3": "character\\dracthyr\\male\\dracthyrmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\nagasirushd\\male\\snaga_male.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 200,
+      "keys": 100,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\nagasirushd\\male\\snaga_male01.skin",
+        "2": "character\\nagasirushd\\male\\snaga_male02.skin",
+        "3": "character\\nagasirushd\\male\\snaga_male03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\goblin\\female\\goblinfm.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 256,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\goblin\\female\\goblinfm01.skin",
+        "2": "character\\goblin\\female\\goblinfm02.skin",
+        "3": "character\\goblin\\female\\goblinfm03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\dracthyr\\female\\dracthyrfemale.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 246,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\dracthyr\\female\\dracthyrfemale01.skin",
+        "2": "character\\dracthyr\\female\\dracthyrfemale02.skin",
+        "3": "character\\dracthyr\\female\\dracthyrfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\goblin\\male\\goblinm.m2": {
+      "source": {
+        "archive": "patch-u.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 244,
+      "keys": 287,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\goblin\\male\\goblinm01.skin",
+        "2": "character\\goblin\\male\\goblinm02.skin",
+        "3": "character\\goblin\\male\\goblinm03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\eredar\\female\\race_eredarfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 266,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\eredar\\female\\race_eredarfemale01.skin",
+        "2": "character\\eredar\\female\\race_eredarfemale02.skin",
+        "3": "character\\eredar\\female\\race_eredarfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\eredar\\male\\race_eredarmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\eredar\\male\\race_eredarmale01.skin",
+        "2": "character\\eredar\\male\\race_eredarmale02.skin",
+        "3": "character\\eredar\\male\\race_eredarmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\zandalaritroll\\male\\zandalaritrollmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 254,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\zandalaritroll\\male\\zandalaritrollmale01.skin",
+        "2": "character\\zandalaritroll\\male\\zandalaritrollmale02.skin",
+        "3": "character\\zandalaritroll\\male\\zandalaritrollmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\darkirondwarf\\female\\darkirondwarffemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 267,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\darkirondwarf\\female\\darkirondwarffemale01.skin",
+        "2": "character\\darkirondwarf\\female\\darkirondwarffemale02.skin",
+        "3": "character\\darkirondwarf\\female\\darkirondwarffemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\darkirondwarf\\male\\darkirondwarfmale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 263,
+      "keys": 289,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\darkirondwarf\\male\\darkirondwarfmale01.skin",
+        "2": "character\\darkirondwarf\\male\\darkirondwarfmale02.skin",
+        "3": "character\\darkirondwarf\\male\\darkirondwarfmale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\lightforgeddraenei\\female\\lightforgeddraeneifemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 266,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\lightforgeddraenei\\female\\lightforgeddraeneifemale01.skin",
+        "2": "character\\lightforgeddraenei\\female\\lightforgeddraeneifemale02.skin",
+        "3": "character\\lightforgeddraenei\\female\\lightforgeddraeneifemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\lightforgeddraenei\\male\\lightforgeddraeneimale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 272,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\lightforgeddraenei\\male\\lightforgeddraeneimale01.skin",
+        "2": "character\\lightforgeddraenei\\male\\lightforgeddraeneimale02.skin",
+        "3": "character\\lightforgeddraenei\\male\\lightforgeddraeneimale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\zandalaritroll\\female\\zandalaritrollfemale.m2": {
+      "source": {
+        "archive": "patch-t.mpq",
+        "skin_archive": "patch-t.mpq"
+      },
+      "bones": 246,
+      "keys": 291,
+      "rig": "generated",
+      "excluded_lods": {
+        "1": "character\\zandalaritroll\\female\\zandalaritrollfemale01.skin",
+        "2": "character\\zandalaritroll\\female\\zandalaritrollfemale02.skin",
+        "3": "character\\zandalaritroll\\female\\zandalaritrollfemale03.skin"
+      },
+      "deform": "generated"
+    },
+    "sirus:character\\vrykul\\female\\vrykulfemale2.m2": {
+      "source": {
+        "archive": "patch-8.mpq",
+        "skin_archive": "patch-8.mpq"
+      },
+      "bones": 125,
+      "keys": 27,
+      "rig": "generated",
+      "excluded_lods": {
+        "2": "character\\vrykul\\female\\vrykulfemale202.skin",
+        "3": "character\\vrykul\\female\\vrykulfemale203.skin"
+      },
+      "deform": "generated"
+    }
+  },
+  "evidence": "Offline decoded model/topology/mesh audit; live validation pending"
+}

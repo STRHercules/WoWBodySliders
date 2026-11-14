@@ -1,3 +1,45 @@
+# Grimfall missing-variant correction 1.1.1 - 2026-11-14
+
+The live Grimfall log rejected character/darkirondwarf/male/darkirondwarfmale.m2
+with 257 bones and 289 keys. Version 1.1 had only the distinct 263-bone Sirus
+profile under that filename. Direct cross-client path probes found eight
+additional Grimfall variants omitted by archive listfiles and the older DBC join:
+Dark Iron, Lightforged, Zandalari and Dracthyr, both sexes.
+
+Version 1.1.1 adds those eight skeleton and mesh profiles, preserving all previous
+variants and strict validation. The regression checks require both clients to
+have all eight paths and require Grimfall Dark Iron male to be 257 bones/289 keys.
+There are now 129 generated client rigs and 128 generated mesh profiles.
+Automated validation exercises all variants and actual full-mesh fixtures.
+The prior safety, native runtime, logging and packaging checks remain required.
+No live visual acceptance is claimed; this corrects the logged rejection.
+
+# Grimfall/Sirus compatibility test build 1.1 - 2026-11-14
+
+Generated 121 client skeleton variants and 120 mesh deformation profiles from
+the local Grimfall and Sirus model/skin files, preserving the twenty original
+stock skeleton/mesh profiles. Coverage and exclusions are in COMPATIBILITY.md
+and client_profile_report.json. All original race/sex replacement models,
+Pandaren, the additional discovered humanoid races and Sirus HD Naga are covered;
+HD Naga leg controls are intentionally unavailable.
+
+Validation completed: seven native CTest suites, 21 Python checks covering
+model/profile generation and packaging, and the full-mesh native test against
+all 120 actual client vertex fixtures. Every advertised mesh control moved
+vertices at its allowed extremes, returned finite positions/normals and
+preserved UVs and bone weights. Vertex fingerprint tampering was rejected.
+The runtime harness exercised all 121 client skeleton variants, full key-table
+mutation including HD entries beyond 27, pivot rejection and supported skeletal
+control extremes. The existing stock tests remain passing.
+
+Native patching/restoration also reproduced both installed executable inputs
+byte-for-byte: D:/Grimfall/Wotlk/Wow.exe and the Sirus installation's run.exe.
+Neither client executable/archive was modified. No game login, live render,
+equipment/animation calibration, crowded-area performance or realm acceptance
+was performed. These remain live acceptance gates, not automated-test claims.
+
+Earlier validation records follow.
+
 # Body Slider 0.2.2 prototype verification
 
 ## Transport correction after live testing

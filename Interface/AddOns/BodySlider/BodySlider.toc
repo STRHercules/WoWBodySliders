@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title: Body Slider
 ## Notes: In-game body, breast/butt, and facial proportions with a live preview, presets and share codes. Needs BodySlider.dll. /bodyslider
-## Version: 0.3.0
+## Version: 1.1.1
 ## SavedVariables: BodySliderDB
 ## OptionalDeps: totalRP3, MyRolePlay, XRP
 Style.lua

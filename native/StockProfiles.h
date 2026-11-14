@@ -6,7 +6,7 @@ namespace Stock {
 struct Rig { const char* path; uint32_t count; int roots[4]; int head, neck;
     int shoulders[2], arms[2], chest, waist, hips;
     int upperlegs[2], lowerlegs[2], armAxis[2], legAxis[2];
-    const uint16_t* keys; const uint16_t* parents; const float (*pivots)[3]; };
+    const uint16_t* keys; const uint16_t* parents; const float (*pivots)[3]; uint32_t keyCount; };
 inline constexpr uint16_t kKeysHumanMale[] = {17, 18, 10, 11, 2, 3, 16, 29, 45, 46, 47, 48, 49, 42, 43, 44, 40, 41, 121, 135, 134, 118, 62, 65, 122, 81, 1};
 inline constexpr uint16_t kParentsHumanMale[] = {65535, 0, 1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 14, 15, 15, 16, 16, 16, 16, 16, 16, 17, 18, 20, 22, 28, 30, 30, 31, 31, 34, 36, 36, 36, 36, 36, 38, 38, 38, 38, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 10, 11, 18, 17, 23, 21, 16, 18, 17, 16, 20, 22, 16, 16, 30, 30, 38, 36, 37, 35, 36, 38, 38, 38, 36, 36, 38, 126, 126};
 inline constexpr float kPivotsHumanMale[][3] = {
@@ -2897,25 +2897,25 @@ inline constexpr float kPivotsDraeneiFemale[][3] = {
     {0.0786974f, -0.2901703f, 1.1243483f},
 };
 inline constexpr Rig kRigs[] = {
-    {"character/human/male/humanmale.m2", 138, {0, -1, -1, -1}, 16, 9, {10, 11}, {17, 18}, 4, 2, 3, {7, 8}, {14, 15}, {2, 2}, {2, 2}, kKeysHumanMale, kParentsHumanMale, kPivotsHumanMale},
-    {"character/human/female/humanfemale.m2", 122, {0, -1, -1, -1}, 18, 11, {16, 17}, {19, 20}, 4, 2, 3, {5, 6}, {12, 13}, {2, 2}, {2, 2}, kKeysHumanFemale, kParentsHumanFemale, kPivotsHumanFemale},
-    {"character/orc/male/orcmale.m2", 137, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysOrcMale, kParentsOrcMale, kPivotsOrcMale},
-    {"character/orc/female/orcfemale.m2", 135, {0, -1, -1, -1}, 20, 11, {12, 13}, {21, 22}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysOrcFemale, kParentsOrcFemale, kPivotsOrcFemale},
-    {"character/dwarf/male/dwarfmale.m2", 148, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysDwarfMale, kParentsDwarfMale, kPivotsDwarfMale},
-    {"character/dwarf/female/dwarffemale.m2", 143, {0, -1, -1, -1}, 17, 10, {15, 16}, {18, 19}, 4, 2, 3, {5, 6}, {11, 12}, {2, 2}, {2, 2}, kKeysDwarfFemale, kParentsDwarfFemale, kPivotsDwarfFemale},
-    {"character/nightelf/male/nightelfmale.m2", 134, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysNightElfMale, kParentsNightElfMale, kPivotsNightElfMale},
-    {"character/nightelf/female/nightelffemale.m2", 147, {0, -1, -1, -1}, 19, 11, {12, 13}, {20, 21}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysNightElfFemale, kParentsNightElfFemale, kPivotsNightElfFemale},
-    {"character/scourge/male/scourgemale.m2", 143, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysScourgeMale, kParentsScourgeMale, kPivotsScourgeMale},
-    {"character/scourge/female/scourgefemale.m2", 140, {0, -1, -1, -1}, 20, 11, {12, 13}, {21, 22}, 4, 2, 3, {5, 6}, {14, 16}, {2, 2}, {2, 2}, kKeysScourgeFemale, kParentsScourgeFemale, kPivotsScourgeFemale},
-    {"character/tauren/male/taurenmale.m2", 145, {0, -1, -1, -1}, 20, 12, {19, 18}, {24, 23}, 4, 2, 3, {6, 5}, {14, 13}, {2, 2}, {2, 2}, kKeysTaurenMale, kParentsTaurenMale, kPivotsTaurenMale},
-    {"character/tauren/female/taurenfemale.m2", 148, {0, -1, -1, -1}, 21, 13, {19, 20}, {24, 25}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysTaurenFemale, kParentsTaurenFemale, kPivotsTaurenFemale},
-    {"character/gnome/male/gnomemale.m2", 127, {0, -1, -1, -1}, 18, 9, {12, 13}, {19, 20}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysGnomeMale, kParentsGnomeMale, kPivotsGnomeMale},
-    {"character/gnome/female/gnomefemale.m2", 128, {0, -1, -1, -1}, 18, 9, {10, 11}, {21, 22}, 4, 2, 3, {5, 6}, {12, 13}, {2, 2}, {2, 2}, kKeysGnomeFemale, kParentsGnomeFemale, kPivotsGnomeFemale},
-    {"character/troll/male/trollmale.m2", 130, {0, -1, -1, -1}, 25, 17, {14, 13}, {24, 23}, 8, 3, 2, {6, 4}, {11, 9}, {2, 2}, {2, 2}, kKeysTrollMale, kParentsTrollMale, kPivotsTrollMale},
-    {"character/troll/female/trollfemale.m2", 128, {0, -1, -1, -1}, 18, 9, {10, 11}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysTrollFemale, kParentsTrollFemale, kPivotsTrollFemale},
-    {"character/bloodelf/male/bloodelfmale.m2", 151, {0, -1, -1, -1}, 28, 19, {20, 21}, {29, 30}, 9, 1, 2, {7, 4}, {15, 10}, {2, 2}, {2, 2}, kKeysBloodElfMale, kParentsBloodElfMale, kPivotsBloodElfMale},
-    {"character/bloodelf/female/bloodelffemale.m2", 162, {0, -1, -1, -1}, 27, 18, {19, 22}, {28, 29}, 10, 2, 3, {5, 6}, {11, 13}, {2, 2}, {2, 2}, kKeysBloodElfFemale, kParentsBloodElfFemale, kPivotsBloodElfFemale},
-    {"character/draenei/male/draeneimale.m2", 154, {0, -1, -1, -1}, 30, 24, {25, 23}, {31, 29}, 17, 3, 2, {5, 4}, {12, 11}, {2, 2}, {2, 2}, kKeysDraeneiMale, kParentsDraeneiMale, kPivotsDraeneiMale},
-    {"character/draenei/female/draeneifemale.m2", 149, {0, -1, -1, -1}, 31, 24, {25, 28}, {32, 33}, 19, 3, 2, {7, 8}, {15, 16}, {2, 2}, {2, 2}, kKeysDraeneiFemale, kParentsDraeneiFemale, kPivotsDraeneiFemale},
+    {"character/human/male/humanmale.m2", 138, {0, -1, -1, -1}, 16, 9, {10, 11}, {17, 18}, 4, 2, 3, {7, 8}, {14, 15}, {2, 2}, {2, 2}, kKeysHumanMale, kParentsHumanMale, kPivotsHumanMale, 27},
+    {"character/human/female/humanfemale.m2", 122, {0, -1, -1, -1}, 18, 11, {16, 17}, {19, 20}, 4, 2, 3, {5, 6}, {12, 13}, {2, 2}, {2, 2}, kKeysHumanFemale, kParentsHumanFemale, kPivotsHumanFemale, 27},
+    {"character/orc/male/orcmale.m2", 137, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysOrcMale, kParentsOrcMale, kPivotsOrcMale, 27},
+    {"character/orc/female/orcfemale.m2", 135, {0, -1, -1, -1}, 20, 11, {12, 13}, {21, 22}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysOrcFemale, kParentsOrcFemale, kPivotsOrcFemale, 27},
+    {"character/dwarf/male/dwarfmale.m2", 148, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysDwarfMale, kParentsDwarfMale, kPivotsDwarfMale, 27},
+    {"character/dwarf/female/dwarffemale.m2", 143, {0, -1, -1, -1}, 17, 10, {15, 16}, {18, 19}, 4, 2, 3, {5, 6}, {11, 12}, {2, 2}, {2, 2}, kKeysDwarfFemale, kParentsDwarfFemale, kPivotsDwarfFemale, 27},
+    {"character/nightelf/male/nightelfmale.m2", 134, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysNightElfMale, kParentsNightElfMale, kPivotsNightElfMale, 27},
+    {"character/nightelf/female/nightelffemale.m2", 147, {0, -1, -1, -1}, 19, 11, {12, 13}, {20, 21}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysNightElfFemale, kParentsNightElfFemale, kPivotsNightElfFemale, 27},
+    {"character/scourge/male/scourgemale.m2", 143, {0, -1, -1, -1}, 18, 11, {12, 13}, {19, 20}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysScourgeMale, kParentsScourgeMale, kPivotsScourgeMale, 27},
+    {"character/scourge/female/scourgefemale.m2", 140, {0, -1, -1, -1}, 20, 11, {12, 13}, {21, 22}, 4, 2, 3, {5, 6}, {14, 16}, {2, 2}, {2, 2}, kKeysScourgeFemale, kParentsScourgeFemale, kPivotsScourgeFemale, 27},
+    {"character/tauren/male/taurenmale.m2", 145, {0, -1, -1, -1}, 20, 12, {19, 18}, {24, 23}, 4, 2, 3, {6, 5}, {14, 13}, {2, 2}, {2, 2}, kKeysTaurenMale, kParentsTaurenMale, kPivotsTaurenMale, 27},
+    {"character/tauren/female/taurenfemale.m2", 148, {0, -1, -1, -1}, 21, 13, {19, 20}, {24, 25}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysTaurenFemale, kParentsTaurenFemale, kPivotsTaurenFemale, 27},
+    {"character/gnome/male/gnomemale.m2", 127, {0, -1, -1, -1}, 18, 9, {12, 13}, {19, 20}, 4, 2, 3, {5, 6}, {14, 15}, {2, 2}, {2, 2}, kKeysGnomeMale, kParentsGnomeMale, kPivotsGnomeMale, 27},
+    {"character/gnome/female/gnomefemale.m2", 128, {0, -1, -1, -1}, 18, 9, {10, 11}, {21, 22}, 4, 2, 3, {5, 6}, {12, 13}, {2, 2}, {2, 2}, kKeysGnomeFemale, kParentsGnomeFemale, kPivotsGnomeFemale, 27},
+    {"character/troll/male/trollmale.m2", 130, {0, -1, -1, -1}, 25, 17, {14, 13}, {24, 23}, 8, 3, 2, {6, 4}, {11, 9}, {2, 2}, {2, 2}, kKeysTrollMale, kParentsTrollMale, kPivotsTrollMale, 27},
+    {"character/troll/female/trollfemale.m2", 128, {0, -1, -1, -1}, 18, 9, {10, 11}, {19, 20}, 4, 2, 3, {7, 8}, {16, 17}, {2, 2}, {2, 2}, kKeysTrollFemale, kParentsTrollFemale, kPivotsTrollFemale, 27},
+    {"character/bloodelf/male/bloodelfmale.m2", 151, {0, -1, -1, -1}, 28, 19, {20, 21}, {29, 30}, 9, 1, 2, {7, 4}, {15, 10}, {2, 2}, {2, 2}, kKeysBloodElfMale, kParentsBloodElfMale, kPivotsBloodElfMale, 27},
+    {"character/bloodelf/female/bloodelffemale.m2", 162, {0, -1, -1, -1}, 27, 18, {19, 22}, {28, 29}, 10, 2, 3, {5, 6}, {11, 13}, {2, 2}, {2, 2}, kKeysBloodElfFemale, kParentsBloodElfFemale, kPivotsBloodElfFemale, 27},
+    {"character/draenei/male/draeneimale.m2", 154, {0, -1, -1, -1}, 30, 24, {25, 23}, {31, 29}, 17, 3, 2, {5, 4}, {12, 11}, {2, 2}, {2, 2}, kKeysDraeneiMale, kParentsDraeneiMale, kPivotsDraeneiMale, 27},
+    {"character/draenei/female/draeneifemale.m2", 149, {0, -1, -1, -1}, 31, 24, {25, 28}, {32, 33}, 19, 3, 2, {7, 8}, {15, 16}, {2, 2}, {2, 2}, kKeysDraeneiFemale, kParentsDraeneiFemale, kPivotsDraeneiFemale, 27},
 };
 } // namespace Stock

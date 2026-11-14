@@ -51,6 +51,13 @@ def select_rig(model):
 
     def landmark(crc):
         matches = [b["index"] for b in bones if b["name_crc"] == crc]
+        if len(matches) > 1:
+            # Some retroports append unweighted children duplicating the real landmark CRC.
+            candidates = [index for index in matches if bones[index]["weighted_vertices"]]
+            if len(candidates) == 1:
+                primary = candidates[0]
+                if all(math.dist(bones[index]["pivot"], bones[primary]["pivot"]) < 0.0001 for index in matches):
+                    return primary
         if len(matches) != 1:
             raise ValueError(f"Expected one bone with CRC {crc}, got {matches}")
         return matches[0]
@@ -58,7 +65,11 @@ def select_rig(model):
     def distinct_parent(index):
         pivot = bones[index]["pivot"]
         parent = bones[index]["parent"]
+        seen = {index}
         while parent >= 0 and math.dist(pivot, bones[parent]["pivot"]) < 0.0001:
+            if parent in seen:
+                raise ValueError("Bone parent cycle")
+            seen.add(parent)
             parent = bones[parent]["parent"]
         if parent < 0:
             raise ValueError("Limb chain ends before its proximal joint")
@@ -79,36 +90,50 @@ def select_rig(model):
             index = bones[index]["parent"]
         return chain
 
-    hands = [landmark(crc) for crc in (294203841, 3951430818)]
+    canonical = model["path"].lower().replace("\\", "/").replace("_hd.m2", ".m2")
+    naga = "/nagasirushd/" in canonical
+    hand_crcs = (294203841, 3951430818)
+    if naga:
+        hand_crcs = ((0x8eb67e7c, 0x5af741a3) if "/female/" in canonical else (133952906, 4260677865))
+    hands = [landmark(crc) for crc in hand_crcs]
     lowerarms = [distinct_parent(index) for index in hands]
     arms = [distinct_parent(index) for index in lowerarms]
-    if model["path"].lower().endswith("bloodelfmale.m2"):
+    if canonical.endswith("bloodelfmale.m2") and keys[:2] == [-1, -1]:
         # This rig places a separate weighted elbow before its forearm; key 0/1 are absent.
         arms = [keys[2], keys[3]]
         lowerarms = [landmark(crc) for crc in (2133193007, 2234174540)]
     shoulders = [bones[index]["parent"] for index in arms]
     # Draenei females use a different digitigrade foot naming family.
-    foot_crcs = ((3735651477, 614906358) if model["path"].lower().endswith("draeneifemale.m2")
+    foot_crcs = ((3735651477, 614906358) if canonical.endswith("draeneifemale.m2")
                  else (90603765, 4285119894))
-    feet = [landmark(crc) for crc in foot_crcs]
-    lowerlegs = [distinct_parent(index) for index in feet]
-    upperlegs = [distinct_parent(index) for index in lowerlegs]
+    if foot_crcs != (90603765, 4285119894) and not any(b["name_crc"] in foot_crcs for b in bones):
+        foot_crcs = (90603765, 4285119894)
+    feet = [-1, -1] if naga else [landmark(crc) for crc in foot_crcs]
+    lowerlegs = [-1, -1] if naga else [distinct_parent(index) for index in feet]
+    upperlegs = [-1, -1] if naga else [distinct_parent(index) for index in lowerlegs]
     shoulder_chains = [ancestors(index) for index in shoulders]
     chest = next(index for index in shoulder_chains[0] if index in shoulder_chains[1])
     roots = sorted({ancestors(b["index"])[-1] for b in bones if b["weighted_vertices"]})
-    if not 1 <= len(roots) <= 4 or keys[6] < 0 or keys[4] < 0 or keys[5] < 0:
+    hips = keys[5]
+    if hips < 0:
+        # HD rigs may omit the pelvis key; both thigh chains must share its topology.
+        right = ancestors(upperlegs[1])
+        hips = next((index for index in ancestors(upperlegs[0]) if index in right), -1)
+        if hips in upperlegs or hips in roots:
+            raise ValueError("Cannot identify a distinct shared pelvis")
+    if not 1 <= len(roots) <= 4 or keys[6] < 0 or keys[4] < 0 or hips < 0:
         raise ValueError("Unsupported stock central skeleton")
     # Each thigh must lead back through the pelvis; each arm through the chest.
-    if any(keys[5] not in ancestors(index) for index in upperlegs):
+    if any(hips not in ancestors(index) for index in upperlegs if index >= 0):
         raise ValueError("Selected leg does not descend from pelvis")
     if any(chest not in ancestors(index) for index in arms):
         raise ValueError("Selected arm does not descend from chest")
     return dict(roots=roots, head=keys[6], neck=bones[keys[6]]["parent"],
                 shoulders=shoulders, arms=arms, lowerarms=lowerarms, hands=hands,
-                chest=chest, waist=keys[4], hips=keys[5], upperlegs=upperlegs,
+                chest=chest, waist=keys[4], hips=hips, upperlegs=upperlegs,
                 lowerlegs=lowerlegs, feet=feet,
                 armAxis=[axis(parent, child) for parent, child in zip(arms, lowerarms)],
-                legAxis=[axis(parent, child) for parent, child in zip(upperlegs, lowerlegs)],
+                legAxis=[0, 0] if naga else [axis(parent, child) for parent, child in zip(upperlegs, lowerlegs)],
                 evidence="CRC hand/foot landmarks, parent chains with coincident helper pivots skipped, dominant bind-pose axis; visual calibration pending")
 
 
@@ -119,7 +144,7 @@ def generate_header(profiles):
              "struct Rig { const char* path; uint32_t count; int roots[4]; int head, neck;",
              "    int shoulders[2], arms[2], chest, waist, hips;",
              "    int upperlegs[2], lowerlegs[2], armAxis[2], legAxis[2];",
-             "    const uint16_t* keys; const uint16_t* parents; const float (*pivots)[3]; };"]
+             "    const uint16_t* keys; const uint16_t* parents; const float (*pivots)[3]; uint32_t keyCount; };"]
 
     def array(values):
         return "{" + ", ".join(str(value) for value in values) + "}"
@@ -140,13 +165,13 @@ def generate_header(profiles):
                   str(rig["head"]), str(rig["neck"]), array(rig["shoulders"]), array(rig["arms"]),
                   str(rig["chest"]), str(rig["waist"]), str(rig["hips"])]
         fields.extend(array(rig[name]) for name in ("upperlegs", "lowerlegs", "armAxis", "legAxis"))
-        fields.extend((f"kKeys{name}", f"kParents{name}", f"kPivots{name}"))
+        fields.extend((f"kKeys{name}", f"kParents{name}", f"kPivots{name}", str(len(model["key_bones"]))))
         lines.append("    {" + ", ".join(fields) + "},")
     return "\n".join(lines + ["};", "} // namespace Stock", ""])
 
 
 class Archives:
-    def __init__(self, client, dll):
+    def __init__(self, client, dll, names=ARCHIVES, flags=0x100):
         self.dll = ctypes.WinDLL(str(dll), use_last_error=True)
         handle = ctypes.c_void_p
         u32 = ctypes.c_uint32
@@ -163,12 +188,12 @@ class Archives:
             function.restype = result
         self.handles = []
         try:
-            for name in ARCHIVES:
+            for name in names:
                 path = client / "Data" / name
                 if not path.exists():
                     continue
                 opened = handle()
-                if not self.dll.SFileOpenArchive(str(path), 0, 0x100, ctypes.byref(opened)):
+                if not self.dll.SFileOpenArchive(str(path), 0, flags, ctypes.byref(opened)):
                     raise OSError(f"Cannot open {path} read-only: {ctypes.get_last_error()}")
                 self.handles.append((path, opened))
         except Exception:

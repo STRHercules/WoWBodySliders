@@ -19,8 +19,9 @@ class PackageTests(unittest.TestCase):
         self.build = self.folder / "native"
         self.patcher = self.folder / "patcher"
         for path, content in ((self.build / "Release/BodySlider.dll", b"test dll"),
+                              (self.build / "Release/BodySliderCheck.exe", b"test diagnostic exe"),
                               (self.patcher / "Release/BodySliderPatch.exe", b"test exe")):
-            path.parent.mkdir(parents=True)
+            path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
         self.output = self.folder / "BodySlider.zip"
 
@@ -34,6 +35,9 @@ class PackageTests(unittest.TestCase):
             self.assertIsNone(archive.testzip())
             names = set(archive.namelist())
             self.assertTrue({"BodySlider.dll", "BodySliderPatch.exe", "README.md", "VALIDATION.md",
+                             "BodySliderCheck.exe", "LOGGING.md",
+                             "COMPATIBILITY.md",
+                             "client_profile_report.json",
                              "Interface/AddOns/BodySlider/BodySlider.lua",
                              "Interface/AddOns/BodySlider/BodySlider.toc",
                              "Interface/AddOns/BodySlider/Protocol.lua", "SHA256.json"}.issubset(names))

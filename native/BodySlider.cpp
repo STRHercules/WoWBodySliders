@@ -11,8 +11,10 @@
 #include "ShapeMath.h"
 #include "NativeBridge.h"
 #include "StockProfiles.h"
+#include "ClientRigs.h"
 #include "DeformMath.h"
 #include "DeformProfiles.h"
+#include "Logging.h"
 
 // Addresses and register contracts are pinned to the supplied build; see evidence-native.txt.
 namespace {
@@ -54,21 +56,11 @@ struct ModelState {
 };
 std::unordered_map<void*, ModelState> g_models;
 
+using Diagnostics::Log;
+HMODULE g_module = nullptr;
+
 #include "MeshRuntime.h"
 
-void Log(const char* text) {
-    char path[MAX_PATH]{};
-    DWORD length = GetModuleFileNameA(nullptr, path, MAX_PATH);
-    if (!length || length >= MAX_PATH) return;
-    char* slash = std::strrchr(path, '\\');
-    if (!slash || static_cast<size_t>(slash-path)+sizeof("\\BodySlider.log") > MAX_PATH) return;
-    strcpy_s(slash+1, MAX_PATH-static_cast<size_t>(slash-path)-1, "BodySlider.log");
-    FILE* file = nullptr;
-    if (fopen_s(&file, path, "ab") == 0) {
-        std::fprintf(file, "%s\r\n", text);
-        std::fclose(file);
-    }
-}
 void* Player(Guid guid) { return Object(guid, 0x10, "BodySlider", 1); }
 bool InWorld() { return g_ready && ActivePlayer() && Player(ActivePlayer()); }
 
@@ -76,29 +68,66 @@ const Stock::Rig* RigFor(void* model) {
     if (!model || !(Field<uint32_t>(model, 0x10)&1)) return nullptr;
     void* shared = Field<void*>(model, 0x2C);
     void* data = shared ? Field<void*>(shared, 0x150) : nullptr;
-    if (!data || !Field<void*>(model, 0x94)) return nullptr;
+    if (!data || !Field<void*>(model, 0x94)) {
+        Diagnostics::Limited(model, "rig-pending", "INFO", "Skeleton not ready model=%p shared=%p data=%p", model, shared, data);
+        return nullptr;
+    }
     const char* name = static_cast<char*>(shared)+0x3C;
     size_t length = strnlen_s(name, 260);
-    if (!length || length == 260) return nullptr;
+    if (!length || length == 260) {
+        Diagnostics::Limited(model, "rig-name", "WARN", "Missing or unterminated model path model=%p", model);
+        return nullptr;
+    }
     std::string path(name, length);
     for (char& c : path) c = c == '\\' ? '/' : static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
     if (path.size() >= 4 && path.compare(path.size()-4, 4, ".mdx") == 0) path.replace(path.size()-4, 4, ".m2");
-    for (const auto& rig : Stock::kRigs) {
-        if (path != rig.path || Field<uint32_t>(data, 0x2C) != rig.count) continue;
-        // Reject changed skeletons even when a model pack reuses a stock filename.
-        if (Field<uint32_t>(data, 0x34) != 27) return nullptr;
+    const Stock::Rig* closest = nullptr;
+    const char* reason = "unknown path";
+    unsigned difference = 0;
+    double expected = 0, actual = 0;
+    int best = 0;
+    struct Registry { const Stock::Rig* rigs; size_t count; };
+    for (const auto& registry : {Registry{Stock::kRigs, std::size(Stock::kRigs)}, Registry{ClientRigs::kRigs, std::size(ClientRigs::kRigs)}})
+    for (size_t variant = 0; variant < registry.count; ++variant) {
+        const auto& rig = registry.rigs[variant];
+        if (path != rig.path) continue;
         auto* keys = Field<uint16_t*>(data, 0x38);
         auto* bones = Field<unsigned char*>(data, 0x30);
-        if (!keys || !bones) return nullptr;
-        for (int k = 0; k < 27; ++k) if (keys[k] != rig.keys[k]) return nullptr;
-        for (uint32_t b = 0; b < rig.count; ++b) {
-            if (Field<uint16_t>(bones+b*0x58, 8) != rig.parents[b]) return nullptr;
-            const float* pivot = reinterpret_cast<float*>(bones+b*0x58+0x4C);
-            for (int a = 0; a < 3; ++a)
-                if (!std::isfinite(pivot[a]) || std::fabs(pivot[a]-rig.pivots[b][a]) > 0.00001f) return nullptr;
+        int stage = 1;
+        const char* mismatch = nullptr;
+        unsigned index = 0;
+        double wanted = rig.count, got = Field<uint32_t>(data, 0x2C);
+        if (wanted != got) mismatch = "bone count";
+        else {
+            stage = 2; wanted = rig.keyCount; got = Field<uint32_t>(data, 0x34);
+            if (wanted != got) mismatch = "key count";
+            else if (!keys || !bones) mismatch = "missing key/bone data";
+            else {
+                stage = 3;
+                for (uint32_t k = 0; k < rig.keyCount; ++k) if (keys[k] != rig.keys[k]) {
+                    mismatch = "key index"; index = k; wanted = rig.keys[k]; got = keys[k]; break;
+                }
+                for (uint32_t b = 0; !mismatch && b < rig.count; ++b) {
+                    wanted = rig.parents[b]; got = Field<uint16_t>(bones+b*0x58, 8);
+                    if (wanted != got) { mismatch = "bone parent"; index = b; break; }
+                    const float* pivot = reinterpret_cast<float*>(bones+b*0x58+0x4C);
+                    for (int a = 0; a < 3; ++a) {
+                        wanted = rig.pivots[b][a]; got = pivot[a];
+                        if (!std::isfinite(got) || std::fabs(got-wanted) > 0.00001f) {
+                            mismatch = "bone pivot (index=bone*3+axis)"; index = b*3+a; break;
+                        }
+                    }
+                }
+            }
         }
+        if (mismatch) {
+            if (stage > best) { closest = &rig; best = stage; reason = mismatch; difference = index; expected = wanted; actual = got; }
+            continue;
+        }
+        Diagnostics::Limited(model, "rig-ok", "INFO", "Skeleton accepted path=%s model=%p bones=%u keys=%u variant=%s:%zu", path.c_str(), model, rig.count, rig.keyCount, registry.rigs == Stock::kRigs ? "stock" : "client", variant);
         return &rig;
     }
+    Diagnostics::Limited(model, "rig-rejected", "WARN", "Skeleton rejected path=%s model=%p bones=%u keys=%u nearest=%p reason=%s index=%u expected=%.9g actual=%.9g; leaving original geometry", path.c_str(), model, Field<uint32_t>(data, 0x2C), Field<uint32_t>(data, 0x34), closest, reason, difference, expected, actual);
     return nullptr;
 }
 
@@ -292,6 +321,7 @@ int __cdecl Set(Lua* lua) {
         if (ok) g_values[guid][slider] = static_cast<float>(value);
         ReleaseSRWLockExclusive(&g_lock);
     }
+    if (!ok) Diagnostics::Limited(nullptr, "lua-set", "WARN", "BodySlider_Set rejected: inWorld=%d arguments=%d slider=%d value=%.9g; invalid input, unavailable player, or 128-player limit", InWorld(), LuaTop(lua), slider, value);
     PushBool(lua, ok);
     return 1;
 }
@@ -352,6 +382,7 @@ int __cdecl Units(Lua* lua) {
 using InitializeLuaFunction = int (__cdecl*)(int);
 InitializeLuaFunction g_initializeLua = nullptr;
 int __cdecl InitializeLua(int profile) {
+    Log("INFO", "Lua initialization starting profile=%d", profile);
     int result = g_initializeLua(profile);
     if (result) {
         // The API gates every operation on a live player; there are no GlueXML hooks or panels.
@@ -363,8 +394,8 @@ int __cdecl InitializeLua(int profile) {
         // Exercise the real Lua C-call validation path even before entering a world.
         const auto execute = reinterpret_cast<void (__cdecl*)(const char*, const char*, const char*)>(0x819210);
         execute("assert(type(BodySlider_Supported()) == 'boolean')", "BodySlider bridge check", nullptr);
-        Log("Lua API registered (operations require an in-world player)");
-    }
+        Log("INFO", "Lua API registered (operations require an in-world player)");
+    } else Log("ERROR", "Client Lua initialization failed profile=%d result=%d; API not registered", profile, result);
     return result;
 }
 
@@ -413,25 +444,38 @@ bool Prepare(Hook& hook, uintptr_t address, size_t length, bool trampoline) {
     hook.address = reinterpret_cast<unsigned char*>(address);
     hook.length = length;
     std::memcpy(hook.saved, hook.address, length);
-    if (!VirtualProtect(hook.address, length, PAGE_EXECUTE_READWRITE, &hook.protection)) return false;
+    if (!VirtualProtect(hook.address, length, PAGE_EXECUTE_READWRITE, &hook.protection)) {
+        Diagnostics::WinError("Hook VirtualProtect writable failed", hook.address); return false;
+    }
     if (!trampoline) return true;
     hook.trampoline = VirtualAlloc(nullptr, length+5, MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
-    if (!hook.trampoline) return false;
+    if (!hook.trampoline) { Diagnostics::WinError("Hook VirtualAlloc trampoline failed", hook.address); return false; }
     std::memcpy(hook.trampoline, hook.saved, length);
     Jump(static_cast<unsigned char*>(hook.trampoline)+length, hook.address+length, 0xE9);
     DWORD old = 0;
-    if (!VirtualProtect(hook.trampoline, length+5, PAGE_EXECUTE_READ, &old)) return false;
-    return FlushInstructionCache(GetCurrentProcess(), hook.trampoline, length+5) != 0;
+    if (!VirtualProtect(hook.trampoline, length+5, PAGE_EXECUTE_READ, &old)) {
+        Diagnostics::WinError("Hook VirtualProtect executable failed", hook.trampoline); return false;
+    }
+    if (!FlushInstructionCache(GetCurrentProcess(), hook.trampoline, length+5)) {
+        Diagnostics::WinError("Hook FlushInstructionCache trampoline failed", hook.trampoline); return false;
+    }
+    return true;
 }
 void Install(Hook& hook, const void* replacement, bool call = false) {
     Jump(hook.address, replacement, call ? 0xE8 : 0xE9);
     for (size_t i = 5; i < hook.length; ++i) hook.address[i] = 0x90;
     hook.installed = true;
+    Log("INFO", "Hook installed address=%p replacement=%p trampoline=%p bytes=%zu", hook.address, replacement, hook.trampoline, hook.length);
 }
 bool RestoreProtection(Hook& hook) {
     DWORD unused = 0;
-    return VirtualProtect(hook.address, hook.length, hook.protection, &unused)
-        && FlushInstructionCache(GetCurrentProcess(), hook.address, hook.length);
+    if (!VirtualProtect(hook.address, hook.length, hook.protection, &unused)) {
+        Diagnostics::WinError("Hook restoring protection failed", hook.address); return false;
+    }
+    if (!FlushInstructionCache(GetCurrentProcess(), hook.address, hook.length)) {
+        Diagnostics::WinError("Hook FlushInstructionCache failed", hook.address); return false;
+    }
+    return true;
 }
 bool RestoreHookProtections() {
     // Later hooks on the same page observed the temporary writable protection.
@@ -440,6 +484,7 @@ bool RestoreHookProtections() {
     return true;
 }
 void Rollback() {
+    Log("WARN", "Rolling back prepared/installed hooks");
     for (size_t i = std::size(g_hooks); i-- > 0;) {
         auto& hook = g_hooks[i];
         if (hook.address && hook.protection) {
@@ -449,11 +494,12 @@ void Rollback() {
                 RestoreProtection(hook);
             } else if (hook.installed) {
                 // A surviving detour still needs its original trampoline to remain executable.
-                Log("Rollback protection failed; retaining trampoline, BodySlider disabled");
+                Diagnostics::WinError("Rollback protection failed; retaining trampoline, BodySlider disabled", hook.address);
                 continue;
             }
         }
-        if (hook.trampoline) VirtualFree(hook.trampoline, 0, MEM_RELEASE);
+        if (hook.trampoline && !VirtualFree(hook.trampoline, 0, MEM_RELEASE))
+            Diagnostics::WinError("Rollback VirtualFree failed", hook.trampoline);
         hook = {};
     }
 }
@@ -461,42 +507,57 @@ void Rollback() {
 
 extern "C" __declspec(dllexport) BOOL __cdecl BodySlider_Initialize() {
     if (g_ready) return TRUE;
-    if (GetModuleHandleA(nullptr) != reinterpret_cast<HMODULE>(0x400000)) return FALSE;
+    wchar_t executable[32768]{}, library[32768]{};
+    GetModuleFileNameW(nullptr, executable, static_cast<DWORD>(std::size(executable)));
+    GetModuleFileNameW(g_module, library, static_cast<DWORD>(std::size(library)));
+    Log("INFO", "=== BodySlider 1.1.1 client compatibility initialization; compiled %s %s; EXE=%ls DLL=%ls base=%p ===", __DATE__, __TIME__, executable, library, GetModuleHandleW(nullptr));
+    if (GetModuleHandleA(nullptr) != reinterpret_cast<HMODULE>(0x400000)) {
+        Log("ERROR", "Unsupported client image base: expected 00400000 actual=%p", GetModuleHandleW(nullptr)); return FALSE;
+    }
     const auto* dos = reinterpret_cast<const IMAGE_DOS_HEADER*>(0x400000);
-    if (dos->e_magic != IMAGE_DOS_SIGNATURE || dos->e_lfanew < 0 || dos->e_lfanew > 4096) return FALSE;
+    if (dos->e_magic != IMAGE_DOS_SIGNATURE || dos->e_lfanew < 0 || dos->e_lfanew > 4096) {
+        Log("ERROR", "Invalid client DOS header magic=%04X PE offset=%ld", dos->e_magic, dos->e_lfanew); return FALSE;
+    }
     const auto* pe = reinterpret_cast<const IMAGE_NT_HEADERS32*>(0x400000+dos->e_lfanew);
     if (pe->Signature != IMAGE_NT_SIGNATURE || pe->FileHeader.Machine != IMAGE_FILE_MACHINE_I386
-            || pe->OptionalHeader.SizeOfImage < 0x9FD000) return FALSE;
+            || pe->OptionalHeader.SizeOfImage < 0x9FD000) {
+        Log("ERROR", "Unsupported client PE header signature=%08lX machine=%04X imageSize=%08lX", pe->Signature, pe->FileHeader.Machine, pe->OptionalHeader.SizeOfImage); return FALSE;
+    }
+    Log("INFO", "Client PE timestamp=%08lX imageSize=%08lX stockRigs=%zu clientRigs=%zu stockMeshes=%zu clientMeshes=%zu", pe->FileHeader.TimeDateStamp, pe->OptionalHeader.SizeOfImage, std::size(Stock::kRigs), std::size(ClientRigs::kRigs), std::size(Deform::kProfiles), std::size(ClientDeforms::kProfiles));
     for (const auto& signature : Signatures) {
         if (std::memcmp(reinterpret_cast<void*>(signature.address), signature.bytes, signature.size) != 0) {
-            Log("Unsupported client or conflicting hook: BodySlider disabled");
+            const auto* actual = reinterpret_cast<const unsigned char*>(signature.address);
+            for (size_t i = 0; i < signature.size; ++i) if (actual[i] != signature.bytes[i])
+                Log("ERROR", "Client signature mismatch address=%p byte=%zu expected=%02X actual=%02X; BodySlider disabled", actual, i, signature.bytes[i], actual[i]);
             return FALSE;
         }
     }
     for (const auto& signature : MeshSignatures) {
         if (std::memcmp(reinterpret_cast<void*>(signature.address), signature.bytes, signature.size) != 0) {
-            Log("Unsupported rendering code or conflicting mesh hook: BodySlider disabled");
+            const auto* actual = reinterpret_cast<const unsigned char*>(signature.address);
+            for (size_t i = 0; i < signature.size; ++i) if (actual[i] != signature.bytes[i])
+                Log("ERROR", "Mesh signature mismatch address=%p byte=%zu expected=%02X actual=%02X; BodySlider disabled", actual, i, signature.bytes[i], actual[i]);
             return FALSE;
         }
     }
     for (uintptr_t slot : Bridge::Slots) {
         for (size_t byte = 0; byte < 5; ++byte) {
             if (*reinterpret_cast<const unsigned char*>(slot+byte) != 0xCC) {
-                Log("Conflicting Lua bridge slot: BodySlider disabled");
+                Log("ERROR", "Conflicting Lua bridge slot=%p byte=%zu expected=CC actual=%02X; BodySlider disabled", reinterpret_cast<void*>(slot), byte, *reinterpret_cast<const unsigned char*>(slot+byte));
                 return FALSE;
             }
         }
     }
     if (!Prepare(g_hooks[0], 0x819BB0, 6, true) || !Prepare(g_hooks[1], 0x73DAB0, 6, true)
             || !Prepare(g_hooks[2], 0x832640, 5, true) || !Prepare(g_hooks[3], 0x82FE4F, 5, false)) {
-        Rollback(); Log("Hook allocation failed: BodySlider disabled"); return FALSE;
+        Rollback(); Log("ERROR", "Hook allocation failed: BodySlider disabled"); return FALSE;
     }
     g_initializeLua = reinterpret_cast<InitializeLuaFunction>(g_hooks[0].trampoline);
     g_preAnimate = reinterpret_cast<PreAnimateFunction>(g_hooks[1].trampoline);
     g_destroy = reinterpret_cast<DestroyFunction>(g_hooks[2].trampoline);
     for (size_t i = 0; i < 7; ++i) {
         if (!Prepare(g_hooks[4+i], MeshSignatures[i].address, MeshSignatures[i].size, true)) {
-            Rollback(); Log("Mesh hook allocation failed: BodySlider disabled"); return FALSE;
+            Rollback(); Log("ERROR", "Mesh hook allocation failed: BodySlider disabled"); return FALSE;
         }
     }
     g_batchVertices = reinterpret_cast<decltype(g_batchVertices)>(g_hooks[4].trampoline);
@@ -506,7 +567,7 @@ extern "C" __declspec(dllexport) BOOL __cdecl BodySlider_Initialize() {
     const LuaFunction callbacks[6] = {Set, Clear, Supported, Names, Has, Units};
     for (size_t i = 0; i < 6; ++i) {
         if (!Prepare(g_hooks[11+i], Bridge::Slots[i], 5, false)) {
-            Rollback(); Log("Lua bridge preparation failed: BodySlider disabled"); return FALSE;
+            Rollback(); Log("ERROR", "Lua bridge preparation failed: BodySlider disabled"); return FALSE;
         }
     }
     Install(g_hooks[0], InitializeLua);
@@ -522,14 +583,14 @@ extern "C" __declspec(dllexport) BOOL __cdecl BodySlider_Initialize() {
     Install(g_hooks[10], MeshShadow);
     for (size_t i = 0; i < 6; ++i) Install(g_hooks[11+i], callbacks[i]);
     if (!RestoreHookProtections()) {
-        Rollback(); Log("Hook protection failed: BodySlider disabled"); return FALSE;
+        Rollback(); Log("ERROR", "Hook protection failed: BodySlider disabled"); return FALSE;
     }
     g_ready = true;
-    Log("BodySlider 0.3.0: eleven rendering/Lua hooks and six validated Lua bridges installed; server protocol unchanged");
+    Log("INFO", "BodySlider 1.1.1: eleven rendering/Lua hooks and six validated Lua bridges installed; server protocol unchanged");
     return TRUE;
 }
 
 BOOL WINAPI DllMain(HINSTANCE module, DWORD reason, LPVOID) {
-    if (reason == DLL_PROCESS_ATTACH) DisableThreadLibraryCalls(module);
+    if (reason == DLL_PROCESS_ATTACH) { g_module = module; DisableThreadLibraryCalls(module); }
     return TRUE;
 }

@@ -13,6 +13,7 @@
 #include "StockProfiles.h"
 #include "DeformMath.h"
 #include "DeformProfiles.h"
+#include "Logging.h"
 static uintptr_t TestAddress(uintptr_t address);
 template<class T, class U> T TestCast(U value) {
     if constexpr (std::is_integral_v<U>) return reinterpret_cast<T>(TestAddress(static_cast<uintptr_t>(value)));

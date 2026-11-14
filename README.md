@@ -141,6 +141,15 @@ Wow.exe (original, untouched) ──► BodySliderPatch.exe ──► Wow.exe (p
 
 A small executable loader patch loads `BodySlider.dll`, which hooks skeleton and skinning code in memory. The in‑game addon provides the UI, presets and sharing. Missing DLL: stock startup continues. Unknown executable or conflicting hook: the DLL refuses to install and logs why to `BodySlider.log` beside the executable.
 
+Diagnostics include hook addresses, Windows error codes, skeleton differences,
+mesh fingerprints and rendering failures. `BodySliderCheck.exe` checks DLL loading,
+dependencies and the initializer export without running client hooks. See
+[LOGGING.md](LOGGING.md) for log locations, rotation and troubleshooting.
+
+The 1.1 compatibility test build adds verified Grimfall and Sirus model variants,
+including their HD Human and Pandaren models. See [COMPATIBILITY.md](COMPATIBILITY.md)
+for coverage, exclusions, installation and remaining live checks.
+
 <details>
 <summary><b>Technical details</b></summary>
 
@@ -187,7 +196,7 @@ cmake --build build --config Release
 ctest --test-dir build -C Release --output-on-failure
 build/patcher/Release/BodySliderPatch.exe --patch path/to/original/Wow.exe path/to/new/Wow.exe
 New-Item -ItemType Directory -Force dist
-python package.py dist/BodySlider-0.3.0-prototype.zip
+python package.py dist/BodySlider-1.1-client-test.zip
 ```
 
 Copy `build/native/Release/BodySlider.dll` beside the generated executable and install the addon.

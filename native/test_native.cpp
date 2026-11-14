@@ -13,6 +13,7 @@
 #include <cassert>
 #include <limits>
 #include <memory>
+#include "Logging.h"
 
 // Redirect pinned API addresses to test doubles; native implementation stays unchanged.
 static uintptr_t TestAddress(uintptr_t address);
@@ -100,7 +101,7 @@ struct Fixture {
     const Stock::Rig& rig;
     explicit Fixture(const Stock::Rig& profile) : model(0x300), shared(0x200), data(0x200),
             bones(profile.count*0xAC), descriptors(16), unit(0x100), sourceBones(profile.count*0x58),
-            keys(profile.keys, profile.keys+27), rig(profile) {
+            keys(profile.keys, profile.keys+profile.keyCount), rig(profile) {
         Field<uint32_t>(model.data(), 0x10) = 1;
         Field<void*>(model.data(), 0x2C) = shared.data();
         Field<void*>(model.data(), 0x94) = bones.data();
@@ -108,7 +109,7 @@ struct Fixture {
         strcpy_s(reinterpret_cast<char*>(shared.data()+0x3C), 260, profile.path);
         Field<uint32_t>(data.data(), 0x2C) = profile.count;
         Field<void*>(data.data(), 0x30) = sourceBones.data();
-        Field<uint32_t>(data.data(), 0x34) = 27;
+        Field<uint32_t>(data.data(), 0x34) = profile.keyCount;
         Field<void*>(data.data(), 0x38) = keys.data();
         for (uint32_t i = 0; i < profile.count; ++i) {
             Field<uint16_t>(sourceBones.data()+i*0x58, 8) = profile.parents[i];
@@ -209,6 +210,39 @@ int main() {
         ++profiles;
     }
     assert(profiles == 20);
+
+    unsigned customProfiles = 0;
+    for (const auto& rig : ClientRigs::kRigs) {
+        Fixture custom(rig);
+        const auto* selected = RigFor(custom.model.data());
+        assert(selected && selected->count == rig.count && selected->keyCount == rig.keyCount);
+        custom.keys.back() ^= 1;
+        assert(!RigFor(custom.model.data())); // Validate every key, including HD entries beyond 27.
+        custom.keys.back() ^= 1;
+        Field<float>(custom.sourceBones.data(), 0x4C) += .01f;
+        assert(!RigFor(custom.model.data()));
+        Field<float>(custom.sourceBones.data(), 0x4C) = rig.pivots[0][0];
+        for (int slider = 0; slider < 12; ++slider) {
+            if (!HasSlider(rig, slider)) continue;
+            for (float value : {-1.f, 1.f}) {
+                Values controls{}; controls[slider] = value;
+                ModelState state;
+                Build(state, rig, controls);
+                assert(state.transforms.size() == rig.count);
+                bool active = false;
+                for (const auto& transform : state.transforms) {
+                    active |= transform.Active();
+                    for (int axis = 0; axis < 3; ++axis) {
+                        assert(std::isfinite(transform.scale[axis]) && transform.scale[axis] > 0);
+                        assert(std::isfinite(transform.move[axis]));
+                    }
+                }
+                assert(active);
+            }
+        }
+        ++customProfiles;
+    }
+    assert(customProfiles > 40);
 
     Fixture fixture(Stock::kRigs[0]);
     testPlayer = fixture.unit.data();

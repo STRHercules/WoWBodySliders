@@ -44,10 +44,16 @@ MeshRecord* MeshEnsure(void* model) {
     void* shared = Field<void*>(model, 0x2C);
     void* data = shared ? Field<void*>(shared, 0x150) : nullptr;
     void* skin = shared ? Field<void*>(shared, 0x170) : nullptr;
-    if (!data || !skin) return nullptr;
+    if (!data || !skin) {
+        Diagnostics::Limited(model, "mesh-pending", "INFO", "Mesh not ready model=%p data=%p skin=%p", model, data, skin);
+        return nullptr;
+    }
     uint32_t count = Field<uint32_t>(data, 0x3C);
     const auto* source = Field<const Deform::Vertex*>(data, 0x40);
-    if (!source || !count || count > 65535) return nullptr;
+    if (!source || !count || count > 65535) {
+        Diagnostics::Limited(model, "mesh-source", "WARN", "Invalid mesh source model=%p source=%p count=%u (supported 1..65535)", model, source, count);
+        return nullptr;
+    }
     auto& record = g_meshes[model];
     if (record.shared == shared && record.data == data && record.skin == skin
             && record.source == source && record.count == count) return &record;
@@ -60,11 +66,30 @@ MeshRecord* MeshEnsure(void* model) {
     record.count = count;
     const char* name = static_cast<char*>(shared)+0x3C;
     size_t length = strnlen_s(name, 260);
-    if (!length || length == 260) return &record;
+    if (!length || length == 260) {
+        Diagnostics::Limited(model, "mesh-name", "WARN", "Missing or unterminated mesh path model=%p", model);
+        return &record;
+    }
     std::string path(name, length);
     for (char& c : path) c = c == '\\' ? '/' : static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
     if (path.size() >= 4 && path.compare(path.size()-4, 4, ".mdx") == 0) path.replace(path.size()-4, 4, ".m2");
     record.profile = Deform::Find(path.c_str(), source, count);
+    if (record.profile) {
+        Diagnostics::Limited(model, "mesh-profile", "INFO", "Mesh profile accepted path=%s model=%p vertices=%u supportMask=%08X", path.c_str(), model, count, record.profile->support);
+    } else {
+        bool knownPath = false;
+        struct Registry { const Deform::Profile* profiles; size_t count; };
+        for (const auto& registry : {Registry{Deform::kProfiles, std::size(Deform::kProfiles)}, Registry{ClientDeforms::kProfiles, std::size(ClientDeforms::kProfiles)}})
+        for (size_t variant = 0; variant < registry.count; ++variant) {
+            const auto& profile = registry.profiles[variant];
+            if (path != profile.path) continue;
+            knownPath = true;
+            for (uint32_t i = 0; i < profile.variantCount; ++i)
+                Diagnostics::Limited(profile.variants+i, "expected-mesh", "INFO", "Expected mesh variant path=%s variant=%u vertices=%u fingerprint=%016llX", path.c_str(), i, profile.variants[i].count, static_cast<unsigned long long>(profile.variants[i].hash));
+        }
+        Diagnostics::Limited(model, "mesh-profile-rejected", "WARN", "Mesh profile rejected path=%s model=%p vertices=%u fingerprint=%016llX reason=%s; skeletal controls may still work", path.c_str(), model, count,
+            static_cast<unsigned long long>(Deform::Fingerprint(source, count)), knownPath ? "vertex count/fingerprint mismatch" : "unsupported model path");
+    }
     return &record;
 }
 
@@ -84,6 +109,7 @@ void MeshUpdate(void* model, const Values& values) {
     for (uint32_t i = 0; i < record->count; ++i)
         moved = Deform::Apply((*vertices)[i], record->source[i], *record->profile, values.data(), i) || moved;
     record->vertices = moved ? vertices : nullptr;
+    if (!moved) Diagnostics::Limited(model, "mesh-no-movement", "WARN", "Mesh deformation affected no vertices model=%p path=%s count=%u despite active supported controls", model, record->profile->path, record->count);
 }
 
 void MeshClear(void* model) {
@@ -104,31 +130,48 @@ bool MeshBind(void* model) {
     auto& record = found->second;
     void* shared = Field<void*>(model, 0x2C);
     if (shared != record.shared || Field<void*>(shared, 0x150) != record.data
-            || Field<void*>(shared, 0x170) != record.skin) return false;
+            || Field<void*>(shared, 0x170) != record.skin) {
+        Diagnostics::Limited(model, "gpu-stale-model", "INFO", "GPU bind skipped: model data/skin changed model=%p; using original geometry", model); return false;
+    }
     if (Field<const Deform::Vertex*>(record.data, 0x40) != record.source
-            || Field<uint32_t>(record.data, 0x3C) != record.count) return false;
+            || Field<uint32_t>(record.data, 0x3C) != record.count) {
+        Diagnostics::Limited(model, "gpu-stale-source", "INFO", "GPU bind skipped: vertex source/count changed model=%p", model); return false;
+    }
     void* device = MeshDevice();
-    if (!device) return false;
-    if (record.device && record.device != device) MeshReleaseGpu(record);
+    if (!device) { Diagnostics::Limited(model, "gpu-no-device", "WARN", "GPU bind failed: no render device model=%p", model); return false; }
+    if (record.device && record.device != device) {
+        Diagnostics::Limited(model, "gpu-device-change", "INFO", "Render device changed model=%p old=%p new=%p; rebuilding private buffers", model, record.device, device);
+        MeshReleaseGpu(record);
+    }
     void* skin = record.skin;
     uint32_t count = Field<uint32_t>(skin, 4);
     auto* remap = Field<uint16_t*>(skin, 8);
     uint32_t boneCount = Field<uint32_t>(skin, 0x14);
     auto* bones = Field<uint32_t*>(skin, 0x18);
-    if (!count || count > 65535 || !remap || !bones || boneCount < count) return false;
+    if (!count || count > 65535 || !remap || !bones || boneCount < count) {
+        Diagnostics::Limited(model, "gpu-skin", "WARN", "Invalid skin mapping model=%p vertices=%u boneMappings=%u remap=%p bones=%p", model, count, boneCount, remap, bones); return false;
+    }
     if (!record.pool) {
         record.device = device;
         record.pool = MeshPoolCreate(device, 0, 0, static_cast<int>(count*sizeof(Deform::Vertex)), 1, "BodySlider");
-        if (!record.pool) return false;
+        if (!record.pool) { Diagnostics::Limited(model, "gpu-pool", "ERROR", "GPU pool allocation failed model=%p device=%p bytes=%zu", model, device, count*sizeof(Deform::Vertex)); return false; }
         record.buffer = MeshBufCreate(device, record.pool, sizeof(Deform::Vertex), count, 0);
-        if (!record.buffer) { MeshReleaseGpu(record); return false; }
+        if (!record.buffer) {
+            Diagnostics::Limited(model, "gpu-buffer", "ERROR", "GPU vertex buffer allocation failed model=%p device=%p count=%u", model, device, count);
+            MeshReleaseGpu(record); return false;
+        }
     }
-    if (Field<uint32_t>(record.buffer, 0x10) != count) { MeshReleaseGpu(record); return false; }
+    if (Field<uint32_t>(record.buffer, 0x10) != count) {
+        Diagnostics::Limited(model, "gpu-buffer-size", "ERROR", "GPU buffer count mismatch model=%p expected=%u actual=%u", model, count, Field<uint32_t>(record.buffer, 0x10));
+        MeshReleaseGpu(record); return false;
+    }
     if (!Field<uint8_t>(record.buffer, 0x1C) || !Field<uint8_t>(record.buffer, 0x1D)) {
         // Validate every remap before locking a device buffer, so failures leave no lock outstanding.
-        for (uint32_t i = 0; i < count; ++i) if (remap[i] >= record.vertices->size()) return false;
+        for (uint32_t i = 0; i < count; ++i) if (remap[i] >= record.vertices->size()) {
+            Diagnostics::Limited(model, "gpu-remap", "ERROR", "Skin remap out of bounds model=%p index=%u mapped=%u vertexCount=%zu", model, i, remap[i], record.vertices->size()); return false;
+        }
         auto* destination = static_cast<Deform::Vertex*>(MeshBufLock(record.buffer));
-        if (!destination) return false;
+        if (!destination) { Diagnostics::Limited(model, "gpu-lock", "ERROR", "GPU buffer lock failed model=%p buffer=%p", model, record.buffer); return false; }
         for (uint32_t i = 0; i < count; ++i) {
             destination[i] = (*record.vertices)[remap[i]];
             std::memcpy(destination[i].bones, &bones[i], 4);
@@ -179,6 +222,7 @@ struct MeshCpuView {
                 || Field<const Deform::Vertex*>(originalData, 0x40) != it->second.source
                 || Field<uint32_t>(originalData, 0x3C) != it->second.count
                 || start > vertices->size() || count > vertices->size()-start) {
+            Diagnostics::Limited(original, "cpu-view", "WARN", "CPU skinning fallback: stale model data or section outside vertex snapshot model=%p start=%u count=%u snapshot=%zu", original, start, count, vertices->size());
             ReleaseSRWLockShared(&g_lock); vertices.reset(); return false;
         }
         std::memcpy(model.data(), original, model.size());
@@ -215,7 +259,9 @@ void __fastcall MeshShadow(void* model, void*, int untextured, void* batch, cons
         return;
     }
     uint32_t total = list->batches[index].count;
-    if (!total || total > list->count-index) return;
+    if (!total || total > list->count-index) {
+        Diagnostics::Limited(model, "shadow-count", "WARN", "Invalid shadow batch model=%p total=%u index=%u listCount=%u", model, total, index, list->count); return;
+    }
     bool shaped = false;
     AcquireSRWLockShared(&g_lock);
     for (uint32_t i = 0; i < total; ++i) {
@@ -224,7 +270,9 @@ void __fastcall MeshShadow(void* model, void*, int untextured, void* batch, cons
     }
     ReleaseSRWLockShared(&g_lock);
     if (!shaped) { g_shadow(model, untextured, batch, list, index, section, previousSection); return; }
-    if (total > 1 && !MeshSharedIndices(Field<void*>(model, 0x2C))) return;
+    if (total > 1 && !MeshSharedIndices(Field<void*>(model, 0x2C))) {
+        Diagnostics::Limited(model, "shadow-indices", "ERROR", "Shadow shared-index bind failed model=%p batches=%u", model, total); return;
+    }
     // Stock grouping only combines equal shared geometry/batch IDs. Split without editing the shared list.
     for (uint32_t i = 0; i < total; ++i) {
         MeshBatchEntry entry = list->batches[index+i];

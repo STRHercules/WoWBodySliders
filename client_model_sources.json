@@ -1,0 +1,562 @@
+{
+  "grimfall": {
+    "character\\bloodelf\\female\\bloodelffemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\bloodelf\\male\\bloodelfmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\draenei\\female\\draeneifemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\draenei\\male\\draeneimale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dwarf\\female\\dwarffemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dwarf\\male\\dwarfmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\gnome\\female\\gnomefemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\gnome\\male\\gnomemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\human\\female\\humanfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\human\\male\\humanmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightelf\\female\\nightelffemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightelf\\male\\nightelfmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\orc\\female\\orcfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\orc\\male\\orcmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\scourge\\female\\scourgefemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\scourge\\male\\scourgemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\tauren\\female\\taurenfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\tauren\\male\\taurenmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\troll\\female\\trollfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\troll\\male\\trollmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\voidelf\\female\\voidelffemale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\voidelf\\male\\voidelfmale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\worgen\\female\\worgenfemale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\worgen\\male\\worgenmale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\pandaren\\female\\pandafemale.m2": {
+      "archive": "patch-e.mpq",
+      "skin_archive": "patch-e.mpq"
+    },
+    "character\\pandaren\\male\\pandamale.m2": {
+      "archive": "patch-e.mpq",
+      "skin_archive": "patch-e.mpq"
+    },
+    "character\\nightborne\\female\\nightbornefemale.m2": {
+      "archive": "patch-d.mpq",
+      "skin_archive": "patch-d.mpq"
+    },
+    "character\\nightborne\\male\\nightbornemale.m2": {
+      "archive": "patch-d.mpq",
+      "skin_archive": "patch-d.mpq"
+    },
+    "character\\vulpera\\female\\vulperafemale.m2": {
+      "archive": "patch-b.mpq",
+      "skin_archive": "patch-b.mpq"
+    },
+    "character\\vulpera\\male\\vulperamale.m2": {
+      "archive": "patch-b.mpq",
+      "skin_archive": "patch-b.mpq"
+    },
+    "character\\felorc\\male\\felorcmale.m2": {
+      "archive": "patch-3.MPQ",
+      "skin_archive": "patch-3.MPQ"
+    },
+    "character\\taunka\\male\\taunkamale.m2": {
+      "archive": "patch-2.MPQ",
+      "skin_archive": "patch-2.MPQ"
+    },
+    "character\\vrykul\\male\\vrykulmale.m2": {
+      "archive": "patch-2.MPQ",
+      "skin_archive": "patch-2.MPQ"
+    },
+    "character\\broken\\male\\brokenmale.m2": {
+      "archive": "patch.MPQ",
+      "skin_archive": "patch.MPQ"
+    },
+    "character\\icetroll\\male\\icetrollmale.m2": {
+      "archive": "patch.MPQ",
+      "skin_archive": "patch.MPQ"
+    },
+    "character\\northrendskeleton\\male\\northrendskeletonmale.m2": {
+      "archive": "patch.MPQ",
+      "skin_archive": "patch.MPQ"
+    },
+    "character\\tuskarr\\male\\tuskarrmale.m2": {
+      "archive": "patch.MPQ",
+      "skin_archive": "patch.MPQ"
+    },
+    "character\\felorc\\male\\felorcmaleaxe.m2": {
+      "archive": "expansion.MPQ",
+      "skin_archive": "expansion.MPQ"
+    },
+    "character\\felorc\\male\\felorcmalesword.m2": {
+      "archive": "expansion.MPQ",
+      "skin_archive": "expansion.MPQ"
+    },
+    "character\\broken\\female\\brokenfemale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\felorc\\female\\felorcfemale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\foresttroll\\male\\foresttrollmale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\goblin\\female\\goblinfemale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\goblin\\male\\goblinmale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\naga_\\female\\naga_female.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\naga_\\male\\naga_male.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\skeleton\\female\\skeletonfemale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\skeleton\\male\\skeletonmale.m2": {
+      "archive": "common-2.MPQ",
+      "skin_archive": "common-2.MPQ"
+    },
+    "character\\zandalaritroll\\male\\zandalaritrollmale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\zandalaritroll\\female\\zandalaritrollfemale.m2": {
+      "archive": "patch-g.mpq",
+      "skin_archive": "patch-g.mpq"
+    },
+    "character\\darkirondwarf\\male\\darkirondwarfmale.m2": {
+      "archive": "patch-f.mpq",
+      "skin_archive": "patch-f.mpq"
+    },
+    "character\\darkirondwarf\\female\\darkirondwarffemale.m2": {
+      "archive": "patch-f.mpq",
+      "skin_archive": "patch-f.mpq"
+    },
+    "character\\lightforgeddraenei\\male\\lightforgeddraeneimale.m2": {
+      "archive": "patch-c.mpq",
+      "skin_archive": "patch-c.mpq"
+    },
+    "character\\lightforgeddraenei\\female\\lightforgeddraeneifemale.m2": {
+      "archive": "patch-c.mpq",
+      "skin_archive": "patch-c.mpq"
+    },
+    "character\\dracthyr\\male\\dracthyrmale.m2": {
+      "archive": "patch-a.mpq",
+      "skin_archive": "patch-a.mpq"
+    },
+    "character\\dracthyr\\female\\dracthyrfemale.m2": {
+      "archive": "patch-a.mpq",
+      "skin_archive": "patch-a.mpq"
+    }
+  },
+  "sirus": {
+    "character\\bloodelf\\female\\bloodelffemale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\bloodelf\\male\\bloodelfmale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\gnome\\female\\gnomefemale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\gnome\\male\\gnomemale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightborne\\female\\nightbornefemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightborne\\male\\nightbornemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightelf\\female\\nightelffemale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nightelf\\male\\nightelfmale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\tauren\\male\\taurenmale_hd.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\voidelf\\female\\voidelffemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\voidelf\\male\\voidelfmale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\vulpera\\female\\vulperafemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\vulpera\\male\\vulperamale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\worgen\\female\\worgenfemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\worgen\\male\\worgenmale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\draenei\\female\\draeneifemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\draenei\\male\\draeneimale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dwarf\\female\\dwarffemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dwarf\\male\\dwarfmale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\human\\female\\humanfemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\human\\male\\humanmale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\orc\\female\\orcfemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\orc\\male\\orcmale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\pandaren\\female\\pandafemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\pandaren\\male\\pandamale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\scourge\\female\\scourgefemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\scourge\\male\\scourgemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\tauren\\female\\taurenfemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\troll\\female\\trollfemale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\troll\\male\\trollmale_hd.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\bloodelf\\female\\bloodelffemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\bloodelf\\male\\bloodelfmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\broken\\female\\brokenfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\broken\\male\\brokenmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\draenei\\female\\draeneifemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\draenei\\male\\draeneimale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\dwarf\\female\\dwarffemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\dwarf\\male\\dwarfmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\felorc\\female\\felorcfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\felorc\\male\\felorcmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\felorc\\male\\felorcmaleaxe.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\felorc\\male\\felorcmalesword.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\foresttroll\\male\\foresttrollmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\gnome\\female\\gnomefemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\gnome\\male\\gnomemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\goblin\\female\\goblinfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\goblin\\male\\goblinmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\human\\female\\humanfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\human\\male\\humanmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\icetroll\\male\\icetrollmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\naga_\\female\\naga_female.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\naga_\\male\\naga_male.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\nightelf\\female\\nightelffemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\nightelf\\male\\nightelfmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\northrendskeleton\\male\\northrendskeletonmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\orc\\female\\orcfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\orc\\male\\orcmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\scourge\\female\\scourgefemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\scourge\\male\\scourgemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\skeleton\\female\\skeletonfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\skeleton\\male\\skeletonmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\taunka\\male\\taunkamale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\tauren\\female\\taurenfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\tauren\\male\\taurenmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\troll\\female\\trollfemale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\troll\\male\\trollmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\tuskarr\\male\\tuskarrmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "common.mpq"
+    },
+    "character\\vrykul\\male\\vrykulmale.m2": {
+      "archive": "common.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nagasirushd\\female\\snaga_female.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dracthyr\\male\\dracthyrmale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\nagasirushd\\male\\snaga_male.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\goblin\\female\\goblinfm.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\dracthyr\\female\\dracthyrfemale.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\goblin\\male\\goblinm.m2": {
+      "archive": "patch-u.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\eredar\\female\\race_eredarfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\eredar\\male\\race_eredarmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\zandalaritroll\\male\\zandalaritrollmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\darkirondwarf\\female\\darkirondwarffemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\darkirondwarf\\male\\darkirondwarfmale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\lightforgeddraenei\\female\\lightforgeddraeneifemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\lightforgeddraenei\\male\\lightforgeddraeneimale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\zandalaritroll\\female\\zandalaritrollfemale.m2": {
+      "archive": "patch-t.mpq",
+      "skin_archive": "patch-t.mpq"
+    },
+    "character\\vrykul\\female\\vrykulfemale2.m2": {
+      "archive": "patch-8.mpq",
+      "skin_archive": "patch-8.mpq"
+    }
+  }
+}
