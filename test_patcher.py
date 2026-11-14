@@ -17,13 +17,11 @@ class PatcherTests(unittest.TestCase):
         if not STOCK.is_file():
             raise unittest.SkipTest("Set BODYSLIDER_STOCK_EXE to the supported original Wow.exe")
         cls.original = STOCK.read_bytes()
-        if patcher.sha256(cls.original) != patcher.STOCK_SHA256:
-            raise unittest.SkipTest("Configured executable does not match the supported stock digest")
         cls.patched = patcher.patch_bytes(cls.original)
 
     def test_restore_is_byte_identical(self):
         self.assertEqual(patcher.restore_bytes(self.patched), self.original)
-        self.assertEqual(patcher.sha256(STOCK.read_bytes()), patcher.STOCK_SHA256)
+        self.assertEqual(STOCK.read_bytes(), self.original)
 
     def test_unknown_or_already_patched_input_rejected(self):
         for candidate in (b"MZ", self.original[:-1], self.patched):
@@ -78,7 +76,7 @@ class PatcherTests(unittest.TestCase):
         original = pefile.PE(data=self.original)
         patched = pefile.PE(data=self.patched)
         self.assertEqual(patched.OPTIONAL_HEADER.CheckSum, patched.generate_checksum())
-        self.assertEqual(patched.FILE_HEADER.NumberOfSections, 7)
+        self.assertEqual(patched.FILE_HEADER.NumberOfSections, original.FILE_HEADER.NumberOfSections + 1)
         self.assertEqual(patched.sections[-1].Name, patcher.SECTION_NAME)
         self.assertEqual(patched.OPTIONAL_HEADER.AddressOfEntryPoint, patched.sections[-1].VirtualAddress)
         self.assertEqual(patched.DIRECTORY_ENTRY_IMPORT[0].dll, b"KERNEL32.dll")
@@ -99,7 +97,18 @@ class PatcherTests(unittest.TestCase):
             if item.mnemonic.startswith("j"):
                 self.assertIn(int(item.op_str, 16), boundaries)
         calls = [item.op_str for item in instructions if item.mnemonic == "call"]
-        self.assertEqual(calls, ["dword ptr [0x9df1a0]", "dword ptr [0x9df248]", "eax"])
+        filename, library = patcher.client_imports(self.original, patcher.pe_layout(self.original))
+        self.assertEqual(calls, [f"dword ptr [{hex(filename)}]", f"dword ptr [{hex(library)}]", "eax"])
+
+    def test_customized_build_accepted_and_wrong_version_rejected(self):
+        changed = bytearray(self.original)
+        changed[0x1000] ^= 1
+        self.assertEqual(patcher.restore_bytes(patcher.patch_bytes(changed)), changed)
+        signature = struct.pack("<IIII", 0xFEEF04BD, 0x10000, 0x30003, (5 << 16) | 12340)
+        version = changed.index(signature)
+        struct.pack_into("<I", changed, version + 12, (5 << 16) | 12341)
+        with self.assertRaisesRegex(ValueError, "3.3.5.12340"):
+            patcher.patch_bytes(changed)
 
 
 if __name__ == "__main__":

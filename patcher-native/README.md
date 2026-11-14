@@ -2,15 +2,13 @@
 
 Small native Windows patcher; no Python or VC runtime installation is needed.
 
-Double-click it and select the supported original build 12340 `Wow.exe`. It
+Double-click it and select the build 12340 executable (including renamed/customized clients). It
 creates `Wow-BodySlider.exe` in the same folder. It never changes the selected
 file or overwrites an existing output. Close WoW, preserve your original, then
 rename the new copy to `Wow.exe` when installing the DLL/addon. Selecting an
 unchanged BodySlider-patched copy instead creates `Wow-original.exe`.
 
-The executable is accepted by exact SHA-256, not just its version string:
-`aa63a5750d60ef16746c686b3d5e26876d98953eab08b1c026cd0faf78e88cb8`.
-Unknown variants and files changed after patching are rejected.
+The file version must be 3.3.5.12340. The patcher validates x86 PE32, fixed base 0x400000, disabled ASLR, standard PE alignment, spare section-header space, and the two required KERNEL32 imports. It resolves loader import addresses from each input instead of requiring a stock file hash. Malformed files, other builds, and files changed after patching are rejected.
 
 For scripted use:
 
@@ -20,9 +18,7 @@ BodySliderPatch.exe --restore patched/Wow.exe restored/Wow.exe
 ```
 
 The file format is byte-for-byte compatible with the Python reference patcher.
-The native program embeds only 26 byte changes and 2486 appended bytes, not the
-original executable. Both input and generated output SHA-256 are verified before
-exclusive output creation. Windows Unicode file APIs preserve non-ASCII paths.
+The native program embeds only the loader stub. It derives header changes and SHA-256 restoration metadata from the selected input, preserving original code, resources, and overlays. Restoration verifies the patched body and recovered original digest. Windows Unicode file APIs preserve non-ASCII paths.
 
 Build and test from the repository root:
 
@@ -33,9 +29,7 @@ $env:BODYSLIDER_STOCK_EXE = 'C:/Games/WoW-original/Wow.exe'
 python patcher-native/test_native_patcher.py
 ```
 
-`PatchData.h` is generated from the supported original with
-`python patcher-native/generate_patch_data.py path/to/original/Wow.exe`.
-Regenerate it and rerun tests whenever the reference loader format changes.
+`PatchData.h` is generated with `python patcher-native/generate_patch_data.py`; no stock executable is needed. Regenerate it and rerun tests whenever the reference loader changes.
 
 The automated tests cover the command-line path. An interactive smoke check
 verified that the native file picker opens correctly and Cancel closes it without

@@ -5,6 +5,7 @@ import io
 import os
 from pathlib import Path
 import subprocess
+import struct
 import sys
 import tempfile
 import unittest
@@ -24,8 +25,6 @@ class NativePatcherTests(unittest.TestCase):
         if not EXE.is_file() or not STOCK.is_file():
             raise unittest.SkipTest("Build the native patcher and set BODYSLIDER_STOCK_EXE to the supported original Wow.exe")
         cls.original = STOCK.read_bytes()
-        if patcher.sha256(cls.original) != patcher.STOCK_SHA256:
-            raise unittest.SkipTest("Configured executable does not match the supported stock digest")
         cls.patched = patcher.patch_bytes(cls.original)
 
     def run_cli(self, *args, success=True):
@@ -54,6 +53,29 @@ class NativePatcherTests(unittest.TestCase):
             self.run_cli("--restore", source, output)
             self.assertEqual(output.read_bytes(), self.original)
 
+    def test_customized_client_and_relocated_import_slots(self):
+        if not importlib.util.find_spec("pefile"):
+            self.skipTest("Optional pefile verification package is not installed")
+        import pefile
+        data = bytearray(self.original)
+        data[0x1000] ^= 1
+        # Swap real imports and their IAT entries to keep this variant loadable.
+        image = pefile.PE(data=bytes(data))
+        descriptor = next(item for item in image.DIRECTORY_ENTRY_IMPORT if item.dll.lower() == b"kernel32.dll")
+        indices = [next(i for i, item in enumerate(descriptor.imports) if item.name == name)
+                   for name in (b"GetModuleFileNameA", b"LoadLibraryA")]
+        for table in {descriptor.struct.OriginalFirstThunk, descriptor.struct.FirstThunk} - {0}:
+            a, b = [image.get_offset_from_rva(table + index * 4) for index in indices]
+            data[a:a + 4], data[b:b + 4] = data[b:b + 4], data[a:a + 4]
+        expected = patcher.patch_bytes(data)
+        with tempfile.TemporaryDirectory() as folder:
+            source, output, restored = [Path(folder) / name for name in ("custom.exe", "patched.exe", "restored.exe")]
+            source.write_bytes(data)
+            self.run_cli("--patch", source, output)
+            self.assertEqual(output.read_bytes(), expected)
+            self.run_cli("--restore", output, restored)
+            self.assertEqual(restored.read_bytes(), data)
+
     def test_unicode_paths(self):
         with tempfile.TemporaryDirectory() as folder:
             directory = Path(folder) / "角色 modèles"
@@ -78,7 +100,8 @@ class NativePatcherTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             source, output = Path(folder) / "source.exe", Path(folder) / "output.exe"
             changed = bytearray(self.original)
-            changed[0x1000] ^= 1
+            version = changed.index(struct.pack("<IIII", 0xFEEF04BD, 0x10000, 0x30003, (5 << 16) | 12340))
+            struct.pack_into("<I", changed, version + 12, (5 << 16) | 12341)
             for data in (b"MZ", self.original[:-1], changed, self.patched):
                 source.write_bytes(data)
                 self.run_cli("--patch", source, output, success=False)
@@ -101,7 +124,7 @@ class NativePatcherTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             header = generate_patch_data.generate(STOCK)
         self.assertEqual((HERE / "PatchData.h").read_text(encoding="ascii"), header)
-        self.assertEqual(hashlib.sha256(STOCK.read_bytes()).hexdigest(), patcher.STOCK_SHA256)
+        self.assertEqual(STOCK.read_bytes(), self.original)
 
     def test_tiny_and_only_system_imports(self):
         self.assertLess(EXE.stat().st_size, 200 * 1024)
@@ -109,7 +132,7 @@ class NativePatcherTests(unittest.TestCase):
             import pefile
             binary = pefile.PE(str(EXE))
             self.assertEqual(binary.FILE_HEADER.Machine, 0x14C)
-            system = {b"KERNEL32.dll", b"USER32.dll", b"ADVAPI32.dll", b"SHELL32.dll", b"COMDLG32.dll"}
+            system = {b"KERNEL32.dll", b"USER32.dll", b"ADVAPI32.dll", b"CRYPT32.dll", b"SHELL32.dll", b"COMDLG32.dll"}
             self.assertLessEqual({item.dll.upper() for item in binary.DIRECTORY_ENTRY_IMPORT}, {item.upper() for item in system})
 
 

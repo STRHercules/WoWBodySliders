@@ -144,7 +144,7 @@ A small executable loader patch loads `BodySlider.dll`, which hooks skeleton and
 <details>
 <summary><b>Technical details</b></summary>
 
-The loader changes 26 original bytes, all PE header fields, and adds a 212‑byte
+The loader updates PE header fields and adds a 212‑byte
 bootstrap in a new section plus restoration metadata. Original code, resources,
 and imports remain byte‑identical. It loads only the `BodySlider.dll` beside the
 executable and invokes initializer export ordinal 1 before stock startup, after
@@ -193,7 +193,7 @@ python package.py dist/BodySlider-0.3.0-prototype.zip
 Copy `build/native/Release/BodySlider.dll` beside the generated executable and install the addon.
 
 > [!CAUTION]
-> The patcher accepts only SHA‑256 `aa63a5750d60ef16746c686b3d5e26876d98953eab08b1c026cd0faf78e88cb8` and refuses to overwrite existing output. Do not point it at a different realm's customized executable.
+> The patcher accepts customized WoW 3.3.5.12340 executables, including renamed clients, and refuses to overwrite existing output. It validates the PE layout and resolves loader imports from the selected file. Patching support does not guarantee the DLL hooks are compatible with a realm's custom code.
 
 **Restore** a byte‑identical original executable at a new path:
 

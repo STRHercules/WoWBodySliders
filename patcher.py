@@ -1,4 +1,4 @@
-"""Reversible BodySlider loader patch for the supplied stock 3.3.5a executable.
+"""Reversible BodySlider loader patch for WoW 3.3.5a build 12340 executables.
 
 No third-party Python packages are required. The source file is never modified.
 The DLL contract is a zero-argument cdecl initializer exported at ordinal 1.
@@ -29,14 +29,14 @@ def align(value, alignment):
 
 
 def pe_layout(data):
-    """Read only the PE fields needed by this version-locked patch."""
+    """Read and validate the PE fields needed by the loader patch."""
     if len(data) < 64 or data[:2] != b"MZ":
         raise ValueError("Not a DOS/PE executable")
     pe = struct.unpack_from("<I", data, 0x3C)[0]
     if pe + 24 > len(data) or data[pe:pe + 4] != b"PE\0\0":
         raise ValueError("Missing or truncated PE header")
     machine, count = struct.unpack_from("<HH", data, pe + 4)
-    optional_size, characteristics = struct.unpack_from("<HH", data, pe + 20)
+    optional_size = struct.unpack_from("<H", data, pe + 20)[0]
     optional = pe + 24
     sections = optional + optional_size
     if machine != 0x14C or optional_size < 224 or sections + count * 40 > len(data):
@@ -45,24 +45,97 @@ def pe_layout(data):
         raise ValueError("Expected PE32 section headers")
     image_base = struct.unpack_from("<I", data, optional + 28)[0]
     dll_flags = struct.unpack_from("<H", data, optional + 70)[0]
-    if image_base != IMAGE_BASE or dll_flags & 0x40 or not characteristics & 1:
-        raise ValueError("Only the fixed-base, relocation-stripped stock executable is supported")
+    if image_base != IMAGE_BASE or dll_flags & 0x40:
+        raise ValueError("Expected image base 0x400000 with ASLR disabled")
     section_alignment, file_alignment = struct.unpack_from("<II", data, optional + 32)
     headers_size = struct.unpack_from("<I", data, optional + 60)[0]
     if (section_alignment != 0x1000 or file_alignment != 0x200
-            or headers_size > len(data) or sections + (count + 1) * 40 > headers_size):
+            or headers_size > len(data) or sections + count * 40 > headers_size):
         raise ValueError("Unexpected PE alignment or insufficient section-header space")
-    last = sections + (count - 1) * 40
-    virtual_size, virtual_address, raw_size, raw_address = struct.unpack_from("<IIII", data, last + 8)
-    if raw_address + raw_size > len(data):
-        raise ValueError("Truncated final section")
+    next_rva = 0
+    for index in range(count):
+        section = sections + index * 40
+        virtual_size, virtual_address, raw_size, raw_address = struct.unpack_from("<IIII", data, section + 8)
+        if raw_address + raw_size > len(data):
+            raise ValueError("Truncated section")
+        next_rva = max(next_rva, virtual_address + max(virtual_size, raw_size))
     return dict(pe=pe, optional=optional, count=count, sections=sections,
                 headers_size=headers_size, file_alignment=file_alignment,
                 section_alignment=section_alignment,
-                next_rva=align(virtual_address + max(virtual_size, raw_size), section_alignment))
+                next_rva=align(next_rva, section_alignment))
 
 
-def bootstrap(section_rva, entry_rva):
+def client_imports(data, layout):
+    """Validate the version resource and resolve the loader's two IAT slots."""
+    def offset(rva, size):
+        for index in range(layout["count"]):
+            section = layout["sections"] + index * 40
+            _, address, length, raw = struct.unpack_from("<IIII", data, section + 8)
+            if address <= rva and rva + size <= address + length:
+                return raw + rva - address
+        raise ValueError("Invalid PE data RVA")
+
+    optional = layout["optional"]
+    resource_rva, resource_size = struct.unpack_from("<II", data, optional + 112)
+    resource = offset(resource_rva, resource_size)
+
+    def resource_entry(relative, wanted=None):
+        if relative + 16 > resource_size:
+            raise ValueError("Invalid version resource directory")
+        named, ids = struct.unpack_from("<HH", data, resource + relative + 12)
+        for index in range(named + ids):
+            entry = relative + 16 + index * 8
+            if entry + 8 > resource_size:
+                raise ValueError("Truncated version resource directory")
+            name, target = struct.unpack_from("<II", data, resource + entry)
+            if wanted is None or name == wanted:
+                return target
+        raise ValueError("Missing executable version resource")
+
+    target = resource_entry(0, 16)  # RT_VERSION / name / language
+    for _ in range(2):
+        if not target & 0x80000000:
+            raise ValueError("Invalid version resource tree")
+        target = resource_entry(target & 0x7fffffff)
+    if target & 0x80000000 or target + 16 > resource_size:
+        raise ValueError("Invalid version resource data")
+    rva, size = struct.unpack_from("<II", data, resource + target)
+    start = offset(rva, size)
+    version = data[start:start + size]
+    key = "VS_VERSION_INFO\0".encode("utf-16le")
+    fixed = align(6 + len(key), 4)
+    if (version[6:6 + len(key)] != key or len(version) < fixed + 52
+            or struct.unpack_from("<IIII", version, fixed) !=
+            (0xFEEF04BD, 0x10000, 0x30003, (5 << 16) | 12340)):
+        raise ValueError("Expected WoW version 3.3.5.12340")
+
+    imports_rva, imports_size = struct.unpack_from("<II", data, optional + 104)
+    imports = offset(imports_rva, imports_size)
+    found = {}
+    for descriptor in range(imports, imports + imports_size - 19, 20):
+        lookup, _, _, name, iat = struct.unpack_from("<IIIII", data, descriptor)
+        if not name:
+            break
+        name_offset = offset(name, 13)
+        if data[name_offset:name_offset + 13].lower() != b"kernel32.dll\0":
+            continue
+        for index in range(len(data) // 4):
+            thunk = struct.unpack_from("<I", data, offset((lookup or iat) + index * 4, 4))[0]
+            if not thunk:
+                break
+            if thunk & 0x80000000:
+                continue
+            for function in (b"GetModuleFileNameA", b"LoadLibraryA"):
+                name_offset = offset(thunk + 2, len(function) + 1)
+                if data[name_offset:name_offset + len(function) + 1] == function + b"\0":
+                    offset(iat + index * 4, 4)
+                    found[function] = IMAGE_BASE + iat + index * 4
+    if len(found) != 2:
+        raise ValueError("Missing required KERNEL32 loader imports")
+    return found[b"GetModuleFileNameA"], found[b"LoadLibraryA"]
+
+
+def bootstrap(section_rva, entry_rva, get_filename=GET_MODULE_FILENAME_A, load_library=LOAD_LIBRARY_A):
     """Preserve entry state, load beside the EXE, initialize, resume stock entry."""
     code = bytearray()
     labels = {}
@@ -81,7 +154,7 @@ def bootstrap(section_rva, entry_rva):
 
     emit("9c 60 81 ec 00 04 00 00 89 e7")  # pushfd; pushad; path[1024]
     emit("68 00 04 00 00 57 6a 00 ff 15")
-    code.extend(struct.pack("<I", GET_MODULE_FILENAME_A))
+    code.extend(struct.pack("<I", get_filename))
     emit("85 c0")
     jump("0f 84", "done")
     emit("3d f1 03 00 00")  # reject zero/truncated path; reserve 15 bytes
@@ -102,7 +175,7 @@ def bootstrap(section_rva, entry_rva):
         code.extend(b"BodySlider.dll\0"[offset:offset + 4])
     emit("66 c7 46 0c 6c 6c c6 46 0e 00")
     emit("57 ff 15")
-    code.extend(struct.pack("<I", LOAD_LIBRARY_A))
+    code.extend(struct.pack("<I", load_library))
     emit("85 c0")
     jump("0f 84", "done")
     emit("89 c3 8b 43 3c 8b 54 03 78 8b 4c 03 7c 85 d2")
@@ -137,12 +210,17 @@ def pe_checksum(data, checksum_offset):
 
 
 def patch_bytes(original):
-    if sha256(original) != STOCK_SHA256:
-        raise ValueError("Unsupported executable SHA-256; this patch accepts only the supplied stock Wow.exe")
+    if original.endswith(MARKER):
+        raise ValueError("Executable is already patched")
     layout = pe_layout(original)
+    if layout["sections"] + (layout["count"] + 1) * 40 > layout["headers_size"]:
+        raise ValueError("Insufficient section-header space")
+    if any(original[layout["sections"] + i * 40:layout["sections"] + i * 40 + 8] == SECTION_NAME
+           for i in range(layout["count"])):
+        raise ValueError("Executable already contains a BodySlider section")
     optional = layout["optional"]
     entry = struct.unpack_from("<I", original, optional + 16)[0]
-    stub = bootstrap(layout["next_rva"], entry)
+    stub = bootstrap(layout["next_rva"], entry, *client_imports(original, layout))
     raw_address = align(len(original), layout["file_alignment"])
     raw_size = align(len(stub), layout["file_alignment"])
     output = bytearray(original)
@@ -159,7 +237,7 @@ def patch_bytes(original):
     # Modifying a signed executable invalidates its signature; retain its bytes for exact restoration.
     output[optional + 128:optional + 136] = b"\0" * 8
     struct.pack_into("<I", output, optional + 64, 0)
-    metadata = dict(version=1, original_size=len(original), original_sha256=STOCK_SHA256,
+    metadata = dict(version=1, original_size=len(original), original_sha256=sha256(original),
                     original_headers=base64.b64encode(original[:layout["headers_size"]]).decode("ascii"),
                     body_sha256=sha256(output))
     metadata_bytes = json.dumps(metadata, sort_keys=True, separators=(",", ":")).encode("ascii")
@@ -187,8 +265,8 @@ def restore_bytes(patched):
         if len(headers) != layout["headers_size"] or not len(headers) <= original_size <= len(body):
             raise ValueError("Invalid restoration bounds")
         original = headers + bytes(body[len(headers):original_size])
-        if metadata["original_sha256"] != STOCK_SHA256 or sha256(original) != STOCK_SHA256:
-            raise ValueError("Restored executable does not match the original stock digest")
+        if sha256(original) != metadata["original_sha256"]:
+            raise ValueError("Restored executable does not match the original digest")
     except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, struct.error) as exc:
         raise ValueError("Invalid patch metadata") from exc
     return original

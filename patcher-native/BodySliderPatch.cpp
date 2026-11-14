@@ -13,10 +13,6 @@ struct File {
     HANDLE handle = INVALID_HANDLE_VALUE;
     ~File() { if (handle != INVALID_HANDLE_VALUE) CloseHandle(handle); }
 };
-struct Buffer {
-    unsigned char* bytes = nullptr;
-    ~Buffer() { if (bytes) HeapFree(GetProcessHeap(), 0, bytes); }
-};
 void Print(HANDLE stream, const wchar_t* text) {
     if (!stream || stream == INVALID_HANDLE_VALUE) return;
     DWORD done = 0;
@@ -45,34 +41,35 @@ bool Hash(const unsigned char* data, DWORD size, unsigned char (&digest)[32]) {
     if (provider) CryptReleaseContext(provider, 0);
     return ok;
 }
+}
+#include "DynamicPatch.h"
+namespace {
 int Convert(const wchar_t* source, const wchar_t* destination, int operation, bool gui) {
     File input;
     input.handle = CreateFileW(source, GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, nullptr);
     if (input.handle == INVALID_HANDLE_VALUE) return Report(gui, L"Cannot open the input executable for reading.\n", true);
     LARGE_INTEGER size{};
-    if (!GetFileSizeEx(input.handle, &size)
-            || (size.QuadPart != PatchData::OriginalSize && size.QuadPart != PatchData::PatchedSize))
-        return Report(gui, L"Unsupported executable. Select the supported unmodified 3.3.5a build 12340 Wow.exe, or a copy patched by this tool.\n", true);
-    Buffer memory;
-    memory.bytes = static_cast<unsigned char*>(HeapAlloc(GetProcessHeap(), 0, PatchData::PatchedSize));
-    if (!memory.bytes) return Report(gui, L"Not enough memory to read the executable.\n", true);
-    DWORD read = 0;
-    if (!ReadFile(input.handle, memory.bytes, static_cast<DWORD>(size.QuadPart), &read, nullptr) || read != size.QuadPart)
-        return Report(gui, L"Could not read the complete executable. No output was created.\n", true);
-    unsigned char digest[32]{};
-    if (!Hash(memory.bytes, read, digest)) return Report(gui, L"Windows could not calculate SHA-256. No output was created.\n", true);
-    bool stock = read == PatchData::OriginalSize && std::memcmp(digest, PatchData::OriginalHash, 32) == 0;
-    bool patched = read == PatchData::PatchedSize && std::memcmp(digest, PatchData::PatchedHash, 32) == 0;
-    if (!stock && !patched) return Report(gui, L"SHA-256 does not match the supported executable. This file is modified, corrupt, or a different build. No output was created.\n", true);
-    bool restore = operation == 2 || (operation == 0 && patched);
-    if ((restore && !patched) || (!restore && !stock))
-        return Report(gui, restore ? L"Restore requires an unchanged BodySlider-patched executable.\n" : L"This executable is already patched. Use --restore to create an original copy.\n", true);
-    for (const auto& change : PatchData::Changes) memory.bytes[change.offset] = restore ? change.original : change.patched;
-    if (!restore) std::memcpy(memory.bytes+PatchData::OriginalSize, PatchData::Append, sizeof(PatchData::Append));
-    DWORD outputSize = restore ? PatchData::OriginalSize : PatchData::PatchedSize;
-    if (!Hash(memory.bytes, outputSize, digest)
-            || std::memcmp(digest, restore ? PatchData::OriginalHash : PatchData::PatchedHash, 32) != 0)
-        return Report(gui, L"Internal patch verification failed. No output was created.\n", true);
+    if (!GetFileSizeEx(input.handle, &size) || size.QuadPart < 64 || size.QuadPart > 512 * 1024 * 1024)
+        return Report(gui, L"Invalid executable size. No output was created.\n", true);
+    DynamicPatch::Bytes data;
+    bool restore = false;
+    try {
+        data.resize(static_cast<size_t>(size.QuadPart));
+        DWORD read = 0;
+        if (!ReadFile(input.handle, data.data(), static_cast<DWORD>(data.size()), &read, nullptr) || read != data.size())
+            return Report(gui, L"Could not read the complete executable. No output was created.\n", true);
+        restore = operation == 2 || (operation == 0 && DynamicPatch::marked(data));
+        if (!restore && DynamicPatch::marked(data)) throw std::runtime_error("Executable already patched; use --restore");
+        std::string originalHash = restore ? "" : DynamicPatch::digest(data);
+        data = restore ? DynamicPatch::restore(std::move(data)) : DynamicPatch::patch(std::move(data));
+        if (!restore && DynamicPatch::digest(DynamicPatch::restore(data)) != originalHash)
+            throw std::runtime_error("Internal patch verification failed; no output was created");
+    } catch (const std::exception& error) {
+        wchar_t message[1024]{};
+        MultiByteToWideChar(CP_UTF8, 0, error.what(), -1, message, 1024);
+        return Report(gui, message, true);
+    }
+    DWORD outputSize = static_cast<DWORD>(data.size());
     wchar_t automatic[32768]{};
     if (!destination) {
         DWORD length = GetFullPathNameW(source, 32768, automatic, nullptr);
@@ -89,7 +86,7 @@ int Convert(const wchar_t* source, const wchar_t* destination, int operation, bo
     if (output.handle == INVALID_HANDLE_VALUE)
         return Report(gui, L"Cannot create the output copy. Input files and existing output files are never overwritten. Choose a new output filename and ensure the folder is writable.\n", true);
     DWORD written = 0;
-    bool writtenOk = WriteFile(output.handle, memory.bytes, outputSize, &written, nullptr) && written == outputSize
+    bool writtenOk = WriteFile(output.handle, data.data(), outputSize, &written, nullptr) && written == outputSize
         && FlushFileBuffers(output.handle);
     if (!writtenOk) {
         // Mark this handle's file for deletion before releasing exclusive ownership.
@@ -126,7 +123,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
         bool patch = count == 4 && std::wcscmp(arguments[1], L"--patch") == 0;
         bool restore = count == 4 && std::wcscmp(arguments[1], L"--restore") == 0;
         if (patch || restore) result = Convert(arguments[2], arguments[3], restore ? 2 : 1, false);
-        else result = Report(false, L"BodySliderPatch.exe --patch <stock Wow.exe> <new patched.exe>\nBodySliderPatch.exe --restore <patched.exe> <new original.exe>\n\nRun without arguments for the file picker. Existing files are never overwritten.\n", count != 2 || std::wcscmp(arguments[1], L"--help") != 0);
+        else result = Report(false, L"BodySliderPatch.exe --patch <build 12340 executable> <new patched.exe>\nBodySliderPatch.exe --restore <patched.exe> <new original.exe>\n\nRun without arguments for the file picker. Existing files are never overwritten.\n", count != 2 || std::wcscmp(arguments[1], L"--help") != 0);
     } else {
         wchar_t filename[32768]{};
         OPENFILENAMEW dialog{};
@@ -134,7 +131,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
         dialog.lpstrFile = filename;
         dialog.nMaxFile = 32768;
         dialog.lpstrFilter = L"World of Warcraft executable (*.exe)\0*.exe\0All files\0*.*\0\0";
-        dialog.lpstrTitle = L"Select stock build 12340 Wow.exe (or patched copy to restore)";
+        dialog.lpstrTitle = L"Select build 12340 executable (or patched copy to restore)";
         dialog.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR | OFN_DONTADDTORECENT;
         if (GetOpenFileNameW(&dialog)) result = Convert(filename, nullptr, 0, true);
         else if (CommDlgExtendedError()) result = Report(true, L"Windows could not open the file picker.\n", true);
